@@ -27,7 +27,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-
+    """index page"""
     return flask.render_template("index.html")
 
 
