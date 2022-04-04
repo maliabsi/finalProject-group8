@@ -1,0 +1,17 @@
+.navbar {
+    /*for the submit buttons on log in and sign up*/
+    background-color: aqua;
+}
+
+.submit {
+    /*for the submit buttons on log in and sign up*/
+}
+
+.centered-div {
+    /*centered div for login and sign up page*/
+    border: 20px;
+}
+
+p {
+    color: red;
+}
