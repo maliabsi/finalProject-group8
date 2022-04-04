@@ -1,7 +1,9 @@
 import os
 import flask
+
 from dotenv import find_dotenv, load_dotenv
 from flask_login import current_user, LoginManager, login_user, logout_user
+from stytch import Client
 from models import db, Users
 
 
@@ -22,13 +24,51 @@ with app.app_context():
 
 @login_manager.user_loader
 def load_user(user_id):
+    """loads  current user"""
     return Users.query.get(int(user_id))
 
 
 @app.route("/")
 def index():
-    """index page"""
+    """index page: more!"""
     return flask.render_template("index.html")
+
+
+# This needs to be tested live. Stytch will not send to a  non-https:// URL.
+@app.route("/authenticate")
+def authenticate():
+    """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
+    client = Client(
+        project_id=os.getenv("PROJECT_ID"),
+        secret=os.getenv("STYTCH_SECRET"),
+        environment="test",
+    )
+
+    # I think this will collect URL parameters correctly. Need to double check
+    token = flask.request.args.get("token")
+
+    # Temporary mock for token until test is written.
+    token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+
+    # Authenticates
+    response = client.oauth.authenticate(token)
+
+    # If the response is a 200, the user is verified and can be logged in (Copied from Stytch API docs)
+    if response == 200:
+        print(token)
+        if Users.query.filter_by(token=token).first is None:
+            flask.redirect(flask.url_for("signup"), token)
+
+        else:
+            visitor = Users.query.filter_by(token=token).first()
+            login_user(visitor)
+            flask.flash(f"Welcome Back {current_user.username}!")
+            flask.redirect(flask.url_for("index"))
+
+    else:
+        print("Not authorized")
+        flask.flash("Google was unable to authenticate you. Please try again.")
+        flask.redirect(flask.url_for("login"))
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
