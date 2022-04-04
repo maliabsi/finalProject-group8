@@ -30,7 +30,7 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page"""
+    """index page: more!"""
     return flask.render_template("index.html")
 
 
