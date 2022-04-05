@@ -82,4 +82,9 @@ def login():
     return flask.render_template("login.html")
 
 
+@app.route("/communities")
+def visit_communities():
+    return flask.render_template("communities.html")
+
+
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
