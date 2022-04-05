@@ -46,16 +46,17 @@ def authenticate():
 
     # I think this will collect URL parameters correctly. Need to double check
     token = flask.request.args.get("token")
+    print("token:", token)
 
     # Temporary mock for token until test is written.
-    token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+    # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
     # Authenticates
     response = client.oauth.authenticate(token)
+    print("response:", response)
 
     # If the response is a 200, the user is verified and can be logged in (Copied from Stytch API docs)
     if response == 200:
-        print(token)
         if Users.query.filter_by(token=token).first is None:
             flask.redirect(flask.url_for("signup"), token)
 
