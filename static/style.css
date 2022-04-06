@@ -1,17 +1,97 @@
 .navbar {
-    /*for the submit buttons on log in and sign up*/
-    background-color: aqua;
+    background-color: teal;
+    overflow: hidden;
+}
+.nav{
+    float: right;
+}
+.navbar img{
+    float: left;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
+}
+.navbar a {
+    float: left;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 17px;
+}
+.snippet{
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgba(194, 187, 187, 0.877);
+    box-sizing: border-box;
+    
+}
+.snippet p{
+    font-size: larger;
+    display: block;
+    float: center;
+}
+h2{
+    color: teal;
+    font-family: lucida;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 65px;
+}
+.first_comm{
+    font-family: lucida;
+    color: #f2f2f2;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(219, 215, 215);
+    box-sizing: border-box; 
+}
+.first_comm a{
+    font-size: larger;
+}
+.sec_comm{
+    font-family: lucida;
+    color: #f2f2f2;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(219, 215, 215);
+    box-sizing: border-box;
+}
+.sec_comm a{
+    font-size: larger;
+}
+.third_comm{
+    font-family: lucida;
+    color: #f2f2f2;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(219, 215, 215);
+    box-sizing: border-box;
+}
+.third_comm a{
+    font-size: larger;
 }
 
 .submit {
-    /*for the submit buttons on log in and sign up*/
+    /*for the submit buttons on log in and sign up margin-left: 70%;
+    margin-right: 5%;   margin-left: 37%;
+    margin-right: 37%;*/
 }
 
 .centered-div {
     /*centered div for login and sign up page*/
     border: 20px;
-}
-
-p {
-    color: red;
 }
