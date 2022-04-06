@@ -1,31 +1,38 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 
-<body>
-    <table class="nav-bar">
-        <tr>
-            <th>Logo (add)</th>
-            <th>Communities</th>
-            <th>Login</th>
-            <th>About Us</th>
-        </tr>
-    </table>
 
-    <div class="centered-div">
-        <form>
-            Username: <br>
-            <input type="text">
+<body>
+
+    <body>
+        <div class="navbar">
+            <img src="static/logo.jpeg" alt="logo" class="logo">
+            <a class="active" href="">Home</a>
+            <a href="communities">Communities</a>
+            <a href="login">Login / Register</a>
+            <a href="about">About Us</a>
+        </div>
+        <br>
+        <div class="login_form">
+            <h1>Welcome!</h1>
+            <h2>Please Log In:</h2>
             <br>
-            Password:<br>
-            <input type="password">
-            <br>
-            <input type="submit" class="submit">
-        </form>
-        <p>Don't have an account? <a href="sign-up.html"><i>Sign up!</i></a></p>
-    </div>
-</body>
+            <form>
+                Username: <br>
+                <input type="text">
+                <br>
+                Password:<br>
+                <input type="password">
+                <br>
+                <input type="submit" class="submit">
+            </form>
+            <p>Don't have an account? <a href="sign-up"><i>Sign up!</i></a></p>
+        </div>
+    </body>
 
 </html>
