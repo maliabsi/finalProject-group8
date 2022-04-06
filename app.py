@@ -53,6 +53,7 @@ def authenticate():
 
     # Authenticates
     response = client.oauth.authenticate(token)
+    print("response type:", type(response))
     print("response:", response)
     print("status_code:", response.status_code)
 
