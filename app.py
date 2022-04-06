@@ -54,7 +54,7 @@ def authenticate():
     # Authenticates
     response = client.oauth.authenticate(token)
     print("response:", response)
-    print("status_code:", response["status_code"])
+    print("status_code:", response.status_code)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
