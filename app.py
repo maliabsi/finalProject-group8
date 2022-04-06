@@ -53,13 +53,10 @@ def authenticate():
 
     # Authenticates
     response = client.oauth.authenticate(token)
-    print("response type:", type(response))
-    print("response:", response)
-    print("status_code:", response.status_code)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
-    if response["status_code"] == 200:
+    if response.status_code == 200:
         if Users.query.filter_by(token=token).first is None:
             flask.redirect(flask.url_for("signup"), token)
 
