@@ -10,7 +10,6 @@ from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 
-
 load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
@@ -19,9 +18,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("NEW_DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 login_manager = LoginManager()
 login_manager.init_app(app)
-# Database Tables
 
 
+# Database stuff
 db.init_app(app)
 with app.app_context():
     db.create_all()
