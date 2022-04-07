@@ -1,4 +1,6 @@
+"""Runs the app and sets up DB if initial run. """
 import os
+import json
 import flask
 
 from dotenv import find_dotenv, load_dotenv
@@ -87,7 +89,12 @@ def index():
     return flask.render_template("index.html")
 
 
-# This needs to be tested live. Stytch will not send to a  non-https:// URL.
+@app.route("/sign-up")
+def signup():
+    """signup methond"""
+    return flask.render_template("sign-up.html")
+
+
 @app.route("/authenticate")
 def authenticate():
     """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
@@ -97,31 +104,53 @@ def authenticate():
         environment="test",
     )
 
-    # I think this will collect URL parameters correctly. Need to double check
+    # Retrieve token from url params
     token = flask.request.args.get("token")
 
     # Temporary mock for token until test is written.
-    token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+    # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
-    # Authenticates
+    # Authenticates the token via stytch
     response = client.oauth.authenticate(token)
 
-    # If the response is a 200, the user is verified and can be logged in (Copied from Stytch API docs)
-    if response == 200:
-        print(token)
-        if Users.query.filter_by(token=token).first is None:
-            flask.redirect(flask.url_for("signup"), token)
+    # Retrieves stytch user_id from response
+    stytch_id = json.loads(response._content.decode("UTF-8"))["user_id"]
 
-        else:
-            visitor = Users.query.filter_by(token=token).first()
-            login_user(visitor)
-            flask.flash(f"Welcome Back {current_user.username}!")
-            flask.redirect(flask.url_for("index"))
+    # If the response is a 200, the user is verified and can be logged in
+    # (Copied from Stytch API docs)
+    if response.status_code == 200:
+        # if True:
+        if Users.query.filter_by(stytchid=stytch_id).first() is None:
+            # return flask.redirect(flask.url_for("signup"), token)
+            return flask.redirect(flask.url_for("index"))
 
-    else:
-        print("Not authorized")
-        flask.flash("Google was unable to authenticate you. Please try again.")
-        flask.redirect(flask.url_for("login"))
+        visitor = Users.query.filter_by(stytch_id=stytch_id).first()
+        login_user(visitor)
+        return flask.redirect(flask.url_for("index"))
+
+    print("Not authorized")
+    flask.flash("Google was unable to authenticate you. Please try again.")
+    return flask.redirect(flask.url_for("index"))
+
+
+@app.route("/stytch_login")
+def stytch_login():
+    """Temporary stytch login page"""
+    return flask.render_template(
+        "login_stytch.html",
+        GOOGLE_OAUTH_URL=os.getenv("GOOGLE_OAUTH_URL"),
+        FBOOK_OAUTH_URL=os.getenv("FBOOK_OATH_URL"),
+    )
+
+
+@app.route("/login")
+def login():
+    return flask.render_template("login.html")
+
+
+@app.route("/communities")
+def visit_communities():
+    return flask.render_template("communities.html")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)

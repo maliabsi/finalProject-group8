@@ -1,7 +1,7 @@
 Flask
 requests
 python-dotenv
-Flask-SQLAlchemy==2.1
+Flask-SQLAlchemy==2.5.1
 psycopg2-binary
 flask_login
 stytch
