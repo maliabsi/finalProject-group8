@@ -18,9 +18,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("NEW_DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 login_manager = LoginManager()
 login_manager.init_app(app)
-# Database Tables
 
 
+# Database stuff
 db.init_app(app)
 with app.app_context():
     db.create_all()
