@@ -60,6 +60,8 @@ def authenticate():
     # Authenticates
     response = client.oauth.authenticate(token)
 
+    print("vars:", vars(response))
+
     stytch_id = response.user_id
     print("userid:", stytch_id)
 
