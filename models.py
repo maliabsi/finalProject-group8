@@ -48,7 +48,7 @@ class Participants(db.Model, Base):
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(120), nullable=False)
     participant_user_id = relationship("Users", foreign_keys="Users.id")
-    event_id = db.Column(db.Integer, nullable=False, ForeignKey=True)
+    event_id = relationship("Events", foreign_keys="Events.id")
 
 
 class Colaborators(db.Model, Base):
