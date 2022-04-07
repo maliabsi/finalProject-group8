@@ -98,11 +98,6 @@ def stytch_login():
     )
 
 
-@app.route("/sign-up")
-def signup():
-    return flask.render_template("sign-up.html")
-
-
 @app.route("/login")
 def login():
     return flask.render_template("login.html")
