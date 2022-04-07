@@ -83,6 +83,7 @@ h2{
 }
 .third_comm a{
     font-size: larger;
+
 }
 .login_form{
     border: 2px teal;
@@ -119,11 +120,10 @@ h2{
 .signup_form p{
     font-family: lucida;
     font-size: large;
+
 }
 .submit {
-    /*for the submit buttons on log in and sign up margin-left: 70%;
-    margin-right: 5%;   margin-left: 37%;
-    margin-right: 37%;*/
+    /*for the submit buttons on log in and sign up */
 }
 
 .centered-div {
