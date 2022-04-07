@@ -60,9 +60,9 @@ def authenticate():
     # Authenticates
     response = client.oauth.authenticate(token)
 
-    print("content:", vars(response._content))
+    print("content:", response["user_id"])
 
-    stytch_id = response.user_id
+    stytch_id = response["user_id"]
     print("userid:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
