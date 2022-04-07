@@ -60,9 +60,8 @@ def authenticate():
     # Authenticates
     response = client.oauth.authenticate(token)
 
-    sess = client.sessions.authenticate(session_token=token)
-    stytch_id = sess.user_id
-    print("userid:", sess.user_id)
+    stytch_id = response.user_id
+    print("userid:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
