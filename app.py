@@ -64,14 +64,14 @@ def authenticate():
     # print("content:", response)
 
     # stytch_id = response._content["user_id"]
-    stytch_id = response._content[6]
+    stytch_id = response._content[6].decode("UTF-8")
     print("userid:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
     if response.status_code == 200:
         # if True:
-        if Users.query.filter_by(stytch_id=stytch_id).first() is None:
+        if Users.query.filter_by(stytchid=stytch_id).first() is None:
             # return flask.redirect(flask.url_for("signup"), token)
             return flask.redirect(flask.url_for("index"))
 
