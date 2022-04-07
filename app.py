@@ -1,12 +1,11 @@
 """Runs the app and sets up DB if initial run. """
 import os
-import flask
 import json
+import flask
 
 from dotenv import find_dotenv, load_dotenv
 from flask_login import current_user, LoginManager, login_user, logout_user
 from stytch import Client
-import stytch
 from models import db, Users
 
 
@@ -52,22 +51,17 @@ def authenticate():
         environment="test",
     )
 
+    # Retrieve token from url params
     token = flask.request.args.get("token")
-    print("token:", token)
 
     # Temporary mock for token until test is written.
     # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
-    # Authenticates
+    # Authenticates the token via stytch
     response = client.oauth.authenticate(token)
 
-    print("vars:", vars(response))
-    # print("content:", response)
-
-    # stytch_id = response._content["user_id"]
-    # stytch_id = response._content[5]
+    # Retrieves stytch user_id from response
     stytch_id = json.loads(response._content.decode("UTF-8"))["user_id"]
-    print("userid_type:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
@@ -79,18 +73,11 @@ def authenticate():
 
         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
         login_user(visitor)
-        # flask.flash(f"Welcome Back {current_user.username}!")
         return flask.redirect(flask.url_for("index"))
 
     print("Not authorized")
     flask.flash("Google was unable to authenticate you. Please try again.")
     return flask.redirect(flask.url_for("index"))
-
-
-# @app.route("/handle_login")
-# def handle_login():
-#     """Temporary handle login function"""
-#     return flask.redirect(flask.url_for("index"))
 
 
 @app.route("/stytch_login")
