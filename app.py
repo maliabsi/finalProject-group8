@@ -6,7 +6,7 @@ import flask
 from dotenv import find_dotenv, load_dotenv
 from flask_login import current_user, LoginManager, login_user, logout_user
 from stytch import Client
-from models import db, Users
+from models import db, Users, Communties, Events, Participants, Colaborators
 
 
 load_dotenv(find_dotenv())
@@ -18,58 +18,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 login_manager = LoginManager()
 login_manager.init_app(app)
 # Database Tables
-class Users(UserMixin, db.Model):
-    """Users table created"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(120), nullable=False)
-    password_token = db.Column(db.String(120), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    phone_number = db.Column(db.String(120), nullable=False)
-
-
-class Communties(db.Model):
-    """Communities table created"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    community_name = db.Column(db.String(120), nullable=False, primary_key=True)
-    creator_username = db.Column(db.String(250), nullable=False)
-    num_of_collaborators = db.Column(db.Integer, nullable=False)
-    num_of_events = db.Column(db.Integer, nullable=False)
-    num_of_charties = db.Column(db.Integer, nullable=False)
-
-
-class Events(db.Model):
-    """Events table created"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(120), nullable=False)
-    creator_username = db.Column(db.String(250), nullable=False)
-    num_of_collaborators = db.Column(db.Integer, nullable=False)
-    event_decription = db.Column(db.String(120), nullable=False)
-    event_date = db.Column(db.String(120), nullable=False)
-    event_time = db.Column(db.String(120), nullable=False)
-    content = db.Column(db.String(120), nullable=False)
-    num_of_event_participants = db.Column(db.String(120), nullable=False)
-    community_id = db.Column(db.Integer, nullable=False, ForeignKey=True)
-
-
-class Participants(db.Model):
-    """Participants table created"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(120), nullable=False)
-    participant_username = db.Column(db.String(250), nullable=False)
-    event_id = db.Column(db.Integer, nullable=False, ForeignKey=True)
-
-
-class Colaborators(db.Model):
-    """Colaborators table created"""
-
-    id = db.Column(db.Integer, primary_key=True)
-    event_name = db.Column(db.String(120), nullable=False)
-    collaborator_username = db.Column(db.String(250), nullable=False)
-    event_id = db.Column(db.Integer, nullable=False, ForeignKey=True)
 
 
 db.init_app(app)
