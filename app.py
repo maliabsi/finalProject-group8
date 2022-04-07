@@ -66,8 +66,8 @@ def authenticate():
 
     # stytch_id = response._content["user_id"]
     # stytch_id = response._content[5]
-    stytch_id = json.loads(response._content.decode("UTF-8"))
-    print("userid_type:", type(stytch_id))
+    stytch_id = json.loads(response._content.decode("UTF-8"))["user_id"]
+    print("userid_type:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
