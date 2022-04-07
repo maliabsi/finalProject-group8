@@ -7,6 +7,8 @@ from dotenv import find_dotenv, load_dotenv
 from flask_login import current_user, LoginManager, login_user, logout_user
 from stytch import Client
 from models import db, Users, Communties, Events, Participants, Colaborators
+from stytch_tools import stytch_auth, get_user_data
+
 
 
 load_dotenv(find_dotenv())
@@ -46,11 +48,6 @@ def signup():
 @app.route("/authenticate")
 def authenticate():
     """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
-    client = Client(
-        project_id=os.getenv("PROJECT_ID"),
-        secret=os.getenv("STYTCH_SECRET"),
-        environment="test",
-    )
 
     # Retrieve token from url params
     token = flask.request.args.get("token")
@@ -58,26 +55,30 @@ def authenticate():
     # Temporary mock for token until test is written.
     # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
-    # Authenticates the token via stytch
-    response = client.oauth.authenticate(token)
+    # Authenticates and retrieves stytch user_id from response
+    stytch_id = stytch_auth(token)
+    # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
 
-    # Retrieves stytch user_id from response
-    stytch_id = json.loads(response._content.decode("UTF-8"))["user_id"]
-
-    # If the response is a 200, the user is verified and can be logged in
-    # (Copied from Stytch API docs)
-    if response.status_code == 200:
-        # if True:
-        if Users.query.filter_by(stytchid=stytch_id).first() is None:
-            # return flask.redirect(flask.url_for("signup"), token)
-            return flask.redirect(flask.url_for("index"))
+    # If stytch_auth does not ruturn null value
+    if stytch_id:
 
         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
+
+        # Logs in user if they exist already
+        if visitor:
+            login_user(visitor)
+            print(get_user_data(visitor.stytch_id))
+            return flask.redirect(flask.url_for("index"))
+
+        # Otherwise adds them to db, then logs them in
+        visitor = Users(stytch_id=stytch_id)
+        db.session.add(visitor)
+        db.session.commit()
         login_user(visitor)
         return flask.redirect(flask.url_for("index"))
 
     print("Not authorized")
-    flask.flash("Google was unable to authenticate you. Please try again.")
+    flask.flash("We were unable to authenticate you. Please try again.")
     return flask.redirect(flask.url_for("index"))
 
 
