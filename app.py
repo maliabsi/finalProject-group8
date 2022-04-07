@@ -64,7 +64,8 @@ def authenticate():
     # print("content:", response)
 
     # stytch_id = response._content["user_id"]
-    stytch_id = response._content[5]
+    # stytch_id = response._content[5]
+    stytch_id = response._content.decode("UTF-8")["user_id"]
     print("userid:", stytch_id)
 
     # If the response is a 200, the user is verified and can be logged in
