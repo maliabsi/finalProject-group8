@@ -83,12 +83,47 @@ h2{
 }
 .third_comm a{
     font-size: larger;
-}
 
+}
+.login_form{
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgba(194, 187, 187, 0.877);
+    box-sizing: border-box;
+}
+.login_form p{
+    font-family: lucida;
+    font-size: large;
+}
+.signup_form{
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgba(194, 187, 187, 0.877);
+    box-sizing: border-box;
+}
+.signup_form p{
+    font-family: lucida;
+    font-size: large;
+
+}
 .submit {
-    /*for the submit buttons on log in and sign up margin-left: 70%;
-    margin-right: 5%;   margin-left: 37%;
-    margin-right: 37%;*/
+    /*for the submit buttons on log in and sign up */
 }
 
 .centered-div {
