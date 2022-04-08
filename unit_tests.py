@@ -9,7 +9,7 @@ class stytch_test(unittest.TestCase):
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
             mock_get.return_value = test_value
-            actual_output = stytch_auth(test_value)
+            actual_output = stytch_auth(test_value)[0]
             self.assertEqual(expected_output, actual_output)
 
     def test_none_string_case(self):
@@ -17,7 +17,7 @@ class stytch_test(unittest.TestCase):
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
             mock_get.return_value = test_value
-            actual_output = stytch_auth(test_value)
+            actual_output = stytch_auth(test_value)[0]
             self.assertEqual(expected_output, actual_output)
 
     def test_success_case(self):
