@@ -54,15 +54,6 @@ def authenticate():
     if stytch_id:
         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
 
-    # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_auth(token)
-    # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
-
-    # If stytch_auth does not ruturn null value
-    if stytch_id:
-
-        visitor = Users.query.filter_by(stytch_id=stytch_id).first()
-
         # Logs in user if they exist already
         if visitor:
             login_user(visitor)
@@ -79,11 +70,11 @@ def authenticate():
     return flask.redirect(flask.url_for("index"))
 
 
-@app.route("/stytch_login")
-def stytch_login():
-    """Temporary stytch login page"""
+@app.route("/login")
+def login():
+    """OAuth login"""
     return flask.render_template(
-        "login_stytch.html",
+        "login.html",
         GOOGLE_OAUTH_URL=os.getenv("GOOGLE_OAUTH_URL"),
         FBOOK_OAUTH_URL=os.getenv("FBOOK_OATH_URL"),
     )
@@ -135,11 +126,6 @@ def add_event_handler():
         db.session.add(new_event)
         db.session.commit()
     return flask.redirect()
-
-
-@app.route("/login")
-def login():
-    return flask.render_template("login.html")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
