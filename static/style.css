@@ -1,3 +1,6 @@
+body{
+    background-color: #f7f7da;
+}
 .aboutUsPics {
     width: 100px;
     height: 100px;
@@ -13,34 +16,33 @@
     display: block;
     font-family: lucida;
     font-size: larger;
-    color: #f2f2f2;
+    color: #f7f7da;
     float: center;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
     margin-left: 30%;
     margin-right: 30%;
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
 }
 
 .create button {
-    background-color: teal;
-    border: none;
-    color: white;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
     font-weight: bold;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border: 5px solid rgba(194, 187, 187, 0.877);
+    border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box
 }
-
 .comm {
     color: teal;
     font-family: lucida;
     text-align: center;
 }
-
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -75,7 +77,7 @@ h2 {
     display: block;
     font-family: lucida;
     font-size: larger;
-    color: #f2f2f2;
+    color: #f7f7da;
     text-align: center;
     padding: 2px 8px;
     font-size: 17px;
@@ -86,47 +88,71 @@ h2 {
     display: block;
     font-family: lucida;
     font-size: larger;
-    color: #f2f2f2;
+    color: #f7f7da;
     float: center;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
     margin-left: 10%;
     margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
+    border: 20px solid rgb(240, 169, 15);
     box-sizing: border-box;
 
 }
-
 .snippet p {
     font-size: larger;
     display: block;
     float: center;
 }
-
-
-.one_comm {
-    display: block;
-    margin-right: 10%;
-    margin-left: 10%;
-    background-color: rgba(108, 180, 185, 0.932);
-    width: 90px;
-    height: 80px;
-
+.containers{
+    display: grid;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 20px
 }
-
-.two_comm {
+.community{
     display: block;
     background-color: rgba(108, 180, 185, 0.932);
-    width: 700px;
-    height: 100px;
+    margin-right: 15%;
+    margin-left: 15%;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    
+}
+.community button{
+    background-color: rgb(240, 169, 15);
+    border: none;
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+}
+.description{
+    text-align: left;
+    display: block;
+    background-color: #f7f7da;
+    color: teal;
+    margin-right: 5%; 
+    margin-left: 5%;
+    padding: 2%;
+    
 }
 
+.containers h1{
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+}
 .first_comm {
     font-family: lucida;
-    color: #f2f2f2;
+    color: #f7f7da;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
+    border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
 
@@ -136,10 +162,10 @@ h2 {
 
 .sec_comm {
     font-family: lucida;
-    color: #f2f2f2;
+    color: #f7f7da;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
+    border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
 
@@ -149,10 +175,10 @@ h2 {
 
 .third_comm {
     font-family: lucida;
-    color: #f2f2f2;
+    color: #f7f7da;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
+    border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
 
@@ -161,66 +187,4 @@ h2 {
 
 }
 
-.login_form {
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
 
-.login_form p {
-    font-family: lucida;
-    font-size: large;
-}
-
-.login_form {
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
-
-.login_form p {
-    font-family: lucida;
-    font-size: large;
-}
-
-.signup_form {
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
-
-.signup_form p {
-    font-family: lucida;
-    font-size: large;
-}
-
-.submit {
-    /*for the submit buttons on log in and sign up */
-}
