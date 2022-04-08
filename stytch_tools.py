@@ -23,7 +23,7 @@ def stytch_auth(token):
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
     if response.status_code == 200:
-        return json.loads(response._content.decode("UTF-8"))["user_id"]
+        return json.loads(response._content.decode("UTF-8"))["user_id"], True
 
     return None
 
@@ -62,4 +62,4 @@ def get_user_data(stytch_id):
     }
     """
     user = client.users.get(stytch_id)
-    return json.loads(user._content.decode("UTF-8"))
+    return json.loads(user._content.decode("UTF-8")), True
