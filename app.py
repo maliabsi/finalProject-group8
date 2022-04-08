@@ -118,15 +118,23 @@ def visit_communities():
     )
 
 
-@app.route("/community")
+
+@app.route("/community", methods=["GET", "POST"])
 def vist_singular_community():
     if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
 
-        print(db.session.query(Communities).all())
-    return flask.render_template("communities.html")
+        data = flask.request.form
+        requested_community = Communities.query.filter_by(
+            id=data["Community_id"]
+        ).first()
+
+    return flask.render_template(
+        "community.html", authenticated=authenticated, communti=requested_community
+    )
 
 
-@app.route("/new_community_handler")
+@app.route("/new_community_handler", methods=["GET", "POST"])
 @login_required
 def add_community_handler():
     if flask.request.method == "POST":
@@ -141,10 +149,10 @@ def add_community_handler():
         )
         db.session.add(new_community)
         db.session.commit()
-    return flask.redirect("/community")
+    return flask.redirect("/communities")
 
 
-@app.route("/new_event_handler")
+@app.route("/new_event_handler", methods=["GET", "POST"])
 @login_required
 def add_event_handler():
 
@@ -162,7 +170,7 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
-    return flask.redirect("/event")
+    return flask.redirect("/community", community_id=data["community_id"])
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
