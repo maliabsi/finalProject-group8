@@ -1,7 +1,11 @@
+# pylint: disable=no-member
+# pylint: disable=invalid-envvar-default
+
+
 """Runs the app and sets up DB if initial run. """
 import os
-import flask
 import random
+import flask
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
     current_user,
@@ -12,7 +16,6 @@ from flask_login import (
 )
 from models import db, Users, Communities, Events
 
-# from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
@@ -134,6 +137,11 @@ def visit_communities():
 
 @app.route("/community", methods=["GET", "POST"])
 def vist_singular_community():
+    """
+    Displays page for individual communities.
+    Passes authenticated and the Community object being looked up.
+
+    """
     if flask.request.method == "POST":
         authenticated = current_user.is_authenticated
 
@@ -150,6 +158,9 @@ def vist_singular_community():
 @app.route("/new_community_handler", methods=["GET", "POST"])
 @login_required
 def add_community_handler():
+    """
+    API Endpoint for creating a new community. Takes in information from an html form.
+    """
     if flask.request.method == "POST":
         data = flask.request.form
         new_community = Communities(
@@ -168,7 +179,9 @@ def add_community_handler():
 @app.route("/new_event_handler", methods=["GET", "POST"])
 @login_required
 def add_event_handler():
-
+    """
+    API Enpoint for creating a new event. Takes in information from an html form.
+    """
     if flask.request.method == "POST":
         data = flask.request.form
         new_event = Events(
@@ -183,7 +196,11 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
+<<<<<<< HEAD
     return flask.redirect("/communities")
+=======
+    return flask.redirect("/community")
+>>>>>>> ec770985582030bf2a822bf04eb1745e8ce86504
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
