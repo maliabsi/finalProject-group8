@@ -1,7 +1,7 @@
 """Runs the app and sets up DB if initial run. """
 import os
 import flask
-
+import random
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
     current_user,
@@ -38,9 +38,18 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page: more!"""
+    """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    return flask.render_template("index.html")
+    displayed_comms = random.sample(Communities.query.all(), 3)
+    display_ids = []
+    display_names = []
+    for i in range(3):
+        display_ids.append(displayed_comms[i].id)
+        display_names.append(displayed_comms[i].community_name)
+
+    return flask.render_template(
+        "index.html", display_ids=display_ids, display_names=display_names
+    )
 
 
 # @app.route("/authenticate")
@@ -118,15 +127,23 @@ def visit_communities():
     )
 
 
-@app.route("/community")
+
+@app.route("/community", methods=["GET", "POST"])
 def vist_singular_community():
     if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
 
-        print(db.session.query(Communities).all())
-    return flask.render_template("communities.html")
+        data = flask.request.form
+        requested_community = Communities.query.filter_by(
+            id=data["Community_id"]
+        ).first()
+
+    return flask.render_template(
+        "community.html", authenticated=authenticated, communti=requested_community
+    )
 
 
-@app.route("/new_community_handler")
+@app.route("/new_community_handler", methods=["GET", "POST"])
 @login_required
 def add_community_handler():
     if flask.request.method == "POST":
@@ -141,10 +158,10 @@ def add_community_handler():
         )
         db.session.add(new_community)
         db.session.commit()
-    return flask.redirect("/community")
+    return flask.redirect("/communities")
 
 
-@app.route("/new_event_handler")
+@app.route("/new_event_handler", methods=["GET", "POST"])
 @login_required
 def add_event_handler():
 
@@ -162,7 +179,7 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
-    return flask.redirect("/event")
+    return flask.redirect("/community", community_id=data["community_id"])
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
