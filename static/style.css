@@ -1,48 +1,14 @@
-.navbar {
-    background-color: teal;
-    overflow: hidden;
+.aboutUsPics {
+    width: 100px;
+    height: 100px;
 }
-.nav{
-    float: right;
+
+.centered-div {
+    /*centered div for login and sign up page*/
+    border: 20px;
 }
-.navbar img{
-    float: left;
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
-}
-.navbar a {
-    float: left;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 2px 8px;
-    font-size: 17px;
-}
-.snippet{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-    
-}
-.snippet p{
-    font-size: larger;
-    display: block;
-    float: center;
-}
-.create{
+
+.create {
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -54,7 +20,8 @@
     margin-left: 30%;
     margin-right: 30%;
 }
-.create button{
+
+.create button {
     background-color: teal;
     border: none;
     color: white;
@@ -67,48 +34,94 @@
     border: 5px solid rgba(194, 187, 187, 0.877);
     box-sizing: border-box
 }
-.comm{
+
+.comm {
     color: teal;
     font-family: lucida;
     text-align: center;
 }
-h2{
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-.container{
+
+.container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 65px;
 }
-.one_comm{
+
+h2 {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
+.nav {
+    float: right;
+}
+
+.navbar {
+    background-color: teal;
+    overflow: hidden;
+}
+
+.navbar img {
+    float: left;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 17px;
+}
+
+.snippet {
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f2f2f2;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgba(194, 187, 187, 0.877);
+    box-sizing: border-box;
+
+}
+
+.snippet p {
+    font-size: larger;
+    display: block;
+    float: center;
+}
+
+
+.one_comm {
     display: block;
     margin-right: 10%;
     margin-left: 10%;
     background-color: rgba(108, 180, 185, 0.932);
     width: 90px;
-    height: 80px; 
+    height: 80px;
 
 }
-.two_comm{
+
+.two_comm {
     display: block;
     background-color: rgba(108, 180, 185, 0.932);
     width: 700px;
-    height: 100px; 
+    height: 100px;
 }
-.first_comm{
-    font-family: lucida;
-    color: #f2f2f2;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
-    box-sizing: border-box; 
-}
-.first_comm a{
-    font-size: larger;
-}
-.sec_comm{
+
+.first_comm {
     font-family: lucida;
     color: #f2f2f2;
     text-align: center;
@@ -116,10 +129,12 @@ h2{
     border: 15px solid rgb(219, 215, 215);
     box-sizing: border-box;
 }
-.sec_comm a{
+
+.first_comm a {
     font-size: larger;
 }
-.third_comm{
+
+.sec_comm {
     font-family: lucida;
     color: #f2f2f2;
     text-align: center;
@@ -127,11 +142,26 @@ h2{
     border: 15px solid rgb(219, 215, 215);
     box-sizing: border-box;
 }
-.third_comm a{
+
+.sec_comm a {
+    font-size: larger;
+}
+
+.third_comm {
+    font-family: lucida;
+    color: #f2f2f2;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(219, 215, 215);
+    box-sizing: border-box;
+}
+
+.third_comm a {
     font-size: larger;
 
 }
-.login_form{
+
+.login_form {
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -145,11 +175,13 @@ h2{
     border: 20px solid rgba(194, 187, 187, 0.877);
     box-sizing: border-box;
 }
-.login_form p{
+
+.login_form p {
     font-family: lucida;
     font-size: large;
 }
-.login_form{
+
+.login_form {
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -163,11 +195,13 @@ h2{
     border: 20px solid rgba(194, 187, 187, 0.877);
     box-sizing: border-box;
 }
-.login_form p{
+
+.login_form p {
     font-family: lucida;
     font-size: large;
 }
-.signup_form{
+
+.signup_form {
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -181,15 +215,12 @@ h2{
     border: 20px solid rgba(194, 187, 187, 0.877);
     box-sizing: border-box;
 }
-.signup_form p{
+
+.signup_form p {
     font-family: lucida;
     font-size: large;
 }
+
 .submit {
     /*for the submit buttons on log in and sign up */
-}
-
-.centered-div {
-    /*centered div for login and sign up page*/
-    border: 20px;
 }
