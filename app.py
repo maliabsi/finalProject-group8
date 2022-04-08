@@ -1,12 +1,12 @@
 """Runs the app and sets up DB if initial run. """
 import os
-import json
 import flask
 
 from dotenv import find_dotenv, load_dotenv
 from flask_login import current_user, LoginManager, login_user, logout_user
-from stytch import Client
-from models import db, Users, Communties, Events, Participants, Colaborators
+from models import db, Users, Communities
+
+# from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
