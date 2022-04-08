@@ -1,5 +1,6 @@
 """Runs the app and sets up DB if initial run. """
 import os
+import random
 import flask
 
 from dotenv import find_dotenv, load_dotenv
@@ -11,8 +12,6 @@ from flask_login import (
     logout_user,
 )
 from models import db, Users, Communities, Events
-
-# from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
@@ -38,9 +37,18 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page: more!"""
+    """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    return flask.render_template("index.html")
+    displayed_comms = random.sample(Communities.query.all(), 3)
+    display_ids = []
+    display_names = []
+    for i in range(3):
+        display_ids.append(displayed_comms[i].id)
+        display_names.append(displayed_comms[i].community_name)
+
+    return flask.render_template(
+        "index.html", display_ids=display_ids, displayed_comms=displayed_comms
+    )
 
 
 @app.route("/authenticate")
@@ -89,7 +97,7 @@ def login():
 
 @app.route("/communities")
 def visit_communities():
-    print(db.session.query(Communities).all())
+
     return flask.render_template("communities.html")
 
 
