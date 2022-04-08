@@ -1,195 +1,190 @@
-.navbar {
-    background-color: teal;
-    overflow: hidden;
+body{
+    background-color: #f7f7da;
 }
-.nav{
-    float: right;
-}
-.navbar img{
-    float: left;
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
-}
-.navbar a {
-    float: left;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 2px 8px;
-    font-size: 17px;
-}
-.snippet{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-    
-}
-.snippet p{
-    font-size: larger;
-    display: block;
-    float: center;
-}
-.create{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 30%;
-    margin-right: 30%;
-}
-.create button{
-    background-color: teal;
-    border: none;
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: 5px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box
-}
-.comm{
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-h2{
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-.container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 65px;
-}
-.one_comm{
-    display: block;
-    margin-right: 10%;
-    margin-left: 10%;
-    background-color: rgba(108, 180, 185, 0.932);
-    width: 90px;
-    height: 80px; 
-
-}
-.two_comm{
-    display: block;
-    background-color: rgba(108, 180, 185, 0.932);
-    width: 700px;
-    height: 100px; 
-}
-.first_comm{
-    font-family: lucida;
-    color: #f2f2f2;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
-    box-sizing: border-box; 
-}
-.first_comm a{
-    font-size: larger;
-}
-.sec_comm{
-    font-family: lucida;
-    color: #f2f2f2;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
-    box-sizing: border-box;
-}
-.sec_comm a{
-    font-size: larger;
-}
-.third_comm{
-    font-family: lucida;
-    color: #f2f2f2;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(219, 215, 215);
-    box-sizing: border-box;
-}
-.third_comm a{
-    font-size: larger;
-
-}
-.login_form{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
-.login_form p{
-    font-family: lucida;
-    font-size: large;
-}
-.login_form{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
-.login_form p{
-    font-family: lucida;
-    font-size: large;
-}
-.signup_form{
-    border: 2px teal;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f2f2f2;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgba(194, 187, 187, 0.877);
-    box-sizing: border-box;
-}
-.signup_form p{
-    font-family: lucida;
-    font-size: large;
-}
-.submit {
-    /*for the submit buttons on log in and sign up */
+.aboutUsPics {
+    width: 100px;
+    height: 100px;
 }
 
 .centered-div {
     /*centered div for login and sign up page*/
     border: 20px;
 }
+
+.create {
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.create button {
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box
+}
+.comm {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 65px;
+}
+
+h2 {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
+.nav {
+    float: right;
+}
+
+.navbar {
+    background-color: teal;
+    overflow: hidden;
+}
+
+.navbar img {
+    float: left;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 17px;
+}
+
+.snippet {
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+
+}
+.snippet p {
+    font-size: larger;
+    display: block;
+    float: center;
+}
+.containers{
+    display: grid;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 20px
+}
+.community{
+    display: block;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-right: 15%;
+    margin-left: 15%;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    
+}
+.community button{
+    background-color: rgb(240, 169, 15);
+    border: none;
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+}
+.description{
+    text-align: left;
+    display: block;
+    background-color: #f7f7da;
+    color: teal;
+    margin-right: 5%; 
+    margin-left: 5%;
+    padding: 2%;
+    
+}
+
+.containers h1{
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+}
+.first_comm {
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.first_comm a {
+    font-size: larger;
+}
+
+.sec_comm {
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.sec_comm a {
+    font-size: larger;
+}
+
+.third_comm {
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.third_comm a {
+    font-size: larger;
+
+}
+
+
