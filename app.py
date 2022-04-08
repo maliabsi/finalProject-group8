@@ -1,8 +1,7 @@
 """Runs the app and sets up DB if initial run. """
 import os
-import random
 import flask
-
+import random
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
     current_user,
@@ -12,7 +11,9 @@ from flask_login import (
     logout_user,
 )
 from models import db, Users, Communities, Events
-from stytch_tools import stytch_auth, get_user_data
+
+# from models import db, Users, Communties, Events, Participants, Colaborators
+# from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
@@ -47,42 +48,42 @@ def index():
         display_names.append(displayed_comms[i].community_name)
 
     return flask.render_template(
-        "index.html", display_ids=display_ids, displayed_comms=displayed_comms
+        "index.html", display_ids=display_ids, display_names=display_names
     )
 
 
-@app.route("/authenticate")
-def authenticate():
-    """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
+# @app.route("/authenticate")
+# def authenticate():
+#     """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
 
-    # Retrieve token from url params
-    token = flask.request.args.get("token")
+#     # Retrieve token from url params
+#     token = flask.request.args.get("token")
 
-    # Temporary mock for token until test is written.
-    # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+#     # Temporary mock for token until test is written.
+#     # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
-    # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_auth(token)
-    # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
+#     # Authenticates and retrieves stytch user_id from response
+#     stytch_id = stytch_auth(token)
+#     # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
 
-    # If stytch_auth does not ruturn null value
-    if stytch_id:
-        visitor = Users.query.filter_by(stytch_id=stytch_id).first()
+#     # If stytch_auth does not ruturn null value
+#     if stytch_id:
+#         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
 
-        # Logs in user if they exist already
-        if visitor:
-            login_user(visitor)
-            return flask.redirect(flask.url_for("index"))
+#         # Logs in user if they exist already
+#         if visitor:
+#             login_user(visitor)
+#             return flask.redirect(flask.url_for("index"))
 
-        # Otherwise adds them to db, then logs them in
-        visitor = Users(stytch_id=stytch_id)
-        db.session.add(visitor)
-        db.session.commit()
-        login_user(visitor)
-        return flask.redirect(flask.url_for("index"))
+#         # Otherwise adds them to db, then logs them in
+#         visitor = Users(stytch_id=stytch_id)
+#         db.session.add(visitor)
+#         db.session.commit()
+#         login_user(visitor)
+#         return flask.redirect(flask.url_for("index"))
 
-    flask.flash("We were unable to authenticate you. Please try again.")
-    return flask.redirect(flask.url_for("index"))
+#     flask.flash("We were unable to authenticate you. Please try again.")
+#     return flask.redirect(flask.url_for("index"))
 
 
 @app.route("/login")
@@ -125,15 +126,24 @@ def visit_communities():
         organizers=organizers,
     )
 
-@app.route("/community")
+
+
+@app.route("/community", methods=["GET", "POST"])
 def vist_singular_community():
     if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
 
-        print(db.session.query(Communities).all())
-    return flask.render_template("communities.html")
+        data = flask.request.form
+        requested_community = Communities.query.filter_by(
+            id=data["Community_id"]
+        ).first()
+
+    return flask.render_template(
+        "community.html", authenticated=authenticated, communti=requested_community
+    )
 
 
-@app.route("/new_community_handler")
+@app.route("/new_community_handler", methods=["GET", "POST"])
 @login_required
 def add_community_handler():
     if flask.request.method == "POST":
@@ -148,10 +158,10 @@ def add_community_handler():
         )
         db.session.add(new_community)
         db.session.commit()
-    return flask.redirect("/community")
+    return flask.redirect("/communities")
 
 
-@app.route("/new_event_handler")
+@app.route("/new_event_handler", methods=["GET", "POST"])
 @login_required
 def add_event_handler():
 
@@ -169,12 +179,7 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
-    return flask.redirect("/event")
-
-
-@app.route("/about")
-def about_us():
-    return flask.render_template("aboutUs.html")
+    return flask.redirect("/community", community_id=data["community_id"])
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
