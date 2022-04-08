@@ -97,6 +97,10 @@ def visit_communities():
 @app.route("/community")
 def vist_singular_community():
     if flask.request.method == "POST":
+        data = flask.request.form
+        requested_community_id = Communities.query.filter_by(
+            id=data["Community_id"]
+        ).first()
         all_communties = Communities.query.all()
         print(db.session.query(Communities).all())
     return flask.render_template("communities.html")
