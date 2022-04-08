@@ -32,35 +32,42 @@
                     <br>
                     Description: <br>
                     <input type="text">
-                    <button class="submit_button"></button>
-                    <input type="submit" value="Create">
+                    <br><br>
+                    <input class="create_button" type="submit" value="Create">
                     <br>
-                    {% else %}
-                    <h1>Create New Community</h1>
-                    <a href="login">
-                        <button>Sign In!</button>
-                        <br><br>
-                        {% endif %}
-                    </a>
+                </form>
             </div>
-            <br>
-            <h2> Communities:</h2>
-            <div class="containers">
-                {% for i in range(3) %}
-                <div class="community">
-                    <h1>Community Name: {{communities[i].community_name}}</h1>
-                    <h1>Description:</h1>
-                    <div class="description">
-                        {{communities[i].description}}
-                        <br><br>
-                    </div>
-                    <a href="community">
-                        <button>Visit Community!</button>
-                        <br><br>
-                    </a>
+            {% else %}
+            <div class="cannot_create">
+                <h1>Create New Community</h1>
+                <a href="login">
+                    <button>Sign In!</button>
+                    <br><br>
+                </a>
+            </div>
+
+            {% endif %}
+        </div>
+        <br>
+        <h2> Communities:</h2>
+        <div class="containers">
+            {% for i in range(3) %}
+            <div class="community">
+                <h1>Community Name: {{communities[i].community_name}}</h1>
+                <h1>Description:</h1>
+                <br>
+                <div class="description">
+                    {{communities[i].description}}
+                    <br><br>
                 </div>
-                {% endfor %}
+                <br><br>
+                <a href="community">
+                    <button>Visit Community!</button>
+                    <br><br>
+                </a>
             </div>
+            {% endfor %}
+        </div>
 
 
     </body>

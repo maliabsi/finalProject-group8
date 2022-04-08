@@ -75,6 +75,7 @@ body {
 }
 
 .create {
+    border-radius: 25px;
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -90,6 +91,8 @@ body {
 }
 
 .create button {
+    transition-duration: 0.4s;
+    border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
     color: #f7f7da;
     font-weight: bold;
@@ -100,6 +103,25 @@ body {
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box
+}
+
+.create_button{
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box
+}
+.create_button:hover {
+  background-color: teal;
+  color: #f7f7da;
 }
 
 .description {
@@ -113,8 +135,8 @@ body {
 
 }
 
-
 .first_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
@@ -127,6 +149,12 @@ body {
     font-size: larger;
 }
 
+.comm {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
 h2 {
     color: teal;
     font-family: lucida;
@@ -136,8 +164,26 @@ h2 {
 hr {
     width: 75%;
 }
+  
+.navbar img {
+    float: left;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
+}
 
-.mission {
+.navbar a {
+    float: left;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 17px;
+}
+  .snippet {
     border: 2px teal;
     border-radius: 25px;
     display: block;
@@ -153,7 +199,22 @@ hr {
     box-sizing: border-box;
 
 }
-
+.mission {
+    border: 2px teal;
+    border-radius: 25px;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+  
 .mission p {}
 
 .mission h3 {}
@@ -180,14 +241,40 @@ hr {
 }
 
 .navbar img {
-    float: left;
+    float: left; 
     display: block;
     width: 60px;
     height: 60px;
     margin-left: left;
 }
+.community button{
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgb(240, 169, 15);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box
+}
+.community button:hover {
+    background-color: teal;
+    color: #f7f7da;
+  }
+   
+containers h1{
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+}
 
 .sec_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
@@ -209,11 +296,10 @@ hr {
 .sec_comm a {
     font-size: larger;
 }
-
 .snippet {
     border: 2px teal;
     display: block;
-    font-family: lucida;
+   font-family: lucida;
     font-size: larger;
     color: #f7f7da;
     float: center;
@@ -225,6 +311,7 @@ hr {
     box-sizing: border-box;
 
 }
+   
 
 .snippet p {
     font-size: larger;
@@ -233,6 +320,7 @@ hr {
 }
 
 .third_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
