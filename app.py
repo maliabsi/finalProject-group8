@@ -165,4 +165,9 @@ def add_event_handler():
     return flask.redirect("/event")
 
 
+@app.route("/about")
+def about_us():
+    return flask.render_template("aboutUs.html")
+
+
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
