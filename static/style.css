@@ -8,23 +8,17 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+body {
+    background-color: #f7f7da;
+}
 .center {
     text-align: center;
     color: teal;
 }
-
-body {
-    background-color: #f7f7da;
-}
-
-
 .centered-div {
     /*centered div for login and sign up page*/
     border: 20px;
 }
-
-
 .comm {
     color: teal;
     font-family: lucida;
@@ -61,19 +55,6 @@ body {
     gap: 65px;
 }
 
-.containers h1 {
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    text-align: center;
-}
-
-.containers {
-    display: grid;
-    grid-template-rows: 1fr, 1fr, 1fr;
-    gap: 20px
-}
-
 .create {
     border-radius: 25px;
     border: 2px teal;
@@ -104,7 +85,6 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box
 }
-
 .create_button{
     transition-duration: 0.4s;
     border-radius: 10px;
@@ -123,32 +103,10 @@ body {
   background-color: teal;
   color: #f7f7da;
 }
-
-.description {
-    text-align: left;
-    display: block;
-    background-color: #f7f7da;
-    color: teal;
-    margin-right: 5%;
-    margin-left: 5%;
-    padding: 2%;
-
-}
-
-.first_comm {
-    border-radius: 25px;
-    font-family: lucida;
+.create button:hover {
+    background-color: teal;
     color: #f7f7da;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-}
-
-.first_comm a {
-    font-size: larger;
-}
-
+  }
 .comm {
     color: teal;
     font-family: lucida;
@@ -161,65 +119,6 @@ h2 {
     text-align: center;
 }
 
-hr {
-    width: 75%;
-}
-  
-.navbar img {
-    float: left;
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
-}
-
-.navbar a {
-    float: left;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    text-align: center;
-    padding: 2px 8px;
-    font-size: 17px;
-}
-  .snippet {
-    border: 2px teal;
-    border-radius: 25px;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-
-}
-.mission {
-    border: 2px teal;
-    border-radius: 25px;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-}
-  
-.mission p {}
-
-.mission h3 {}
-
-
 .nav {
     float: right;
 }
@@ -229,6 +128,14 @@ hr {
     overflow: hidden;
 }
 
+.navbar img {
+    float: left;
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
+}
+
 .navbar a {
     float: left;
     display: block;
@@ -240,12 +147,41 @@ hr {
     font-size: 17px;
 }
 
-.navbar img {
-    float: left; 
+.snippet {
+    border-radius: 25px;
+    border: 2px teal;
     display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+
+}
+.snippet p {
+    font-size: larger;
+    display: block;
+    float: center;
+}
+.containers{
+    display: grid;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 20px
+}
+.community{
+    display: block;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-right: 15%;
+    margin-left: 15%;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    
 }
 .community button{
     transition-duration: 0.4s;
@@ -265,12 +201,35 @@ hr {
     background-color: teal;
     color: #f7f7da;
   }
-   
-containers h1{
+.description{
+    text-align: left;
+    display: block;
+    background-color: #f7f7da;
+    color: teal;
+    margin-right: 5%; 
+    margin-left: 5%;
+    padding: 2%;
+    
+}
+
+.containers h1{
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
     text-align: center;
+}
+.first_comm {
+    border-radius: 25px;
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.first_comm a {
+    font-size: larger;
 }
 
 .sec_comm {
@@ -283,40 +242,8 @@ containers h1{
     box-sizing: border-box;
 }
 
-.person {
-    margin: auto;
-    width: 60%;
-    padding: 10px;
-}
-
-.ppl_divider {
-    width: 30%;
-}
-
 .sec_comm a {
     font-size: larger;
-}
-.snippet {
-    border: 2px teal;
-    display: block;
-   font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    float: center;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-left: 10%;
-    margin-right: 10%;
-    border: 20px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-
-}
-   
-
-.snippet p {
-    font-size: larger;
-    display: block;
-    float: center;
 }
 
 .third_comm {
@@ -333,3 +260,5 @@ containers h1{
     font-size: larger;
 
 }
+
+
