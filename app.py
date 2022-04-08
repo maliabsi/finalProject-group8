@@ -13,7 +13,7 @@ from flask_login import (
 from models import db, Users, Communities, Events
 
 # from models import db, Users, Communties, Events, Participants, Colaborators
-from stytch_tools import stytch_auth, get_user_data
+# from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
@@ -43,38 +43,38 @@ def index():
     return flask.render_template("index.html")
 
 
-@app.route("/authenticate")
-def authenticate():
-    """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
+# @app.route("/authenticate")
+# def authenticate():
+#     """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
 
-    # Retrieve token from url params
-    token = flask.request.args.get("token")
+#     # Retrieve token from url params
+#     token = flask.request.args.get("token")
 
-    # Temporary mock for token until test is written.
-    # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+#     # Temporary mock for token until test is written.
+#     # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
-    # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_auth(token)
-    # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
+#     # Authenticates and retrieves stytch user_id from response
+#     stytch_id = stytch_auth(token)
+#     # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
 
-    # If stytch_auth does not ruturn null value
-    if stytch_id:
-        visitor = Users.query.filter_by(stytch_id=stytch_id).first()
+#     # If stytch_auth does not ruturn null value
+#     if stytch_id:
+#         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
 
-        # Logs in user if they exist already
-        if visitor:
-            login_user(visitor)
-            return flask.redirect(flask.url_for("index"))
+#         # Logs in user if they exist already
+#         if visitor:
+#             login_user(visitor)
+#             return flask.redirect(flask.url_for("index"))
 
-        # Otherwise adds them to db, then logs them in
-        visitor = Users(stytch_id=stytch_id)
-        db.session.add(visitor)
-        db.session.commit()
-        login_user(visitor)
-        return flask.redirect(flask.url_for("index"))
+#         # Otherwise adds them to db, then logs them in
+#         visitor = Users(stytch_id=stytch_id)
+#         db.session.add(visitor)
+#         db.session.commit()
+#         login_user(visitor)
+#         return flask.redirect(flask.url_for("index"))
 
-    flask.flash("We were unable to authenticate you. Please try again.")
-    return flask.redirect(flask.url_for("index"))
+#     flask.flash("We were unable to authenticate you. Please try again.")
+#     return flask.redirect(flask.url_for("index"))
 
 
 @app.route("/login")
