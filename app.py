@@ -183,7 +183,7 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
-    return flask.redirect("/community", community_id=data["community_id"])
+    return flask.redirect("/communities")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
