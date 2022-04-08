@@ -1,14 +1,17 @@
 import unittest
 from unittest.mock import MagicMock, patch
-from python_functions import stytch_tools
+from stytch_tools import stytch_auth, get_user_data
 
 
 class stytch_test(unittest.TestCase):
-    def test_none_case(self):
-        test_value = None
+    def test_none_integer_case(self):
+
+        test_value = MagicMock(status_code=500)
         expected_output = None
-        actual_output = get_movie_url(test_value)
-        self.assertEqual(expected_output, actual_output)
+        with patch("stytch_tools.client.oauth.authenticate") as mock_get:
+            mock_get.return_value = test_value
+            actual_output = stytch_auth(test_value)
+            self.assertEqual(expected_output, actual_output)
 
 
 if __name__ == "__main__":  # this is the last line
