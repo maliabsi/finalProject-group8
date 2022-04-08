@@ -1,6 +1,5 @@
 """Runs the app and sets up DB if initial run. """
 import os
-import random
 import flask
 
 from dotenv import find_dotenv, load_dotenv
@@ -12,6 +11,8 @@ from flask_login import (
     logout_user,
 )
 from models import db, Users, Communities, Events
+
+# from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
@@ -37,18 +38,9 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page: Will show 3 random communities along with a snippet about our goals"""
+    """index page: more!"""
 
-    displayed_comms = random.sample(Communities.query.all(), 3)
-    display_ids = []
-    display_names = []
-    for i in range(3):
-        display_ids.append(displayed_comms[i].id)
-        display_names.append(displayed_comms[i].community_name)
-
-    return flask.render_template(
-        "index.html", display_ids=display_ids, displayed_comms=displayed_comms
-    )
+    return flask.render_template("index.html")
 
 
 @app.route("/authenticate")
@@ -126,6 +118,7 @@ def visit_communities():
     )
 
 
+
 @app.route("/community", methods=["GET", "POST"])
 def vist_singular_community():
     if flask.request.method == "POST":
@@ -178,11 +171,6 @@ def add_event_handler():
         db.session.add(new_event)
         db.session.commit()
     return flask.redirect("/community", community_id=data["community_id"])
-
-
-@app.route("/about")
-def about_us():
-    return flask.render_template("aboutUs.html")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
