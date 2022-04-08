@@ -1,14 +1,77 @@
-body{
+.aboutUsPics {
+    width: 300px;
+    height: 300px;
+    border: 15px solid rgb(240, 169, 15);
+    border-radius: 25px;
+    align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    text-align: center;
+    color: teal;
+}
+
+body {
     background-color: #f7f7da;
 }
-.aboutUsPics {
-    width: 100px;
-    height: 100px;
-}
+
 
 .centered-div {
     /*centered div for login and sign up page*/
     border: 20px;
+}
+
+
+.comm {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
+.community {
+    display: block;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-right: 15%;
+    margin-left: 15%;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+
+}
+
+.community button {
+    background-color: rgb(240, 169, 15);
+    border: none;
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    float: right;
+    font-size: 16px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 65px;
+}
+
+.containers h1 {
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+}
+
+.containers {
+    display: grid;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    gap: 20px
 }
 
 .create {
@@ -41,6 +104,7 @@ body{
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box
 }
+
 .create_button{
     transition-duration: 0.4s;
     border-radius: 10px;
@@ -59,15 +123,36 @@ body{
   background-color: teal;
   color: #f7f7da;
 }
+
+.description {
+    text-align: left;
+    display: block;
+    background-color: #f7f7da;
+    color: teal;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding: 2%;
+
+}
+
+.first_comm {
+    border-radius: 25px;
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.first_comm a {
+    font-size: larger;
+}
+
 .comm {
     color: teal;
     font-family: lucida;
     text-align: center;
-}
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 65px;
 }
 
 h2 {
@@ -76,15 +161,10 @@ h2 {
     text-align: center;
 }
 
-.nav {
-    float: right;
+hr {
+    width: 75%;
 }
-
-.navbar {
-    background-color: teal;
-    overflow: hidden;
-}
-
+  
 .navbar img {
     float: left;
     display: block;
@@ -103,10 +183,9 @@ h2 {
     padding: 2px 8px;
     font-size: 17px;
 }
-
-.snippet {
-    border-radius: 25px;
+  .snippet {
     border: 2px teal;
+    border-radius: 25px;
     display: block;
     font-family: lucida;
     font-size: larger;
@@ -120,25 +199,53 @@ h2 {
     box-sizing: border-box;
 
 }
-.snippet p {
-    font-size: larger;
+.mission {
+    border: 2px teal;
+    border-radius: 25px;
     display: block;
-    float: center;
-}
-.containers{
-    display: grid;
-    grid-template-rows: 1fr, 1fr, 1fr;
-    gap: 20px
-}
-.community{
-    display: block;
-    background-color: rgba(108, 180, 185, 0.932);
-    margin-right: 15%;
-    margin-left: 15%;
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
-    
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+  
+.mission p {}
+
+.mission h3 {}
+
+
+.nav {
+    float: right;
+}
+
+.navbar {
+    background-color: teal;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 17px;
+}
+
+.navbar img {
+    float: left; 
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: left;
 }
 .community button{
     transition-duration: 0.4s;
@@ -158,35 +265,12 @@ h2 {
     background-color: teal;
     color: #f7f7da;
   }
-.description{
-    text-align: left;
-    display: block;
-    background-color: #f7f7da;
-    color: teal;
-    margin-right: 5%; 
-    margin-left: 5%;
-    padding: 2%;
-    
-}
-
-.containers h1{
+   
+containers h1{
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
     text-align: center;
-}
-.first_comm {
-    border-radius: 25px;
-    font-family: lucida;
-    color: #f7f7da;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-}
-
-.first_comm a {
-    font-size: larger;
 }
 
 .sec_comm {
@@ -199,8 +283,40 @@ h2 {
     box-sizing: border-box;
 }
 
+.person {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.ppl_divider {
+    width: 30%;
+}
+
 .sec_comm a {
     font-size: larger;
+}
+.snippet {
+    border: 2px teal;
+    display: block;
+   font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+
+}
+   
+
+.snippet p {
+    font-size: larger;
+    display: block;
+    float: center;
 }
 
 .third_comm {
@@ -217,5 +333,3 @@ h2 {
     font-size: larger;
 
 }
-
-
