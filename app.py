@@ -89,8 +89,33 @@ def login():
 
 @app.route("/communities")
 def visit_communities():
-    print(db.session.query(Communities).all())
-    return flask.render_template("communities.html")
+    """
+    Shows a view of all communities currently active on the site.
+    Returns:
+        authenticated: boolean for if they are logged in or not
+        communities: list all the community objecs
+            can be accessed i.e communties[i].attribute
+        organizers: list of the organizers for the the communities, indexed the same way.
+    """
+    authenticated = current_user.is_authenticated
+    communities = Communities.query.all()
+    organizers = []
+    for community in communities:
+        stytch_id = (
+            Users.query.filter_by(id=community.creator_user_id).first().stytch_id
+        )
+        creator_data = get_user_data(stytch_id)
+        name = (
+            creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
+        )
+        organizers.append(name)
+
+    return flask.render_template(
+        "communities.html",
+        authenticated=authenticated,
+        communities=communities,
+        organizers=organizers,
+    )
 
 
 @app.route("/community")
