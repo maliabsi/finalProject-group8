@@ -83,7 +83,7 @@ body {
     display: inline-block;
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 .create_button{
     transition-duration: 0.4s;
@@ -97,7 +97,7 @@ body {
     display: inline-block;
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 .create_button:hover {
   background-color: teal;
@@ -195,7 +195,7 @@ h2 {
     display: inline-block;
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 .community button:hover {
     background-color: teal;
@@ -259,6 +259,21 @@ h2 {
 .third_comm a {
     font-size: larger;
 
+}
+.mission {
+    border: 2px teal;
+    border-radius: 25px;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
 }
 
 
