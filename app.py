@@ -89,14 +89,15 @@ def login():
 
 @app.route("/communities")
 def visit_communities():
-    print(db.session.query(Communities).all())
+    all_communties = Communities.query.all()
+    community_ids = all_communties
     return flask.render_template("communities.html")
 
 
 @app.route("/community")
 def vist_singular_community():
     if flask.request.method == "POST":
-
+        all_communties = Communities.query.all()
         print(db.session.query(Communities).all())
     return flask.render_template("communities.html")
 
