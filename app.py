@@ -1,5 +1,6 @@
 """Runs the app and sets up DB if initial run. """
 import os
+import random
 import flask
 
 from dotenv import find_dotenv, load_dotenv
@@ -11,8 +12,6 @@ from flask_login import (
     logout_user,
 )
 from models import db, Users, Communities, Events
-
-# from models import db, Users, Communties, Events, Participants, Colaborators
 from stytch_tools import stytch_auth, get_user_data
 
 load_dotenv(find_dotenv())
@@ -38,9 +37,18 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page: more!"""
+    """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    return flask.render_template("index.html")
+    displayed_comms = random.sample(Communities.query.all(), 3)
+    display_ids = []
+    display_names = []
+    for i in range(3):
+        display_ids.append(displayed_comms[i].id)
+        display_names.append(displayed_comms[i].community_name)
+
+    return flask.render_template(
+        "index.html", display_ids=display_ids, displayed_comms=displayed_comms
+    )
 
 
 @app.route("/authenticate")
@@ -89,9 +97,33 @@ def login():
 
 @app.route("/communities")
 def visit_communities():
-    all_communties = Communities.query.all()
-    community_ids = all_communties
-    return flask.render_template("communities.html")
+    """
+    Shows a view of all communities currently active on the site.
+    Returns:
+        authenticated: boolean for if they are logged in or not
+        communities: list all the community objecs
+            can be accessed i.e communties[i].attribute
+        organizers: list of the organizers for the the communities, indexed the same way.
+    """
+    authenticated = current_user.is_authenticated
+    communities = Communities.query.all()
+    organizers = []
+    for community in communities:
+        stytch_id = (
+            Users.query.filter_by(id=community.creator_user_id).first().stytch_id
+        )
+        creator_data = get_user_data(stytch_id)
+        name = (
+            creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
+        )
+        organizers.append(name)
+
+    return flask.render_template(
+        "communities.html",
+        authenticated=authenticated,
+        communities=communities,
+        organizers=organizers,
+    )
 
 
 @app.route("/community")
@@ -143,6 +175,11 @@ def add_event_handler():
         db.session.add(new_event)
         db.session.commit()
     return flask.redirect("/event")
+
+
+@app.route("/about")
+def about_us():
+    return flask.render_template("aboutUs.html")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
