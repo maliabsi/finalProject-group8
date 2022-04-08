@@ -1,7 +1,7 @@
 """Runs the app and sets up DB if initial run. """
 import os
 import flask
-
+import random
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
     current_user,
@@ -38,9 +38,18 @@ def load_user(user_id):
 
 @app.route("/")
 def index():
-    """index page: more!"""
+    """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    return flask.render_template("index.html")
+    displayed_comms = random.sample(Communities.query.all(), 3)
+    display_ids = []
+    display_names = []
+    for i in range(3):
+        display_ids.append(displayed_comms[i].id)
+        display_names.append(displayed_comms[i].community_name)
+
+    return flask.render_template(
+        "index.html", display_ids=display_ids, display_names=display_names
+    )
 
 
 @app.route("/authenticate")
