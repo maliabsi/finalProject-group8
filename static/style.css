@@ -12,6 +12,7 @@ body{
 }
 
 .create {
+    border-radius: 25px;
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -27,6 +28,8 @@ body{
 }
 
 .create button {
+    transition-duration: 0.4s;
+    border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
     color: #f7f7da;
     font-weight: bold;
@@ -37,6 +40,24 @@ body{
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box
+}
+.create_button{
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box
+}
+.create_button:hover {
+  background-color: teal;
+  color: #f7f7da;
 }
 .comm {
     color: teal;
@@ -84,6 +105,7 @@ h2 {
 }
 
 .snippet {
+    border-radius: 25px;
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -119,17 +141,23 @@ h2 {
     
 }
 .community button{
+    transition-duration: 0.4s;
+    border-radius: 10px;
     background-color: rgb(240, 169, 15);
-    border: none;
     color: #f7f7da;
     font-weight: bold;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    float: right;
     font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box
 }
+.community button:hover {
+    background-color: teal;
+    color: #f7f7da;
+  }
 .description{
     text-align: left;
     display: block;
@@ -148,6 +176,7 @@ h2 {
     text-align: center;
 }
 .first_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
@@ -161,6 +190,7 @@ h2 {
 }
 
 .sec_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
@@ -174,6 +204,7 @@ h2 {
 }
 
 .third_comm {
+    border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
     text-align: center;
