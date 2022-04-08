@@ -25,7 +25,7 @@ def stytch_auth(token):
     if response.status_code == 200:
         return json.loads(response._content.decode("UTF-8"))["user_id"], True
 
-    return None
+    return None, None
 
 
 def get_user_data(stytch_id):
