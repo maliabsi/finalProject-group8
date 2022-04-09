@@ -114,7 +114,7 @@ def login():
     )
 
 
-@app.route("/handle_logout", methods=["POST"])
+@app.route("/handle_logout", methods=["GET", "POST"])
 def handle_logout():
     """
     Backend to log user out.
