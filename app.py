@@ -106,6 +106,9 @@ def login():
 
 @app.route("/handle_logout", methods=["POST"])
 def handle_lougout():
+    """
+    Backend to log user out.
+    """
     logout_user()
     return flask.redirect(flask.url_for("index"))
 
