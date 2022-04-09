@@ -15,9 +15,11 @@
         <a href="about">About Us</a>
     </div>
     <br>
-    {% if authenticated %}
-    <button><a href="handle_logout"> Logout </a></button>
-    {% endif %}
+    <div class="logout_button">
+        {% if authenticated %}
+        <button><a href="handle_logout"> Logout </a></button>
+        {% endif %}
+    </div>
 
     <div class="snippet">
         <br><br>
