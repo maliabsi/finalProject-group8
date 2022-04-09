@@ -4,41 +4,40 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
-    <style>
-        .center {
-            text-align: center;
-            color: teal;
-        }
-    </style>
 </head>
 
 <body>
-
-    <body>
-        <div class="navbar">
-            <img src="static/logo.jpeg" alt="logo" class="logo">
-            <a class="active" href="">Home</a>
-            <a href="communities">Communities</a>
-            <a href="login">Login / Register</a>
-            <a href="about">About Us</a>
-        </div>
-        <br><br>
-        <br>
-        <h2 class="center"> {{ community.community_name }}</h2>
-        <p class="center">
-            <b>{{creator}}</b>
-            <br>
-            {{community.tagline}}
-        </p>
-        <br>
-        <p class="center">
-            {{community.description}}
-            <br>
-            {{community.members}}
-            <br>
-            Events <em>coming soon...</em>
-        </p>
-
-    </body>
+    <div class="navbar"> <img src="static/logo.jpeg" alt="logo" class="logo"> <a class="active" href="">Home</a> <a
+            href="communities">Communities</a> <a href="login">Login / Register</a> <a href="about">About Us</a> </div>
+    <br><br> <br>
+    <div class="comm_name">
+        <h1>{{ community.community_name }}</h1>
+    </div>
+    <h3 class="center">Started by {{creator}}</h3>
+    <br>
+    <hr class="tagline">
+    <h6 class="center">{{community.tagline}}</h6>
+    <hr class="tagline">
+    <p class="comm_des">{{community.description}}</p>
+    <div class=" center">
+        <button class="join" type="button" onclick="alert('Join funcunality coming soon.')">
+            Join Now!
+        </button>
+    </div>
+    <hr class="tagline">
+    <br>
+    <h3 class="center">Active Members:</h3>
+    <br>
+    <p class="center">
+        <em>Active Members coming soon...</em>
+    </p>
+    <br>
+    <h3 class="center">Events:</h3>
+    <br>
+    <p class="center">
+        <em>Events coming soon...</em>
+    </p>
+    <br>
+</body>
 
 </html>
