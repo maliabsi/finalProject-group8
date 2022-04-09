@@ -44,6 +44,7 @@ def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
     displayed_comms = random.sample(Communities.query.all(), 3)
+    authenticated = current_user.is_authenticated
     display_ids = []
     display_names = []
     for i in range(3):
@@ -51,7 +52,10 @@ def index():
         display_names.append(displayed_comms[i].community_name)
 
     return flask.render_template(
-        "index.html", display_ids=display_ids, display_names=display_names
+        "index.html",
+        display_ids=display_ids,
+        display_names=display_names,
+        authenticated=authenticated,
     )
 
 
@@ -94,16 +98,19 @@ def about_us():
     """
     Dispaly a static about us page.
     """
-    return flask.render_template("aboutUs.html")
+    authenticated = current_user.is_authenticated
+    return flask.render_template("aboutUs.html", authenticated=authenticated)
 
 
 @app.route("/login")
 def login():
     """OAuth login"""
+    authenticated = current_user.is_authenticated
     return flask.render_template(
         "login.html",
         GOOGLE_OAUTH_URL=os.getenv("GOOGLE_OAUTH_URL"),
         FBOOK_OAUTH_URL=os.getenv("FBOOK_OATH_URL"),
+        authenticated=authenticated,
     )
 
 
