@@ -66,7 +66,7 @@ def authenticate():
     # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
 
     # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_auth(token)
+    stytch_id = stytch_auth(token)[0]
     # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
 
     # If stytch_auth does not ruturn null value
@@ -121,7 +121,7 @@ def visit_communities():
         stytch_id = (
             Users.query.filter_by(id=community.creator_user_id).first().stytch_id
         )
-        creator_data = get_user_data(stytch_id)
+        creator_data = get_user_data(stytch_id)[0]
         name = (
             creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
         )
@@ -149,9 +149,21 @@ def vist_singular_community():
         requested_community = Communities.query.filter_by(
             id=data["Community_id"]
         ).first()
+        stytch_id = (
+            Users.query.filter_by(id=requested_community.creator_user_id)
+            .first()
+            .stytch_id
+        )
+        creator_data = get_user_data(stytch_id)[0]
+        name = (
+            creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
+        )
 
     return flask.render_template(
-        "community.html", authenticated=authenticated, communti=requested_community
+        "community.html",
+        authenticated=authenticated,
+        community=requested_community,
+        creator=name,
     )
 
 
