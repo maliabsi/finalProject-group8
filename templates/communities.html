@@ -61,10 +61,12 @@
                     <br><br>
                 </div>
                 <br><br>
-                <a href="community">
-                    <button>Visit Community!</button>
+                <form method="POST" action="/community">
+                    <input type="hidden" name="Community_id" value={{communities[i]}}>
+                    <input class="visit_community" type="submit" value="Visit Community!">
+                    <br>
                     <br><br>
-                </a>
+                    </a>
             </div>
             {% endfor %}
         </div>
