@@ -3,18 +3,22 @@ from unittest.mock import MagicMock, patch
 from stytch_tools import stytch_auth, get_user_data
 
 
-<<<<<<< HEAD
-class StytchTest(unittest.TestCase):
-    """
-    Tests Stytch API functionality
-    """
+class stytch_test(unittest.TestCase):
+    def test_none_integer_case(self):
 
-    def test_none_case(self):
+        test_value = MagicMock(status_code=500)
+        expected_output = None
+        with patch("stytch_tools.client.oauth.authenticate") as mock_get:
+            mock_get.return_value = test_value
+            actual_output = stytch_auth(test_value)
+            self.assertEqual(expected_output, actual_output)
+
+    def test_user_return(self):
         """
         Tests None Case
         """
-        mock_response = MagicMock()
-        mock_response.json.return_value = {
+        mock_user = MagicMock()
+        mock_user.json.return_value = {
             "created_at": "2022-04-05T18:43:15Z",
             "crypto_wallets": [],
             "emails": [
@@ -40,19 +44,14 @@ class StytchTest(unittest.TestCase):
             "user_id": "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9",
             "webauthn_registrations": [],
         }
-        actual_output = get_movie_url(test_value)
-        self.assertEqual(expected_output, actual_output)
-=======
-class stytch_test(unittest.TestCase):
-    def test_none_integer_case(self):
 
-        test_value = MagicMock(status_code=500)
-        expected_output = None
-        with patch("stytch_tools.client.oauth.authenticate") as mock_get:
-            mock_get.return_value = test_value
-            actual_output = stytch_auth(test_value)
-            self.assertEqual(expected_output, actual_output)
->>>>>>> 0d052f9e1387edd9f7e2cff654cdcabed48aafd7
+        with patch("stytch_tools.client.users.get") as mock_get:
+            with patch("stytch_tools.json.loads") as dummy_return:
+                mock_get.return_value = mock_user
+                dummy_return = "12345"
+                actual_output = get_user_data(mock_user)[1]
+                expected_output = True
+                self.assertEqual(expected_output, actual_output)
 
 
 if __name__ == "__main__":  # this is the last line
