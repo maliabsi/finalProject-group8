@@ -1,10 +1,22 @@
+# pylint: disable=unused-variable
+
+"""
+Unit Tests for the app.
+"""
 import unittest
 from unittest.mock import MagicMock, patch
 from stytch_tools import stytch_auth, get_user_data
 
 
-class stytch_test(unittest.TestCase):
+class StytchTest(unittest.TestCase):
+    """
+    Tests different parts of the stytch API implementation
+    """
+
     def test_none_integer_case(self):
+        """
+        Test for correct response if stytch returns a response with a status code that is not 200
+        """
         test_value = MagicMock(status_code=500)
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
@@ -13,6 +25,9 @@ class stytch_test(unittest.TestCase):
             self.assertEqual(expected_output, actual_output)
 
     def test_none_string_case(self):
+        """
+        Test failure if status code response is a string instead of int
+        """
         test_value = MagicMock(status_code="404 not found")
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
@@ -22,7 +37,7 @@ class stytch_test(unittest.TestCase):
 
     def test_user_return(self):
         """
-        Tests None Case
+        Tests that a user is returned on request to stytch db.
         """
         mock_user = MagicMock()
         mock_user.json.return_value = {
@@ -58,8 +73,12 @@ class stytch_test(unittest.TestCase):
                 dummy_return = "12345"
                 actual_output = get_user_data(mock_user)[1]
                 expected_output = True
+                self.assertEqual(expected_output, actual_output)
 
     def test_success_case(self):
+        """
+        Tests if authentication was a success
+        """
         test_value = MagicMock(status_code=200)
         expected_output = True
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:

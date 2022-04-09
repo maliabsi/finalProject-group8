@@ -91,6 +91,9 @@ def authenticate():
 
 @app.route("/about")
 def about_us():
+    """
+    Dispaly a static about us page.
+    """
     return flask.render_template("aboutUs.html")
 
 

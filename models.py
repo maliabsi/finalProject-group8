@@ -1,3 +1,6 @@
+# pylint: disable=no-member
+# pylint: disable=too-few-public-methods
+
 """Models for the DB"""
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin

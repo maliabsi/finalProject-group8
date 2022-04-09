@@ -1,7 +1,8 @@
+# pylint: disable=protected-access
+
 """Tools for using stytch with this project"""
 import os
 import json
-import stytch
 from stytch import Client
 
 
