@@ -178,12 +178,14 @@ def vist_singular_community():
             creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
         )
 
-    return flask.render_template(
-        "visit_community.html",
-        authenticated=authenticated,
-        community=requested_community,
-        creator=name,
-    )
+        return flask.render_template(
+            "visit_community.html",
+            authenticated=authenticated,
+            community=requested_community,
+            creator=name,
+        )
+
+    return flask.redirect(flask.url_for("index"))
 
 
 @app.route("/new_community_handler", methods=["GET", "POST"])
