@@ -197,7 +197,7 @@ def add_community_handler():
         new_community = Communities(
             community_name=data["community_name"],
             tagline=data["tagline"],
-            decription=data["description"],
+            description=data["decription"],
             creator_user_id=current_user.id,
             members=[],
             events=[],
@@ -219,7 +219,7 @@ def add_event_handler():
             name=data["event_name"],
             creator_user_id=current_user.id,
             tagline=data["tagline"],
-            decription=data["decription"],
+            description=data["decription"],
             date=data["date"],
             time=["time"],
             community_id=data["community_id"],
