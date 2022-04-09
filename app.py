@@ -179,7 +179,7 @@ def vist_singular_community():
         )
 
     return flask.render_template(
-        "community.html",
+        "visit_community.html",
         authenticated=authenticated,
         community=requested_community,
         creator=name,
@@ -197,7 +197,7 @@ def add_community_handler():
         new_community = Communities(
             community_name=data["community_name"],
             tagline=data["tagline"],
-            decription=data["decription"],
+            decription=data["description"],
             creator_user_id=current_user.id,
             members=[],
             events=[],

@@ -34,10 +34,11 @@
         {% for i in range(3) %}
         <div class="index_comm">
             <br><br>
-            <h3> Community </h3>
+            <h3>{{display_names[i]}} </h3>
             <form method="POST" action="/community">
                 <input type="hidden" name="Community_id" value={{display_ids[i]}}>
                 <input class="visit_community" type="submit" value="Visit!">
+                <br>
         </div>
         {% endfor %}
     </div>
