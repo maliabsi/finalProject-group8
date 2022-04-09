@@ -18,7 +18,7 @@
 
     <div class="snippet">
         <br><br>
-        <h1>Welcome to {Organization Name}</h1>
+        <h1>Welcome to Omnino</h1>
         <br>
         <p>Activism is important to ensure that our world develops into a place that we all want to live in. We wanted
             to create a space where individuals can participate in this important act in whatever capacity they wish, by
@@ -31,25 +31,15 @@
     <br><br>
 
     <div class="container">
-
-        <div class="first_comm">
+        {% for i in range(3) %}
+        <div class="index_comm">
             <br><br>
             <h3> Community </h3>
-            <a href="#learn_more">Learn More</a>
-            <br><br>
+            <form method="POST" action="/community">
+                <input type="hidden" name="Community_id" value={{display_ids[i]}}>
+                <input class="visit_community" type="submit" value="Visit!">
         </div>
-        <div class="sec_comm">
-            <br><br>
-            <h3> Community </h3>
-            <a href="#learn_more">Learn More</a>
-            <br><br>
-        </div>
-        <div class="third_comm">
-            <br><br>
-            <h3> Community </h3>
-            <a href="#learn_more">Learn More</a>
-            <br><br>
-        </div>
+        {% endfor %}
     </div>
 </body>
 
