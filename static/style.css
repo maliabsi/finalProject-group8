@@ -7,10 +7,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 body {
     background-color: #f7f7da;
 }
-.logout_button button{
+
+.logout_button button {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
@@ -23,24 +25,28 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.logout_button button:hover{
+
+.logout_button button:hover {
     background-color: teal;
     color: #f7f7da;
 }
-.logout_button a{
+
+.logout_button a {
     color: #f7f7da;
     font-weight: bold;
     font-family: lucida;
 }
+
 .center {
     text-align: center;
     color: teal;
 }
+
 .centered-div {
     border: 20px;
-    
 }
-.login{
+
+.login {
     border-radius: 25px;
     border: 2px teal;
     display: block;
@@ -55,7 +61,8 @@ body {
     border: 20px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.google_button button{
+
+.google_button button {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
@@ -69,17 +76,20 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.google_button button:hover{
+
+.google_button button:hover {
     background-color: teal;
     color: #f7f7da;
 }
-.google_button img{
+
+.google_button img {
     float: left;
     display: block;
     width: 30px;
     height: 30px;
     margin-left: left;
 }
+
 .comm {
     color: teal;
     font-family: lucida;
@@ -94,7 +104,6 @@ body {
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
-
 }
 
 .community button {
@@ -145,7 +154,8 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.create_button{
+
+.create_button {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
@@ -159,14 +169,17 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
+
 .create_button:hover {
-  background-color: teal;
-  color: #f7f7da;
+    background-color: teal;
+    color: #f7f7da;
 }
+
 .create button:hover {
     background-color: teal;
     color: #f7f7da;
-  }
+}
+
 .comm {
     color: teal;
     font-family: lucida;
@@ -221,19 +234,21 @@ h2 {
     margin-right: 10%;
     border: 20px solid rgb(240, 169, 15);
     box-sizing: border-box;
-
 }
+
 .snippet p {
     font-size: larger;
     display: block;
     float: center;
 }
-.containers{
+
+.containers {
     display: grid;
     grid-template-rows: 1fr, 1fr, 1fr;
     gap: 20px
 }
-.community{
+
+.community {
     display: block;
     background-color: rgba(108, 180, 185, 0.932);
     margin-right: 15%;
@@ -241,9 +256,9 @@ h2 {
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
-    
 }
-.community button{
+
+.community button {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgb(240, 169, 15);
@@ -257,27 +272,29 @@ h2 {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
+
 .community button:hover {
     background-color: teal;
     color: #f7f7da;
-  }
-.description{
+}
+
+.description {
     text-align: left;
     display: block;
     background-color: #f7f7da;
     color: teal;
-    margin-right: 5%; 
+    margin-right: 5%;
     margin-left: 5%;
     padding: 2%;
-    
 }
 
-.containers h1{
+.containers h1 {
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
     text-align: center;
 }
+
 .index_comm {
     border-radius: 25px;
     font-family: lucida;
@@ -287,10 +304,12 @@ h2 {
     border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
+
 .index_comm a {
     font-size: larger;
 }
-.visit_community{
+
+.visit_community {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
@@ -304,10 +323,12 @@ h2 {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.visit_community:hover{
+
+.visit_community:hover {
     background-color: teal;
     color: #f7f7da;
 }
+
 .mission {
     border: 2px teal;
     border-radius: 25px;
@@ -324,5 +345,92 @@ h2 {
     box-sizing: border-box;
 }
 
+.visit_community {
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
 
+.visit_community:hover {
+    background-color: teal;
+    color: #f7f7da;
+}
 
+.mission {
+    border: 2px teal;
+    border-radius: 25px;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.join {
+    border-radius: 25px;
+    font-family: lucida;
+    font-size: larger;
+    float: center;
+    text-align: center;
+    color: #f7f7da;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 3px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.join:hover {
+    background-color: #f7f7da;
+    color: teal;
+    border: 3px solid teal;
+}
+
+.comm_name {
+    border-radius: 0;
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.comm_des {
+    border-radius: 0;
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.tagline {
+    width: 50%;
+}
