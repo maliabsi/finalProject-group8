@@ -179,7 +179,7 @@ def vist_singular_community():
         )
 
     return flask.render_template(
-        "community.html",
+        "visit_community.html",
         authenticated=authenticated,
         community=requested_community,
         creator=name,

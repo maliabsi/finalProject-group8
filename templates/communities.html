@@ -25,13 +25,13 @@
                 <h2>Create New Community: </h2>
                 <form method="POST" action="/new_community_handler">
                     Community Name: <br>
-                    <input type="text">
+                    <input type="text" name="community_name">
                     <br>
                     Tagline: <br>
-                    <input type="text">
+                    <input type="text" name="tagline">
                     <br>
                     Description: <br>
-                    <input type="text">
+                    <input type="text" name="description">
                     <br><br>
                     <input class="create_button" type="submit" value="Create">
                     <br>
@@ -51,7 +51,7 @@
         <br>
         <h2> Communities:</h2>
         <div class="containers">
-            {% for i in range(3) %}
+            {% for i in range(communities | length) %}
             <div class="community">
                 <h1>Community Name: {{communities[i].community_name}}</h1>
                 <h1>Description:</h1>
