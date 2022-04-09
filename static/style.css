@@ -256,7 +256,7 @@ h2 {
     color: #f7f7da;
     text-align: center;
 }
-.first_comm {
+.index_comm {
     border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
@@ -265,38 +265,26 @@ h2 {
     border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-
-.first_comm a {
+.index_comm a {
     font-size: larger;
 }
-
-.sec_comm {
-    border-radius: 25px;
-    font-family: lucida;
+.visit_community{
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
     color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 20px;
     text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(240, 169, 15);
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-
-.sec_comm a {
-    font-size: larger;
-}
-
-.third_comm {
-    border-radius: 25px;
-    font-family: lucida;
+.visit_community:hover{
+    background-color: teal;
     color: #f7f7da;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-}
-
-.third_comm a {
-    font-size: larger;
-
 }
 .mission {
     border: 2px teal;
