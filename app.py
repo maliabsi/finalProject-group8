@@ -95,6 +95,9 @@ def authenticate():
 
 @app.route("/about")
 def about_us():
+    """
+    Dispaly a static about us page.
+    """
     authenticated = current_user.is_authenticated
     return flask.render_template("aboutUs.html", authenticated=authenticated)
 
