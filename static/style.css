@@ -10,11 +10,10 @@
 body {
     background-color: #f7f7da;
 }
-.button{
+.logout_button button{
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
-    color: #f7f7da;
     font-weight: bold;
     padding: 5px 10px;
     text-align: center;
@@ -24,9 +23,14 @@ body {
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
-.button:hover{
+.logout_button button:hover{
     background-color: teal;
     color: #f7f7da;
+}
+.logout_button a{
+    color: #f7f7da;
+    font-weight: bold;
+    font-family: lucida;
 }
 .center {
     text-align: center;
