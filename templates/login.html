@@ -12,7 +12,11 @@
         <img src="static/logo.jpeg" alt="logo" class="logo">
         <a class="active" href="/">Home</a>
         <a href="communities">Communities</a>
+        {% if authenticated %}
         <a href="login">Login / Register</a>
+        {% else %}
+        <a href="handle_logout"> Logout </a>
+        {% endif %}
         <a href="about">About Us</a>
     </div>
     <br><br>
