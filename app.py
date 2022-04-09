@@ -104,6 +104,12 @@ def login():
     )
 
 
+@app.route("/handle_logout", methods=["POST"])
+def handle_lougout():
+    logout_user()
+    return flask.redirect(flask.url_for("index"))
+
+
 @app.route("/communities")
 def visit_communities():
     """
