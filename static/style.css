@@ -62,7 +62,7 @@ body {
     box-sizing: border-box;
 }
 
-.google_button button {
+.login_button button {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
@@ -77,15 +77,23 @@ body {
     box-sizing: border-box;
 }
 
-.google_button button:hover {
+.login_button button:hover {
     background-color: teal;
     color: #f7f7da;
 }
 
-.google_button img {
+.google img {
     float: left;
     display: block;
     width: 30px;
+    height: 30px;
+    margin-left: left;
+}
+
+.fb img {
+    float: left;
+    display: block;
+    width: 40px;
     height: 30px;
     margin-left: left;
 }
