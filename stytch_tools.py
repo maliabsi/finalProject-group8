@@ -3,8 +3,11 @@
 """Tools for using stytch with this project"""
 import os
 import json
+from dotenv import find_dotenv, load_dotenv
 from stytch import Client
 
+
+load_dotenv(find_dotenv())
 
 client = Client(
     project_id=os.getenv("PROJECT_ID"),
