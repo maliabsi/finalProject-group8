@@ -8,6 +8,12 @@ h2 {
     text-align: center;
 }
 
+.logout_button a {
+    color: #f7f7da;
+    font-weight: bold;
+    font-family: lucida;
+}
+
 .logout_button button {
     transition-duration: 0.4s;
     border-radius: 10px;
@@ -25,12 +31,6 @@ h2 {
 .logout_button button:hover {
     background-color: teal;
     color: #f7f7da;
-}
-
-.logout_button a {
-    color: #f7f7da;
-    font-weight: bold;
-    font-family: lucida;
 }
 
 .nav {
