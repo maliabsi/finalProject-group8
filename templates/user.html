@@ -19,16 +19,25 @@
     </div>
     <br>
     <p>
-        Username: {{id}} <br>
+        Name: {{name}} <br>
         Email: {{email}} <br>
-        # of Joined Communities: {{community_quantity}} <br>
+        Following {{community_quantity}} communities <br>
         <br>
     </p>
+    <h4>Your Communities:</h4>
+    {% for i in communities %}
+    <h6>{{display_community[i]}} </h6>
+    {% endfor %}
+    <br>
     <h4>Joined Communities:</h4>
     {% for i in communities %}
     <h6>{{display_community[i]}} </h6>
     {% endfor %}
-
+    <br>
+    <h4>Events Attending:</h4>
+    {% for i in communities %}
+    <h6>{{display_events[i]}} </h6>
+    {% endfor %}
 </body>
 
 </html>
