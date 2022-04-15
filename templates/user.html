@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="/static/logo.jpeg">
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="active" href="/">
+            <img src="static/logo.jpeg" alt="logo" class="logo">
+            <b>Omnino</b>
+        </a>
+        <a href="communities">Explore</a>
+        <a href="login">Login / Register</a>
+        <a href="Logout">About Us</a>
+    </div>
+    <br>
+    <p>
+        Name: {{name}} <br>
+        Email: {{email}} <br>
+        Following {{community_quantity}} communities <br>
+        <br>
+    </p>
+    <h4>Your Communities:</h4>
+    {% for i in communities %}
+    <h6>{{display_community[i]}} </h6>
+    {% endfor %}
+    <br>
+    <h4>Joined Communities:</h4>
+    {% for i in communities %}
+    <h6>{{display_community[i]}} </h6>
+    {% endfor %}
+    <br>
+    <h4>Events Attending:</h4>
+    {% for i in communities %}
+    <h6>{{display_events[i]}} </h6>
+    {% endfor %}
+</body>
+
+</html>
