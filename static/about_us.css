@@ -1,0 +1,34 @@
+.aboutUsPics {
+    width: 300px;
+    height: 300px;
+    border: 15px solid rgb(240, 169, 15);
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    text-align: center;
+    color: teal;
+}
+
+.centered-div {
+    border: 20px;
+}
+
+.mission {
+    border: 2px teal;
+    border-radius: 25px;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
