@@ -1,7 +1,3 @@
-body {
-    background-color: #f7f7da;
-}
-
 .center {
     text-align: center;
     color: teal;
@@ -55,34 +51,6 @@ body {
     background-color: #f7f7da;
     color: teal;
     border: 3px solid teal;
-}
-
-.nav {
-    float: right;
-}
-
-.navbar {
-    background-color: teal;
-    overflow: hidden;
-}
-
-.navbar img {
-    float: left;
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
-}
-
-.navbar a {
-    float: left;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    text-align: center;
-    padding: 2px 8px;
-    font-size: 17px;
 }
 
 .tagline {

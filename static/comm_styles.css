@@ -1,8 +1,3 @@
-
-body {
-    background-color: #f7f7da;
-}
-
 .containers {
     display: grid;
     grid-template-rows: 1fr, 1fr, 1fr;
@@ -110,40 +105,6 @@ body {
 .create button:hover {
     background-color: teal;
     color: #f7f7da;
-}
-
-h2 {
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-
-.nav {
-    float: right;
-}
-
-.navbar {
-    background-color: teal;
-    overflow: hidden;
-}
-
-.navbar img {
-    float: left;
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin-left: left;
-}
-
-.navbar a {
-    float: left;
-    display: block;
-    font-family: lucida;
-    font-size: larger;
-    color: #f7f7da;
-    text-align: center;
-    padding: 2px 8px;
-    font-size: 17px;
 }
 
 .visit_community {
