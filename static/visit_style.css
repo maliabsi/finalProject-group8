@@ -1,0 +1,59 @@
+.center {
+    text-align: center;
+    color: teal;
+}
+
+.comm_name {
+    border-radius: 0;
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.comm_des {
+    border-radius: 0;
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    float: center;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.join {
+    border-radius: 25px;
+    font-family: lucida;
+    font-size: larger;
+    float: center;
+    text-align: center;
+    color: #f7f7da;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 3px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.join:hover {
+    background-color: #f7f7da;
+    color: teal;
+    border: 3px solid teal;
+}
+
+.tagline {
+    width: 50%;
+}
+
