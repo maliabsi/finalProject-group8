@@ -1,14 +1,13 @@
 .containers {
     display: grid;
-    grid-template-rows: 1fr, 1fr, 1fr;
-    gap: 20px
+    grid-template-rows: 150px;
+    gap: 5px;
+    margin-right: 20%;
+    margin-left: 20%;
 }
 
 .community {
-    display: block;
     background-color: rgba(108, 180, 185, 0.932);
-    margin-right: 15%;
-    margin-left: 15%;
     font-family: lucida;
     font-size: larger;
     color: #f7f7da;
@@ -34,15 +33,7 @@
     color: #f7f7da;
 }
 
-.description {
-    text-align: left;
-    display: block;
-    background-color: #f7f7da;
-    color: teal;
-    margin-right: 5%;
-    margin-left: 5%;
-    padding: 2%;
-}
+
 
 .containers h1 {
     font-family: lucida;
@@ -107,19 +98,56 @@
     color: #f7f7da;
 }
 
+.divide {
+    width: 40%
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header';
+    gap: 10px;
+    background-color: rgba(108, 180, 185, 0.932);
+    background-color: rgba(108, 180, 185, 0.932);
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.tagline {
+    text-align: left;
+    background-color: #f7f7da;
+    color: teal;
+    padding: 5px;
+    gap: 5px;
+    display: grid;
+    grid-template-rows: 75px;
+    margin-right: 30%;
+    margin-left: 30%;
+    border-radius: 10%;
+
+}
+
 .visit_community {
     transition-duration: 0.4s;
     border-radius: 10px;
     background-color: rgba(245, 175, 26, 0.945);
     color: #f7f7da;
     font-weight: bold;
-    padding: 10px 20px;
-    text-align: center;
+    padding: 10px;
+    text-align: right;
     text-decoration: none;
-    display: inline-block;
+    float: right;
+    display: inline;
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
-    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
 }
 
 .visit_community:hover {

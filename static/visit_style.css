@@ -4,7 +4,7 @@
 }
 
 .comm_name {
-    border-radius: 0;
+    border-radius: 25px;
     border: 2px teal;
     display: block;
     font-family: lucida;
@@ -13,9 +13,9 @@
     float: center;
     text-align: center;
     background-color: rgba(108, 180, 185, 0.932);
-    margin-left: auto;
-    margin-right: auto;
-    border: 5px solid rgb(240, 169, 15);
+    margin-left: 40%;
+    margin-right: 40%;
+    border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
 }
 
@@ -42,8 +42,8 @@
     float: center;
     text-align: center;
     color: #f7f7da;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 3px solid rgb(240, 169, 15);
+    background-color: teal;
+    border: 3px solid teal;
     box-sizing: border-box;
 }
 
@@ -56,4 +56,3 @@
 .tagline {
     width: 50%;
 }
-
