@@ -47,32 +47,24 @@
                     <br><br>
                 </a>
             </div>
-
             {% endif %}
         </div>
-        <br>
-        <h2> Communities:</h2>
-        <div class="containers">
-            {% for i in range(communities | length) %}
-            <div class="community">
-                <h1>Community Name: {{communities[i].community_name}}</h1>
-                <h1>Description:</h1>
-                <br>
-                <div class="description">
-                    {{communities[i].description}}
-                    <br><br>
+        <hr class="divide">
+        <h2>Active Communities:</h2>
+        {% for i in range(communities | length) %}
+        <div class="tagline">
+            <div class="grid-container">
+                <div>
+                    <b> {{communities[i].community_name}}</b><br>
+                    <em>{{communities[i].tagline}}</em>
                 </div>
-                <br><br>
                 <form method="POST" action="/community">
                     <input type="hidden" name="Community_id" value={{communities[i].id}}>
-                    <input class="visit_community" type="submit" value="Visit Community!">
-                    <br>
-                    <br><br>
-                    </a>
+                    <input class="visit_community" type="submit" value="Visit!">
                 </form>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
 
 
     </body>

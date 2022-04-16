@@ -12,32 +12,32 @@
     <div class="navbar"> <img src="static/logo.jpeg" alt="logo" class="logo"> <a class="active" href="">Home</a> <a
             href="communities">Communities</a> <a href="login">Login / Register</a> <a href="about">About Us</a> </div>
     <br><br> <br>
-    <div class="comm_name">
+    <div class="center">
         <h1>{{ community.community_name }}</h1>
     </div>
-    <h3 class="center">Started by {{creator}}</h3>
+    <h5 class="center">Started by {{creator}}</h5>
     <br>
-    <hr class="tagline">
-    <h6 class="center">{{community.tagline}}</h6>
-    <hr class="tagline">
-    <p class="comm_des">{{community.description}}</p>
+    <h6 class="center"><em>{{community.tagline}}</em></h6>
+    <br>
     <div class=" center">
         <button class="join" type="button" onclick="alert('Join funcunality coming soon.')">
-            Join Now!
+            Join This Community!
         </button>
     </div>
     <hr class="tagline">
-    <br>
-    <h3 class="center">Active Members:</h3>
-    <br>
-    <p class="center">
-        <em>Active Members coming soon...</em>
-    </p>
+    <p class="center">{{community.description}}</p>
+    <hr class="tagline">
     <br>
     <h3 class="center">Events:</h3>
     <br>
     <p class="center">
         <em>Events coming soon...</em>
+    </p>
+    <br>
+    <h3 class="center">Active Members:</h3>
+    <br>
+    <p class="center">
+        <em>Active Members coming soon...</em>
     </p>
     <br>
 </body>
