@@ -16,7 +16,7 @@ from flask_login import (
 )
 from models import db, Users, Communities, Events
 
-from stytch_tools import stytch_auth, get_user_data
+from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
 
 load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
@@ -59,20 +59,44 @@ def index():
     )
 
 
+@app.route("/email_authenticate")
+def email_authenticate():
+    """Redirected here from Magic Link with a token URL param"""
+    # Retrieve token from url params
+    token = flask.request.args.get("token")
+
+    # Authenticates and retrieves stytch user_id from response
+    stytch_id = stytch_email_auth(token)[0]
+
+    stytch_login(stytch_id)
+
+
 @app.route("/authenticate")
 def authenticate():
-    """Authenticator for logging in/signing up. Redirected here from OAuth with a token URL param"""
+    """Redirected here from OAuth with a token URL param"""
 
     # Retrieve token from url params
     token = flask.request.args.get("token")
 
-    # Temporary mock for token until test is written.
-    # token = "SeiGwdj5lKkrEVgcEY3QNJXt6srxS3IK2Nwkar6mXD4="
+    # Authenticates and retrieves stytch user_id from response
+    stytch_id = stytch_oauth(token)[0]
+
+    stytch_login(stytch_id)
+
+
+@app.route("/email_authenticate")
+def email_auth():
+    # Retrieve token from url params
+    token = flask.request.args.get("token")
 
     # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_auth(token)[0]
-    # stytch_id = "user-test-552d704c-39b0-4c02-a0a1-f9d71a7473d9"
+    stytch_id = stytch_email_auth(token)[0]
 
+    stytch_login(stytch_id)
+
+
+def stytch_login(stytch_id):
+    """Takes a stytch id as parameter and logs user in."""
     # If stytch_auth does not ruturn null value
     if stytch_id:
         visitor = Users.query.filter_by(stytch_id=stytch_id).first()
