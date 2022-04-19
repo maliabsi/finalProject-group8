@@ -44,7 +44,6 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
-
     all_comms = Community.query.all()
 
     if len(all_comms) < 3:
@@ -308,6 +307,11 @@ def edit_community_handler():
             db.session.delete(delete)
         db.session.commit()
     return flask.redirect("/communities")
+
+
+@app.route("/profile")
+def profile_page():
+    return flask.render_template("user.html")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
