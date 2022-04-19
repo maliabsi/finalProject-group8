@@ -154,8 +154,34 @@ def visit_communities():
     )
 
 
+@app.route("/edit", methods=["GET", "POST"])
+def edit_communities():
+
+    """
+    Displays page for individual communities.
+    Passes authenticated and the Community object being looked up.
+
+    """
+    if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
+
+        data = flask.request.form
+        creator_communities = Communities.query.filter_by(
+            creator_user_id=data["user_id"]
+        ).all()
+
+        return flask.render_template(
+            "visit_community.html",
+            authenticated=authenticated,
+            communities=creator_communities,
+        )
+
+    return flask.redirect(flask.url_for("index"))
+
+
 @app.route("/community", methods=["GET", "POST"])
-def vist_singular_community():
+def visit_singular_community():
+
     """
     Displays page for individual communities.
     Passes authenticated and the Community object being looked up.
@@ -228,6 +254,28 @@ def add_event_handler():
             participants=[],
         )
         db.session.add(new_event)
+        db.session.commit()
+    return flask.redirect("/communities")
+
+
+@app.route("/edit_community_handler", methods=["GET", "POST"])
+@login_required
+def edit_community_handler():
+    """
+    API Enpoint for creating a new event. Takes in information from an html form.
+    """
+    if flask.request.method == "POST":
+        data = flask.request.form
+        for e in data[0]:
+            edit = Communities.query.get(int(e[0]))
+            edit.community_name = str(e[1])
+            edit.tagline = str(e[2])
+            edit.description = str(e[3])
+
+        for d in data[1]:
+            delete = Communities.query.get(d)
+
+            db.session.delete(delete)
         db.session.commit()
     return flask.redirect("/communities")
 
