@@ -18,7 +18,7 @@ class Users(UserMixin, db.Model, Base):
     id = db.Column(db.Integer, primary_key=True)
     stytch_id = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(60))
-    created_communities = relationship("Communities")
+    created_communities = relationship("Community")
     followed_communities = relationship("Follow")
     attending_events = relationship("Attending")
 
