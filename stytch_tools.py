@@ -16,14 +16,39 @@ client = Client(
 )
 
 
-def stytch_auth(token):
+def stytch_oauth(token):
     """
-    Authenticates a token with stytch
+    Authenticates an outh token with stytch
 
     returns id if authenticated, otherwise returns None
     """
     response = client.oauth.authenticate(token)
 
+    # If the response is a 200, the user is verified and can be logged in
+    # (Copied from Stytch API docs)
+    if response.status_code == 200:
+        return json.loads(response._content.decode("UTF-8"))["user_id"], True
+
+    return None, None
+
+
+def stytch_send_email(email):
+    """Sends email to user"""
+    client.magic_links.email.login_or_create(
+        email=email,
+        login_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
+        signup_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
+    )
+
+
+def stytch_email_auth(token):
+    """
+    Authenticates an email token with stytch
+
+    returns id if authenticated, otherwise returns None
+    """
+
+    response = client.magic_links.authenticate(token=token)
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
     if response.status_code == 200:
@@ -67,3 +92,10 @@ def get_user_data(stytch_id):
     """
     user = client.users.get(stytch_id)
     return json.loads(user._content.decode("UTF-8")), True
+
+
+if __name__ == "__main__":
+    # test user account:
+    # testuser55555@hotmail.com
+    # password: group_eight
+    stytch_send_email("testuser55555@hotmail.com")
