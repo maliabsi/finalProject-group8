@@ -14,6 +14,7 @@ from flask_login import (
     login_user,
     logout_user,
 )
+
 from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
@@ -43,6 +44,7 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
+
     all_comms = Community.query.all()
 
     if len(all_comms) < 3:
@@ -51,6 +53,7 @@ def index():
         upto3 = 3
 
     displayed_comms = random.sample(all_comms, upto3)
+
     authenticated = current_user.is_authenticated
     display_ids = []
     display_names = []
@@ -186,8 +189,34 @@ def visit_communities():
     )
 
 
+@app.route("/edit", methods=["GET", "POST"])
+def edit_communities():
+
+    """
+    Displays page for individual communities.
+    Passes authenticated and the Community object being looked up.
+
+    """
+    if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
+
+        data = flask.request.form
+        creator_communities = Community.query.filter_by(
+            creator_user_id=data["user_id"]
+        ).all()
+
+        return flask.render_template(
+            "edit_community.html",
+            authenticated=authenticated,
+            communities=creator_communities,
+        )
+
+    return flask.redirect(flask.url_for("/communities"))
+
+
 @app.route("/community", methods=["GET", "POST"])
-def vist_singular_community():
+def visit_singular_community():
+
     """
     Displays page for individual communities.
     Passes authenticated and the Community object being looked up.
@@ -255,6 +284,28 @@ def add_event_handler():
             community_id=data["community_id"],
         )
         db.session.add(new_event)
+        db.session.commit()
+    return flask.redirect("/communities")
+
+
+@app.route("/edit_community_handler", methods=["GET", "POST"])
+@login_required
+def edit_community_handler():
+    """
+    API Enpoint for creating a new event. Takes in information from an html form.
+    """
+    if flask.request.method == "POST":
+        data = flask.request.form
+        for e in data[0]:
+            edit = Community.query.get(int(e[0]))
+            edit.community_name = str(e[1])
+            edit.tagline = str(e[2])
+            edit.description = str(e[3])
+
+        for d in data[1]:
+            delete = Community.query.get(d)
+
+            db.session.delete(delete)
         db.session.commit()
     return flask.redirect("/communities")
 
