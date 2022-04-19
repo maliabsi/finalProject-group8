@@ -195,12 +195,12 @@ def edit_communities():
         ).all()
 
         return flask.render_template(
-            "visit_community.html",
+            "edit_community.html",
             authenticated=authenticated,
             communities=creator_communities,
         )
 
-    return flask.redirect(flask.url_for("index"))
+    return flask.redirect(flask.url_for("/communities"))
 
 
 @app.route("/community", methods=["GET", "POST"])
