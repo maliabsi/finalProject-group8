@@ -17,17 +17,17 @@
                 <img src="static/logo.jpeg" alt="logo" class="logo">
                 <a href="/">Home</a>
                 <a href="communities">Communities</a>
+                <a href="about">About Us</a>
                 <div class="dropdown">
-                    <button class="dropbtn">More</button>
+                    <button class="dropbtn">Account</button>
                     <div class="dropdown-content">
                         <div class="logout_button">
                             {% if authenticated %}
                             <a href="handle_logout"> Logout </a>
                             {% else %}
-                            <a href="login">Login</a>
+                            <a href="login">Login </a>
                             {% endif %}
-                            <a href="login">Your Profile</a>
-                            <a href="about">About Us</a>
+                            <a href="profile">Your Profile</a>
                         </div>
                     </div>
                 </div>
