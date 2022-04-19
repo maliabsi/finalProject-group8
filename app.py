@@ -14,7 +14,7 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from models import db, Users, Communities, Events
+from models import db, Users, Community, Events
 
 from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
 
@@ -43,7 +43,7 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    displayed_comms = random.sample(Communities.query.all(), 3)
+    displayed_comms = random.sample(Community.query.all(), 3)
     authenticated = current_user.is_authenticated
     display_ids = []
     display_names = []
@@ -158,7 +158,7 @@ def visit_communities():
         organizers: list of the organizers for the the communities, indexed the same way.
     """
     authenticated = current_user.is_authenticated
-    communities = Communities.query.all()
+    communities = Community.query.all()
     organizers = []
     for community in communities:
         stytch_id = (
@@ -190,7 +190,7 @@ def edit_communities():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        creator_communities = Communities.query.filter_by(
+        creator_communities = Community.query.filter_by(
             creator_user_id=data["user_id"]
         ).all()
 
@@ -215,9 +215,7 @@ def visit_singular_community():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        requested_community = Communities.query.filter_by(
-            id=data["Community_id"]
-        ).first()
+        requested_community = Community.query.filter_by(id=data["Community_id"]).first()
         stytch_id = (
             Users.query.filter_by(id=requested_community.creator_user_id)
             .first()
@@ -291,13 +289,13 @@ def edit_community_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         for e in data[0]:
-            edit = Communities.query.get(int(e[0]))
+            edit = Community.query.get(int(e[0]))
             edit.community_name = str(e[1])
             edit.tagline = str(e[2])
             edit.description = str(e[3])
 
         for d in data[1]:
-            delete = Communities.query.get(d)
+            delete = Community.query.get(d)
 
             db.session.delete(delete)
         db.session.commit()
