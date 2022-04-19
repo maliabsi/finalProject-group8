@@ -19,8 +19,8 @@ class Users(UserMixin, db.Model, Base):
     stytch_id = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(60))
     created_communities = relationship("Community")
-    followed_communities = relationship("Follow")
-    attending_events = relationship("Attending")
+    followed_communities = relationship("Follower")
+    attending_events = relationship("Attendee")
 
 
 class Community(db.Model, Base):
@@ -32,7 +32,7 @@ class Community(db.Model, Base):
     description = db.Column(db.String(600), nullable=False)
     creator_user_id = db.Column(db.Integer, ForeignKey(Users.id), nullable=False)
     donation_link = db.Column(db.String(120))
-    members = relationship("Follow")
+    members = relationship("Follower")
     events = relationship("Event")
 
 
@@ -47,7 +47,7 @@ class Event(db.Model, Base):
     date = db.Column(db.String(120), nullable=False)
     time = db.Column(db.String(10), nullable=False)
     community_id = db.Column(db.Integer, ForeignKey(Community.id))
-    participants = relationship("Attending")
+    participants = relationship("Attendee")
 
 
 class Follower(db.Model, Base):
