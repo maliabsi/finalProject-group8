@@ -8,31 +8,6 @@ h2 {
     text-align: center;
 }
 
-.logout_button a {
-    color: #f7f7da;
-    font-weight: bold;
-    font-family: lucida;
-}
-
-.logout_button button {
-    transition-duration: 0.4s;
-    border-radius: 10px;
-    background-color: rgba(245, 175, 26, 0.945);
-    font-weight: bold;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: 5px solid rgb(240, 169, 15);
-    box-sizing: border-box;
-}
-
-.logout_button button:hover {
-    background-color: teal;
-    color: #f7f7da;
-}
-
 .nav {
     float: right;
 }
