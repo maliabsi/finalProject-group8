@@ -4,6 +4,7 @@
 """Models for the DB"""
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -12,36 +13,54 @@ db = SQLAlchemy()
 
 
 class Users(UserMixin, db.Model, Base):
-    """Users table created"""
+    """Attributes of User"""
 
     id = db.Column(db.Integer, primary_key=True)
-    stytch_id = db.Column(db.String(60))
+    stytch_id = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(60))
     created_communities = relationship("Communities")
-    communities = db.Column(db.ARRAY(db.Integer))
+    followed_communities = relationship("Follow")
+    attending_events = relationship("Attending")
 
 
-class Communities(db.Model, Base):
-    """Communities table created"""
+class Community(db.Model, Base):
+    """Attributes of Community"""
 
     id = db.Column(db.Integer, primary_key=True)
     community_name = db.Column(db.String(120), nullable=False)
-    tagline = db.Column(db.String(120))
+    tagline = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String(600), nullable=False)
-    creator_user_id = db.Column(db.Integer, db.ForeignKey(Users.id))
-    members = db.Column(db.ARRAY(db.Integer))
-    events = relationship("Events")
+    creator_user_id = db.Column(db.Integer, ForeignKey(Users.id), nullable=False)
+    donation_link = db.Column(db.String(120))
+    members = relationship("Follow")
+    events = relationship("Event")
 
 
-class Events(db.Model, Base):
-    """Events table created"""
+class Event(db.Model, Base):
+    """Attributes of Event"""
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    creator_user_id = db.Column(db.Integer, db.ForeignKey(Users.id))
-    tagline = db.Column(db.String(120))
+    creator_user_id = db.Column(db.Integer, ForeignKey(Users.id), nullable=False)
+    tagline = db.Column(db.String(120), nullable=False)
     decription = db.Column(db.String(600), nullable=False)
     date = db.Column(db.String(120), nullable=False)
-    time = db.Column(db.Integer, nullable=False)
-    community_id = db.Column(db.Integer, db.ForeignKey(Communities.id))
-    participants = db.Column(db.ARRAY(db.Integer))
+    time = db.Column(db.String(10), nullable=False)
+    community_id = db.Column(db.Integer, ForeignKey(Community.id))
+    participants = relationship("Attending")
+
+
+class Follower(db.Model, Base):
+    """Attributes of Follower"""
+
+    id = db.Column(db.Integer, primary_key=True)
+    follower_id = db.Column(db.Integer, ForeignKey(Users.id))
+    community_id = db.Column(db.Integer, ForeignKey(Community.id))
+
+
+class Attendee(db.Model, Base):
+    """Attributes of Attendee"""
+
+    id = db.Column(db.Integer, primary_key=True)
+    follower_id = db.Column(db.Integer, ForeignKey(Users.id))
+    event_id = db.Column(db.Integer, ForeignKey(Event.id))
