@@ -13,10 +13,10 @@ db = SQLAlchemy()
 
 
 class Users(UserMixin, db.Model, Base):
-    """Users table created"""
+    """Attributes of User"""
 
     id = db.Column(db.Integer, primary_key=True)
-    stytch_id = db.Column(db.String(60))
+    stytch_id = db.Column(db.String(60), nullable=False)
     email = db.Column(db.String(60))
     created_communities = relationship("Communities")
     followed_communities = relationship("Follow")
@@ -24,7 +24,7 @@ class Users(UserMixin, db.Model, Base):
 
 
 class Community(db.Model, Base):
-    """Communities table created"""
+    """Attributes of Community"""
 
     id = db.Column(db.Integer, primary_key=True)
     community_name = db.Column(db.String(120), nullable=False)
@@ -37,21 +37,21 @@ class Community(db.Model, Base):
 
 
 class Event(db.Model, Base):
-    """Events table created"""
+    """Attributes of Event"""
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    creator_user_id = db.Column(db.Integer, ForeignKey(Users.id))
-    tagline = db.Column(db.String(120))
+    creator_user_id = db.Column(db.Integer, ForeignKey(Users.id), nullable=False)
+    tagline = db.Column(db.String(120), nullable=False)
     decription = db.Column(db.String(600), nullable=False)
     date = db.Column(db.String(120), nullable=False)
-    time = db.Column(db.Integer, nullable=False)
+    time = db.Column(db.String(10), nullable=False)
     community_id = db.Column(db.Integer, ForeignKey(Community.id))
     participants = relationship("Attending")
 
 
 class Follower(db.Model, Base):
-    """Follow"""
+    """Attributes of Follower"""
 
     id = db.Column(db.Integer, primary_key=True)
     follower_id = db.Column(db.Integer, ForeignKey(Users.id))
@@ -59,7 +59,7 @@ class Follower(db.Model, Base):
 
 
 class Attendee(db.Model, Base):
-    """Attending"""
+    """Attributes of Attendee"""
 
     id = db.Column(db.Integer, primary_key=True)
     follower_id = db.Column(db.Integer, ForeignKey(Users.id))

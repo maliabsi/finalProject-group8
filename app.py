@@ -14,7 +14,7 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from models import db, Users, Community, Events
+from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
 
@@ -223,8 +223,6 @@ def add_community_handler():
             tagline=data["tagline"],
             description=data["description"],
             creator_user_id=current_user.id,
-            members=[],
-            events=[],
         )
         db.session.add(new_community)
         db.session.commit()
@@ -247,7 +245,6 @@ def add_event_handler():
             date=data["date"],
             time=["time"],
             community_id=data["community_id"],
-            participants=[],
         )
         db.session.add(new_event)
         db.session.commit()
