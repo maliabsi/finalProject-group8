@@ -84,6 +84,17 @@ def authenticate():
     stytch_login(stytch_id)
 
 
+@app.route("/email_authenticate")
+def email_auth():
+    # Retrieve token from url params
+    token = flask.request.args.get("token")
+
+    # Authenticates and retrieves stytch user_id from response
+    stytch_id = stytch_email_auth(token)[0]
+
+    stytch_login(stytch_id)
+
+
 def stytch_login(stytch_id):
     """Takes a stytch id as parameter and logs user in."""
     # If stytch_auth does not ruturn null value

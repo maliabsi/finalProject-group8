@@ -34,7 +34,7 @@ def stytch_oauth(token):
 
 def stytch_send_email(email):
     """Sends email to user"""
-    response = client.magic_links.email.login_or_create(
+    client.magic_links.email.login_or_create(
         email=email,
         login_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
         signup_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
@@ -95,4 +95,7 @@ def get_user_data(stytch_id):
 
 
 if __name__ == "__main__":
+    # test user account:
+    # testuser55555@hotmail.com
+    # password: group_eight
     stytch_send_email("testuser55555@hotmail.com")
