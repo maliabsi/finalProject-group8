@@ -43,11 +43,19 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    displayed_comms = random.sample(Community.query.all(), 3)
+    all_comms = Community.query.all()
+
+    if len(all_comms) < 3:
+        upto3 = len(all_comms)
+    else:
+        upto3 = 3
+
+    displayed_comms = random.sample(all_comms, upto3)
     authenticated = current_user.is_authenticated
     display_ids = []
     display_names = []
-    for i in range(3):
+
+    for i in range(upto3):
         display_ids.append(displayed_comms[i].id)
         display_names.append(displayed_comms[i].community_name)
 
