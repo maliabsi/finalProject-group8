@@ -5,12 +5,32 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/visit_style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="/static/logo.jpeg">
 </head>
 
 <body>
-    <div class="navbar"> <img src="static/logo.jpeg" alt="logo" class="logo"> <a class="active" href="">Home</a> <a
-            href="communities">Communities</a> <a href="login">Login / Register</a> <a href="about">About Us</a> </div>
+    <nav>
+        <div class="navbar">
+            <img src="static/logo.jpeg" alt="logo" class="logo">
+            <a href="/">Home</a>
+            <a href="communities">Communities</a>
+            <div class="dropdown">
+                <button class="dropbtn">More</button>
+                <div class="dropdown-content">
+                    <div class="logout_button">
+                        {% if authenticated %}
+                        <button><a href="handle_logout"> Logout </a></button>
+                        {% else %}
+                        <a href="login">Login</a>
+                        {% endif %}
+                        <a href="login">Your Profile</a>
+                        <a href="about">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
     <br><br> <br>
     <div class="comm_name">
         <h1>{{ community.community_name }}</h1>

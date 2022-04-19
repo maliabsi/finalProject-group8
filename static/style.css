@@ -39,7 +39,7 @@ h2 {
 
 .navbar {
     background-color: teal;
-    overflow: hidden;
+
 }
 
 .navbar img {
@@ -60,3 +60,61 @@ h2 {
     padding: 2px 8px;
     font-size: 17px;
 }
+
+.dropdown {
+    float: left;
+}
+
+.dropdown:after{
+    font-family: FontAwesome;
+    content: "\f107";
+    padding-left: 12px;
+    color: white;
+}
+  
+  /* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #f7f7da;
+    padding: 1px 1px;
+    background-color: inherit;
+    font-family: lucida;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+}
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgba(245, 175, 26, 0.945);
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f7f7da;
+    width: 110%;
+    z-index: 1;
+    border: 5px solid rgb(240, 169, 15);
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: left;
+    color: teal;
+    padding: 10px 10px;
+    display: block;
+    text-align: center;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: rgba(108, 180, 185, 0.932);
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
