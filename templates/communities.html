@@ -42,13 +42,13 @@
                 <h2>Create New Community: </h2>
                 <form method="POST" action="/new_community_handler">
                     Community Name: <br>
-                    <input type="text" name="community_name">
+                    <input type="text" name="community_name" placeholder="Enter community name">
                     <br>
                     Tagline: <br>
-                    <input type="text" name="tagline">
+                    <textarea name="create_tagline" placeholder="Enter tagline" rows="2" cols="20"></textarea>
                     <br>
                     Description: <br>
-                    <input type="text" name="description">
+                    <textarea name="create_description" placeholder="Enter description" rows="4" cols="30"></textarea>
                     <br><br>
                     <input class="create_button" type="submit" value="Create">
                     <br>
