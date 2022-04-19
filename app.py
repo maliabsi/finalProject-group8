@@ -14,7 +14,8 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from models import db, Users, Community, Events
+
+from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
 
@@ -43,11 +44,21 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
-    displayed_comms = random.sample(Community.query.all(), 3)
+
+    all_comms = Community.query.all()
+
+    if len(all_comms) < 3:
+        upto3 = len(all_comms)
+    else:
+        upto3 = 3
+
+    displayed_comms = random.sample(all_comms, upto3)
+
     authenticated = current_user.is_authenticated
     display_ids = []
     display_names = []
-    for i in range(3):
+
+    for i in range(upto3):
         display_ids.append(displayed_comms[i].id)
         display_names.append(displayed_comms[i].community_name)
 
@@ -244,13 +255,11 @@ def add_community_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
-        new_community = Communities(
+        new_community = Community(
             community_name=data["community_name"],
             tagline=data["tagline"],
             description=data["description"],
             creator_user_id=current_user.id,
-            members=[],
-            events=[],
         )
         db.session.add(new_community)
         db.session.commit()
@@ -273,7 +282,6 @@ def add_event_handler():
             date=data["date"],
             time=["time"],
             community_id=data["community_id"],
-            participants=[],
         )
         db.session.add(new_event)
         db.session.commit()
