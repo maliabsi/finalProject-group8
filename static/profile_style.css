@@ -1,0 +1,46 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+}
+
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    border-radius: 25px;
+    border: 2px teal;
+    display: block;
+    font-family: lucida;
+    font-size: larger;
+    color: #f7f7da;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 20px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.input-icons h1, h4 {
+    font-family: lucida;
+    color: white;
+    text-align: center;
+}
+
+.icon {
+    padding: 15px;
+    min-width: 40px;
+    color: white;
+}
+  
+.input-field {
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    background-color: teal;
+    border: 200px;
+    border-color: white;
+}
+
+
