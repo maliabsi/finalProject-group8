@@ -40,32 +40,69 @@
     <h6 class="center"><em>{{community.tagline}}</em></h6>
     <br>
     <div class=" center">
+
+        {% if current_user.id == community.creator_user_id %}
+        <form method="POST" action="/edit_community_handler">
+            <input type="hidden" name="status" value="edit">
+            <input class="join" type="submit" value="Edit this Community">
+        </form>
+        <form method="POST" action="/edit_community_handler">
+            <input type="hidden" name="Community_id" value={{community.id}}>
+            <input type="hidden" name="status" value="delete">
+            <input class="join" type="submit" value="Delete this Community">
+        </form>
+        {% else %}
         <form method="POST" action="/follow">
             <input type="hidden" name="comm_id" value={{community.id}}>
             <input type="hidden" name="return" value="communities">
-            <input class="join" type="submit" value="Join This Community">
-            <!--<input class="join" type="submit" value="Unfollow This Community">-->
+
+            {% if following %}
+            <input class="join" type="submit" value="Unfollow this Community">
+            {% else %}
+            <input class="join" type="submit" value="Follow this Community">
+            {% endif %}
         </form>
 
+        {% endif %}
     </div>
     <hr class="tagline">
     <div class="description">
         <p class="center">{{community.description}}</p>
     </div>
     <hr class="tagline">
-    <br>
+
+    {% if following %}
     <h3 class="center">Events:</h3>
     <br>
-    <p class="center">
-        <em>Events coming soon...</em>
-    </p>
-    <br>
-    <h3 class="center">Active Members:</h3>
-    <br>
-    <p class="center">
+    <h5 class="center">Create an Event:</h3>
+        <p class="center">
+        <form method="POST" class="center" action="/new_event_handler">
+            Event Name:<br>
+            <input type="text" name="event_name"><br>
+            Objective:<br>
+            <input type="text" name="tagline"><br>
+            Description: <br>
+            <input type="text" name="decription"><br>
+            Event Date <br>
+            <input type="date" name="date"><br>
+            Event Time: <br>
+            <input type="time" name="time"><br>
+            <input type="hidden" name="community_id" value={{community.id}}>
+            <br>
+            <input type="submit" value="Create Event">
+        </form>
+        </p>
 
-    </p>
-    <br>
+        {% for i in range(events.name | length) %}
+        <b> {{events.name[i]}}</b><br>
+        <b> {{events.name}}</b><br>
+        {% endfor %}
+        <br>
+        <hr class="tagline">
+        {% endif %}
+        <h4 class="center">Active Members:</h4>
+        <br>
+        <br>
 </body>
 
 </html>
