@@ -213,7 +213,7 @@ def edit_communities():
 
 
 @app.route("/edit_event", methods=["GET", "POST"])
-def edit_communities():
+def edit_event():
 
     """
     Displays page for individual communities.
