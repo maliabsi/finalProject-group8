@@ -298,9 +298,31 @@ def edit_community_handler():
     return flask.redirect("/communities")
 
 
+@app.route("/edit_event_handler", methods=["GET", "POST"])
+@login_required
+def edit_event_handler():
+    """
+    API Enpoint for creating a new event. Takes in information from an html form.
+    """
+    if flask.request.method == "POST":
+        data = flask.request.form
+        for e in data[0]:
+            edit = Event.query.get(int(e[0]))
+            edit.community_name = str(e[1])
+            edit.tagline = str(e[2])
+            edit.description = str(e[3])
+
+        for d in data[1]:
+            delete = Event.query.get(d)
+
+            db.session.delete(delete)
+        db.session.commit()
+    return flask.redirect("/communities")
+
 @app.route("/profile")
 def profile_page():
     return flask.render_template("user.html")
+
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
