@@ -6,6 +6,7 @@
 from nturl2path import url2pathname
 import os
 import random
+from unicodedata import name
 import flask
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
@@ -275,17 +276,30 @@ def visit_singular_community():
 
         data = flask.request.form
         requested_community = Community.query.filter_by(id=data["Community_id"]).first()
+
+        following = False
+
         stytch_id = (
             Users.query.filter_by(id=requested_community.creator_user_id)
             .first()
             .stytch_id
         )
         creator_data = get_user_data(stytch_id)[0]
-        name = (
+        creator_name = (
             creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
         )
         events = Event.query.filter_by(community_id=data["Community_id"]).all()
         followers = Follower.query.filter_by(community_id=data["Community_id"]).all()
+
+        follower_names = []
+        for follower in followers:
+            stytch_id = Users.query.filter_by(id=follower.follower_id).first().stytch_id
+            usr_data = get_user_data(stytch_id)[0]
+            name = usr_data["name"]["first_name"] + " " + usr_data["name"]["last_name"]
+            follower_names.append(name)
+            if follow.follower_id == current_user.id:
+                following = True
+
         num_of_attendees = {}
         for ev in events:
             num_of_attendees[ev.id] = len(
@@ -295,9 +309,10 @@ def visit_singular_community():
             "visit_community.html",
             authenticated=authenticated,
             community=requested_community,
-            creator=name,
+            following=following,
+            creator=creator_name,
             events=events,
-            followers=followers,
+            follower_names=follower_names,
             attendees=num_of_attendees,
         )
 
@@ -465,7 +480,7 @@ def follow():
     db.session.commit()
 
     if data["return"] == "profile":
-        flask.redirect(flask.url_for("profile_page"))
+        return flask.redirect(flask.url_for("profile_page"))
 
     return flask.redirect(flask.url_for("visit_communities"))
 
@@ -494,7 +509,7 @@ def attend():
     if data["return"] == "profile":
         flask.redirect(flask.url_for("profile_page"))
 
-    flask.redirect(flask.url_for("visit_communities"))
+    return flask.redirect(flask.url_for("visit_communities"))
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
