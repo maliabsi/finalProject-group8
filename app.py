@@ -100,7 +100,7 @@ def email_signup():
             last=data["last"],
         )
 
-        flask.redirect(flask.url_for("index"))
+        return flask.redirect(flask.url_for("index"))
 
     # Retrieve token from url params
     token = flask.request.args.get("token")
