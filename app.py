@@ -78,7 +78,7 @@ def email_authenticate():
     # Authenticates and retrieves stytch user_id from response
     stytch_id = stytch_email_auth(token)[0]
 
-    stytch_login(stytch_id)
+    return stytch_login(stytch_id)
 
 
 @app.route("/authenticate")
@@ -91,18 +91,7 @@ def authenticate():
     # Authenticates and retrieves stytch user_id from response
     stytch_id = stytch_oauth(token)[0]
 
-    stytch_login(stytch_id)
-
-
-@app.route("/email_authenticate")
-def email_auth():
-    # Retrieve token from url params
-    token = flask.request.args.get("token")
-
-    # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_email_auth(token)[0]
-
-    stytch_login(stytch_id)
+    return stytch_login(stytch_id)
 
 
 def stytch_login(stytch_id):
@@ -329,6 +318,11 @@ def edit_event_handler():
             db.session.delete(delete)
         db.session.commit()
     return flask.redirect("/communities")
+
+@app.route("/profile")
+def profile_page():
+    return flask.render_template("user.html")
+
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)

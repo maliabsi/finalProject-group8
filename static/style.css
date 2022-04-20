@@ -56,40 +56,37 @@ h2 {
     padding: 1px 1px;
     background-color: inherit;
     font-family: lucida;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
+    font-size: 17px;
+    margin: 0; 
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgba(245, 175, 26, 0.945);
+    font-family: lucida;
 }
   
-  /* Add a red background color to navbar links on hover */
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: rgba(245, 175, 26, 0.945);
-  }
-  
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f7f7da;
-    width: 110%;
+    width: 100%;
     z-index: 1;
     border: 5px solid rgb(240, 169, 15);
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
+}
+ 
+.dropdown-content a {
     float: left;
     color: teal;
-    padding: 10px 10px;
+    padding: 19px 19px;
     display: block;
     text-align: center;
-  }
-  
-  /* Add a grey background color to dropdown links on hover */
-  .dropdown-content a:hover {
+}
+
+.dropdown-content a:hover {
     background-color: rgba(108, 180, 185, 0.932);
-  }
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
-  }
+}
