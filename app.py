@@ -410,7 +410,7 @@ def profile_page():
         Users.query.filter_by(id=current_user.id).first().stytch_id
     )[0]
     name = name = usr_data["name"]["first_name"] + " " + usr_data["name"]["last_name"]
-    email = usr_data["emails"]["email"]
+    email = usr_data["emails"][0]["email"]
 
     my_comms = Community.query.filter_by(creator_user_id=current_user.id).all()
     my_events = Event.query.filter_by(creator_user_id=current_user.id).all()
