@@ -224,12 +224,21 @@ def visit_singular_community():
         name = (
             creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
         )
-
+        events = Event.query.filter_by(community_id=data["Community_id"]).all()
+        followers = Follower.query.filter_by(community_id=data["Community_id"]).all()
+        num_of_attendees = {}
+        for ev in events:
+            num_of_attendees[ev.id] = len(
+                Attendee.query.filter_by(event_id=ev.id).all()
+            )
         return flask.render_template(
             "visit_community.html",
             authenticated=authenticated,
             community=requested_community,
             creator=name,
+            events=events,
+            followers=followers,
+            attendees=num_of_attendees,
         )
 
     return flask.redirect(flask.url_for("index"))
@@ -319,10 +328,10 @@ def edit_event_handler():
         db.session.commit()
     return flask.redirect("/communities")
 
+
 @app.route("/profile")
 def profile_page():
     return flask.render_template("user.html")
-
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
