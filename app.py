@@ -76,7 +76,7 @@ def email_authenticate():
     # Authenticates and retrieves stytch user_id from response
     stytch_id = stytch_email_auth(token)[0]
 
-    stytch_login(stytch_id)
+    return stytch_login(stytch_id)
 
 
 @app.route("/authenticate")
@@ -89,18 +89,7 @@ def authenticate():
     # Authenticates and retrieves stytch user_id from response
     stytch_id = stytch_oauth(token)[0]
 
-    stytch_login(stytch_id)
-
-
-@app.route("/email_authenticate")
-def email_auth():
-    # Retrieve token from url params
-    token = flask.request.args.get("token")
-
-    # Authenticates and retrieves stytch user_id from response
-    stytch_id = stytch_email_auth(token)[0]
-
-    stytch_login(stytch_id)
+    return stytch_login(stytch_id)
 
 
 def stytch_login(stytch_id):
@@ -245,7 +234,7 @@ def add_event_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
-        new_event = Events(
+        new_event = Event(
             name=data["event_name"],
             creator_user_id=current_user.id,
             tagline=data["tagline"],
