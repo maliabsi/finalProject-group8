@@ -1,13 +1,46 @@
-.container {
+.container, .container_two {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
+    gap: 65px;
+}
+
+.container .my_comm , .my_event {
+    border-radius: 25px;
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+
+.container legend {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
+
+.container_two legend {
+    color: teal;
+    font-family: lucida;
+    text-align: center;
+}
+
+.container_two .following, .attending {
+    border-radius: 25px;
+    font-family: lucida;
+    color: #f7f7da;
+    text-align: center;
+    background-color: rgba(108, 180, 185, 0.932);
+    border: 15px solid rgb(240, 169, 15);
+    box-sizing: border-box;
 }
 
 .input-icons i {
     position: absolute;
 }
-  
+
 .input-icons {
     border-radius: 25px;
     border: 2px teal;
@@ -33,14 +66,37 @@
     min-width: 40px;
     color: white;
 }
-  
+
+
 .input-field {
-    width: 50%;
+    width: 65%;
     padding: 10px;
     text-align: center;
+    color: white;
     background-color: teal;
     border: 200px;
     border-color: white;
 }
 
+.visit_community {
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    float: center;
+    display: inline;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
 
+.visit_community:hover {
+    background-color: teal;
+    color: #f7f7da;
+}

@@ -4,12 +4,6 @@
     gap: 65px;
 }
 
-.comm {
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-
 .index_comm {
     border-radius: 25px;
     font-family: lucida;
@@ -59,11 +53,6 @@
     font-size: 16px;
     border: 5px solid rgb(240, 169, 15);
     box-sizing: border-box;
-}
-
-.visit_community:hover {
-    background-color: teal;
-    color: #f7f7da;
 }
 
 .visit_community {
