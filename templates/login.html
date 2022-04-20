@@ -5,6 +5,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/login_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="static/logo.jpeg" />
 </head>
@@ -40,7 +41,6 @@
             <div class="google">
                 <a href={{GOOGLE_OAUTH_URL}}><button><img src="/static/google.jpeg" /> Login with Google</button></a>
             </div>
-            <br>
             <!-- <div class="fb">
                 <a href={{FBOOK_OAUTH_URL}}><button><img src="/static/fb_logo.png" /> Login with Facebook</button></a>
             </div> -->
@@ -48,12 +48,16 @@
             <div>
                 <form action="/login" method="POST">
                     <h3>Login with email:</h3>
-                    <input type="email" name="email" placeholder="your@email.com" />
-                    <input type="submit" value="Email Me" />
+                    <div class="input-icons">
+                        <i class="fa fa-envelope icon">
+                            <input type="email" name="email" placeholder="your@email.com" />
+                            <br><br>
+                            <input type="submit" value="Email Me" />
+                        </i>
+                    </div>
                 </form>
             </div>
         </div>
-        <br>
     </div>
 </body>
 

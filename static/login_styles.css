@@ -1,3 +1,41 @@
+.h3 {
+    font-family: lucida;
+    color: white;
+    text-align: center;
+}
+
+input[type=email]{
+        width: 75%;
+        padding: 10px;
+        text-align: center;
+        background-color: teal;
+        border: 200px;
+        border-color: white;
+}
+
+input[type=email]::placeholder{
+    color: white;
+}
+
+input[type=submit] {
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    background-color: rgba(245, 175, 26, 0.945);
+    color: #f7f7da;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 5px solid rgb(240, 169, 15);
+    box-sizing: border-box;
+}
+input[type=submit]:hover {
+    background-color: teal;
+    color: #f7f7da;
+}
+
 .login {
     border-radius: 25px;
     border: 2px teal;
