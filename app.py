@@ -3,6 +3,7 @@
 
 
 """Runs the app and sets up DB if initial run. """
+from nturl2path import url2pathname
 import os
 import random
 import flask
@@ -438,6 +439,62 @@ def profile_page():
         num_attending=num_attending,
         attending_events=attending_events,
     )
+
+
+@app.route("/follow", methods=["POST"])
+@login_required
+def follow():
+    """
+    Checks if you are already following, if you are unfollows, if not adds a follow.
+    """
+    data = flask.request.form
+    followers = Follower.query.filter_by(community_id=data["comm_id"]).all()
+    unfollow = None
+    for follower in followers:
+        if follower.follower_id == current_user.id:
+            unfollow = follower
+
+    if unfollow:
+        db.session.delete(unfollow)
+    else:
+        new_follower = Follower(
+            follower_id=current_user.id, community_id=data["comm_id"]
+        )
+        db.session.add(new_follower)
+
+    db.session.commit()
+
+    if data["return"] == "profile":
+        flask.redirect(flask.url_for("profile_page"))
+
+    flask.redirect(flask.url_for("visit_communities"))
+
+
+@app.route("/attend", methods=["POST"])
+@login_required
+def attend():
+    """
+    Checks if you are already following, if you are unfollows, if not adds a follow.
+    """
+    data = flask.request.form
+    attendees = Attendee.query.filter_by(event_id=data["event_id"]).all()
+    unattend = None
+    for attendee in attendees:
+        if attendee.follower_id == current_user.id:
+            unattend = attendee
+
+    if unattend:
+        db.session.delete(unattend)
+    else:
+        new_follower = Attendee(follower_id=current_user.id, event_id=data["event_id"])
+        db.session.add(new_follower)
+
+    db.session.commit()
+
+    if data["return"] == "profile":
+        flask.redirect(flask.url_for("profile_page"))
+
+    flask.redirect(flask.url_for("visit_communities"))
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
