@@ -40,12 +40,18 @@
     <h6 class="center"><em>{{community.tagline}}</em></h6>
     <br>
     <div class=" center">
-        <button class="join" type="button" onclick="alert('Join funcunality coming soon.')">
-            Join This Community!
-        </button>
+        <form method="POST" action="/follow">
+            <input type="hidden" name="comm_id" value={{community.id}}>
+            <input type="hidden" name="return" value="communities">
+            <input class="join" type="submit" value="Join This Community">
+            <!--<input class="join" type="submit" value="Unfollow This Community">-->
+        </form>
+
     </div>
     <hr class="tagline">
-    <p class="center">{{community.description}}</p>
+    <div class="description">
+        <p class="center">{{community.description}}</p>
+    </div>
     <hr class="tagline">
     <br>
     <h3 class="center">Events:</h3>
@@ -57,7 +63,7 @@
     <h3 class="center">Active Members:</h3>
     <br>
     <p class="center">
-        <em>Active Members coming soon...</em>
+
     </p>
     <br>
 </body>

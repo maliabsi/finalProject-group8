@@ -467,7 +467,7 @@ def follow():
     if data["return"] == "profile":
         flask.redirect(flask.url_for("profile_page"))
 
-    flask.redirect(flask.url_for("visit_communities"))
+    return flask.redirect(flask.url_for("visit_communities"))
 
 
 @app.route("/attend", methods=["POST"])
