@@ -97,10 +97,3 @@ def get_user_data(stytch_id):
     """
     user = client.users.get(stytch_id)
     return json.loads(user._content.decode("UTF-8")), True
-
-
-if __name__ == "__main__":
-    # test user account:
-    # testuser55555@hotmail.com
-    # password: group_eight
-    stytch_send_email("testuser55555@hotmail.com")

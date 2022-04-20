@@ -396,29 +396,46 @@ def profile_page():
     """
     Displays a profile page.
     Contents include:
+    - Name
     - Email
     - Comms you created.
     - Events you created.
-    - Comms you follow
-    - Events you plant to attend
+    - # of comms you follow
+    - list of Comms you follow
+    - # of events you plan to attend
+    - list of events you plan to attend
     """
+
+    usr_data = get_user_data(
+        Users.query.filter_by(id=current_user.id).first().stytch_id
+    )[0]
+    name = name = usr_data["name"]["first_name"] + " " + usr_data["name"]["last_name"]
+    email = usr_data["emails"]["email"]
+
     my_comms = Community.query.filter_by(creator_user_id=current_user.id).all()
     my_events = Event.query.filter_by(creator_user_id=current_user.id).all()
+
     follower_list = Follower.query.filter_by(follower_id=current_user.id).all()
     followed_comms = []
     for comm in follower_list:
         followed_comms.append(Community.query.filter_by(id=comm.community_id).first())
+    num_followed = len(followed_comms)
 
     attending_list = Attendee.query.filter_by(follower_id=current_user.id).all()
     attending_events = []
     for event in attending_list:
-        followed_comms.append(Event.query.filter_by(id=event.event_id).first())
+        attending_events.append(Event.query.filter_by(id=event.event_id).first())
+    num_attending = len(attending_events)
 
     return flask.render_template(
         "user.html",
+        name=name,
+        email=email,
         my_comms=my_comms,
         my_events=my_events,
+        num_followed=num_followed,
         followed_comms=followed_comms,
+        num_attending=num_attending,
         attending_events=attending_events,
     )
 
