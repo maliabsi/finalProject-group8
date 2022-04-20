@@ -14,8 +14,6 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from requests import request
-
 from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import (
@@ -23,6 +21,7 @@ from stytch_tools import (
     get_user_data,
     stytch_email_auth,
     stytch_send_email,
+    stytch_update_name,
 )
 
 load_dotenv(find_dotenv())
@@ -75,8 +74,8 @@ def index():
     )
 
 
-@app.route("/email_authenticate")
-def email_authenticate():
+@app.route("/email_login")
+def email_login():
     """Redirected here from Magic Link with a token URL param"""
     # Retrieve token from url params
     token = flask.request.args.get("token")
@@ -85,6 +84,33 @@ def email_authenticate():
     stytch_id = stytch_email_auth(token)[0]
 
     return stytch_login(stytch_id)
+
+
+@app.route("/email_signup", methods=["GET", "POST"])
+def email_signup():
+    """
+    Sign up by adding first and last name
+    """
+
+    if flask.request.method == "POST":
+        data = flask.request.form
+        stytch_update_name(
+            stytch_id=Users.query.filter_by(id=current_user.id).first().stytch_id,
+            first=data["first"],
+            last=data["last"],
+        )
+
+        flask.redirect(flask.url_for("index"))
+
+    # Retrieve token from url params
+    token = flask.request.args.get("token")
+
+    # Authenticates and retrieves stytch user_id from response
+    stytch_id = stytch_email_auth(token)[0]
+
+    stytch_login(stytch_id)
+
+    return flask.render_template("signup.html")
 
 
 @app.route("/authenticate")

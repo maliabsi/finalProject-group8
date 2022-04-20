@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/login_styles.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" href="static/logo.jpeg" />
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <img src="static/logo.jpeg" alt="logo" class="logo">
+            <a href="/">Home</a>
+            <a href="communities">Communities</a>
+            <a href="about">About Us</a>
+            <div class="dropdown">
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <div class="logout_button">
+                        {% if authenticated %}
+                        <a href="handle_logout"> Logout </a>
+                        {% else %}
+                        <a href="login">Login </a>
+                        {% endif %}
+                        <a href="profile">Your Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="login">
+        <br>
+        <br>
+        <form action="/email_signup" method="POST">
+            <h3>Thank you for signing up with Omnino. Please finish filling out the required information.</h3>
+            <input type="text" name="first" placeholder="First Name" required />
+            <input type="text" name="last" placeholder="Last Name" required />
+            <input type="submit" value="Finish Signing Up" />
+        </form>
+        <br>
+    </div>
+</body>
+
+</html>

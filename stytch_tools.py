@@ -57,6 +57,11 @@ def stytch_email_auth(token):
     return None, None
 
 
+def stytch_update_name(stytch_id, first, last):
+    """Updates first and last name on stytch"""
+    client.users.update(user_id=stytch_id, first_name=first, last_name=last)
+
+
 def get_user_data(stytch_id):
     """
     Returns user data, given a user_id
