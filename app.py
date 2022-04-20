@@ -293,14 +293,14 @@ def edit_community_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
-        for e in data[0]:
-            edit = Community.query.get(int(e["Community_id"]))
-            edit.community_name = str(e["Community_name"])
-            edit.tagline = str(e["tagline"])
-            edit.description = str(e["decription"])
+        if data["status"] == "edit":
+            edit = Event.query.get(int(data["Community_id"]))
+            edit.community_name = str(data["Community_name"])
+            edit.tagline = str(data["tagline"])
+            edit.description = str(data["decription"])
 
-        for d in data[1]:
-            delete = Community.query.get(d)
+        if data["status"] == "delete":
+            delete = Event.query.get(data["Community_id"])
 
             db.session.delete(delete)
         db.session.commit()
@@ -315,14 +315,16 @@ def edit_event_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
-        for e in data[0]:
-            edit = Community.query.get(int(e["Community_id"]))
-            edit.community_name = str(e["Community_name"])
-            edit.tagline = str(e["tagline"])
-            edit.description = str(e["decription"])
+        if data["status"] == "edit":
+            edit = Event.query.get(int(data["Event_id"]))
+            edit.community_name = str(data["Event_name"])
+            edit.tagline = str(data["tagline"])
+            edit.description = str(data["decription"])
+            edit.date = str(data["date"])
+            edit.time = str(data["time"])
 
-        for d in data[1]:
-            delete = Event.query.get(d)
+        if data["status"] == "delete":
+            delete = Event.query.get(data["event_id"])
 
             db.session.delete(delete)
         db.session.commit()
