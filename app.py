@@ -14,10 +14,16 @@ from flask_login import (
     login_user,
     logout_user,
 )
+from requests import request
 
 from models import db, Users, Community, Event, Follower, Attendee
 
-from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
+from stytch_tools import (
+    stytch_oauth,
+    get_user_data,
+    stytch_email_auth,
+    stytch_send_email,
+)
 
 load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
@@ -125,10 +131,16 @@ def about_us():
     return flask.render_template("aboutUs.html", authenticated=authenticated)
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
     """OAuth login"""
     authenticated = current_user.is_authenticated
+
+    if flask.request.method == "POST":
+        email = flask.request.form["email"]
+        flask.flash(f"An email has been sent to {email}")
+        stytch_send_email(email)
+
     return flask.render_template(
         "login.html",
         GOOGLE_OAUTH_URL=os.getenv("GOOGLE_OAUTH_URL"),
