@@ -37,54 +37,78 @@
         <br>
         <h1>Your Profile</h1>
         <br>
-
         <h4>Name: <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" readonly>
-            {{name}}
-
+            <input class="input-field" type="text" value={{name}} readonly>
             <br><br>
             Email: <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" readonly>
-            {{email}}
+            <input class="input-field" type="text" value={{email}} readonly>
             <br><br>
-            Following:
-            {{num_followed}}
         </h4>
     </div>
     <br>
-    <div class="container">
-
+    <hr>
+    <fieldset class="container">
+        <legend>Your Communities: {{my_comms | length}}</legend>
+        {% for i in range(my_comms | length) %}
         <div class="my_comm">
-            <h4>Your Communities:</h4>
-            {% for i in communities %}
+            <br><br>
+            <b> {{my_comms[i].community_name}}</b><br>
+            <em>{{my_comms[i].tagline}}</em>
             <form method="POST" action="/community">
-                <input type="hidden" name="Community_id" value={{communities[i].id}}>
-                <input type="submit">
-                <h6>{{my_comms[i].commmunity_name}} </h6>
-                </input>
-
+                <input type="hidden" name="Community_id" value={{my_comms[i].id}}>
+                <input class="visit_community" type="submit" value="Visit!">
             </form>
-            {% endfor %}
+            <br>
         </div>
+        {% endfor %}
+        <hr>
+        <br>
+        <legend>Your Events: {{my_events | length}}</legend>
+        {% for i in range(my_events | length) %}
+        <div class="my_event">
+            <br><br>
+            <b> {{my_events[i].community_name}}</b><br>
+            <em>{{my_events[i].tagline}}</em>
+            <form method="POST" action="/community">
+                <input type="hidden" name="Community_id" value={{my_events[i].id}}>
+                <input class="visit_community" type="submit" value="Visit!">
+            </form>
+            <br>
+        </div>
+        {% endfor %}
+    </fieldset>
+    <hr>
+    <fieldset class="container_two"><br>
+        <legend>Following: {{num_followed}}</legend>
+        {% for i in range(followed_comms | length) %}
         <div class="following">
-            <h4>Following:</h4>
-            {{num_followed}}
-            Communities
-            { }
+            <br><br>
+            <b> {{followed_comms[i].community_name}}</b><br>
+            <em>{{followed_comms[i].tagline}}</em>
+            <form method="POST" action="/community">
+                <input type="hidden" name="Community_id" value={{followed_comms[i].id}}>
+                <input class="visit_community" type="submit" value="Visit!">
+            </form>
+            <br>
         </div>
-
-    </div>
-
-    <h4>Joined Communities:</h4>
-    {% for i in communities %}
-    <h6>{{display_community[i]}} </h6>
-    {% endfor %}
-
-    <h4>Events Attending:</h4>
-    {% for i in communities %}
-    <h6>{{display_events[i]}} </h6>
-    {% endfor %}
-    </div>
+        {% endfor %}
+        <hr>
+        <br>
+        <legend>Events Attending: {{num_attending}}</legend>
+        {% for i in range(atttending_events | length) %}
+        <div class="attending">
+            <br><br>
+            <b> {{attending_events[i].community_name}}</b><br>
+            <em>{{attending_events[i].tagline}}</em>
+            <form method="POST" action="/community">
+                <input type="hidden" name="Community_id" value={{attending_events[i].id}}>
+                <input class="visit_community" type="submit" value="Visit!">
+            </form>
+            <br>
+        </div>
+        {% endfor %}
+    </fieldset>
+    <hr>
 </body>
 
 </html>
