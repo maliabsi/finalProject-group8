@@ -195,6 +195,7 @@ def visit_communities():
             can be accessed i.e communties[i].attribute
         organizers: list of the organizers for the the communities, indexed the same way.
     """
+    login_user(Users.query.filter_by(id=3).first())
     authenticated = current_user.is_authenticated
     communities = Community.query.all()
     organizers = []
@@ -467,7 +468,7 @@ def follow():
     if data["return"] == "profile":
         flask.redirect(flask.url_for("profile_page"))
 
-    flask.redirect(flask.url_for("visit_communities"))
+    return flask.redirect(flask.url_for("visit_communities"))
 
 
 @app.route("/attend", methods=["POST"])

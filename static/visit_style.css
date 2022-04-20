@@ -1,6 +1,15 @@
 .center {
     text-align: center;
     color: teal;
+    margin: 05px;
+}
+
+.description {
+    text-align: center;
+    color: teal;
+    margin-left: 10%;
+    margin-right: 10%;
+    float: center;
 }
 
 .comm_name {
@@ -36,6 +45,18 @@
 }
 
 .join {
+    border-radius: 25px;
+    font-family: lucida;
+    font-size: larger;
+    float: center;
+    text-align: center;
+    color: #f7f7da;
+    background-color: teal;
+    border: 3px solid teal;
+    box-sizing: border-box;
+}
+
+.event {
     border-radius: 25px;
     font-family: lucida;
     font-size: larger;
