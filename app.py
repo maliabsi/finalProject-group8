@@ -195,7 +195,6 @@ def visit_communities():
             can be accessed i.e communties[i].attribute
         organizers: list of the organizers for the the communities, indexed the same way.
     """
-    login_user(Users.query.filter_by(id=3).first())
     authenticated = current_user.is_authenticated
     communities = Community.query.all()
     organizers = []
