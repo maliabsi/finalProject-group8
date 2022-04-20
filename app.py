@@ -177,7 +177,7 @@ def visit_communities():
     )
 
 
-@app.route("/edit", methods=["GET", "POST"])
+@app.route("/edit_community", methods=["GET", "POST"])
 def edit_communities():
 
     """
@@ -189,14 +189,35 @@ def edit_communities():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        creator_communities = Community.query.filter_by(
-            creator_user_id=data["user_id"]
-        ).all()
+        edit_community = Community.query.filter_by(id=data["Community_id"]).first()
 
         return flask.render_template(
             "edit_community.html",
             authenticated=authenticated,
-            communities=creator_communities,
+            community=edit_community,
+        )
+
+    return flask.redirect(flask.url_for("/communities"))
+
+
+@app.route("/edit_event", methods=["GET", "POST"])
+def edit_communities():
+
+    """
+    Displays page for individual communities.
+    Passes authenticated and the Community object being looked up.
+
+    """
+    if flask.request.method == "POST":
+        authenticated = current_user.is_authenticated
+
+        data = flask.request.form
+        edit_event = Event.query.filter_by(id=data["Event_id"]).first()
+
+        return flask.render_template(
+            "edit_event.html",
+            authenticated=authenticated,
+            community=edit_event,
         )
 
     return flask.redirect(flask.url_for("/communities"))
