@@ -354,16 +354,19 @@ def edit_community_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         if data["status"] == "edit":
-            edit = Event.query.get(int(data["Community_id"]))
+            edit = Community.query.get(int(data["Community_id"]))
             edit.community_name = str(data["Community_name"])
             edit.tagline = str(data["tagline"])
-            edit.description = str(data["decription"])
+            edit.description = str(data["description"])
 
         if data["status"] == "delete":
-            delete = Event.query.get(data["Community_id"])
+            delete = Community.query.get(data["Community_id"])
 
             db.session.delete(delete)
         db.session.commit()
+
+    if data["profile"]:
+        return flask.redirect("/profile")
     return flask.redirect("/communities")
 
 

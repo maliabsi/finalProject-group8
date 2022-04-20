@@ -58,6 +58,12 @@
                 <input type="hidden" name="Community_id" value={{my_comms[i].id}}>
                 <input class="visit_community" type="submit" value="Visit!">
             </form>
+            <form method="POST" action="/edit_community_handler">
+                <input type="hidden" name="status" value="delete">
+                <input type="hidden" name="Community_id" value={{my_comms[i].id}}>
+                <input type="hidden" name="profile" value="profile_value">
+                <input class="visit_community" type="submit" value="Delete">
+            </form>
             <br>
         </div>
         {% endfor %}
@@ -69,9 +75,12 @@
             <br><br>
             <b> {{my_events[i].community_name}}</b><br>
             <em>{{my_events[i].tagline}}</em>
-            <form method="POST" action="/community">
-                <input type="hidden" name="Community_id" value={{my_events[i].id}}>
-                <input class="visit_community" type="submit" value="Visit!">
+
+            <form method="POST" action="/edit_event_handler">
+                <input type="hidden" name="status" value="delete">
+                <input type="hidden" name="event_id" value={{my_events[i].id}}>
+                <input type="hidden" name="profile" value="profile_value">
+                <input class="visit_community" type="submit" value="Delete">
             </form>
             <br>
         </div>
@@ -100,9 +109,7 @@
             <br><br>
             <b> {{attending_events[i].community_name}}</b><br>
             <em>{{attending_events[i].tagline}}</em>
-            <form method="POST" action="/community">
-                <input type="hidden" name="Community_id" value={{attending_events[i].id}}>
-                <input class="visit_community" type="submit" value="Visit!">
+
             </form>
             <br>
         </div>
