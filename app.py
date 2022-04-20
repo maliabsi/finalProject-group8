@@ -294,10 +294,10 @@ def edit_community_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         for e in data[0]:
-            edit = Community.query.get(int(e[0]))
-            edit.community_name = str(e[1])
-            edit.tagline = str(e[2])
-            edit.description = str(e[3])
+            edit = Community.query.get(int(e["Community_id"]))
+            edit.community_name = str(e["Community_name"])
+            edit.tagline = str(e["tagline"])
+            edit.description = str(e["decription"])
 
         for d in data[1]:
             delete = Community.query.get(d)
@@ -316,10 +316,10 @@ def edit_event_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         for e in data[0]:
-            edit = Event.query.get(int(e[0]))
-            edit.community_name = str(e[1])
-            edit.tagline = str(e[2])
-            edit.description = str(e[3])
+            edit = Community.query.get(int(e["Community_id"]))
+            edit.community_name = str(e["Community_name"])
+            edit.tagline = str(e["tagline"])
+            edit.description = str(e["decription"])
 
         for d in data[1]:
             delete = Event.query.get(d)
