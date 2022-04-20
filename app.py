@@ -229,7 +229,7 @@ def edit_communities():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        edit_community = Community.query.filter_by(id=data["Community_id"]).first()
+        edit_community = Community.query.filter_by(id=data["comm_id"]).first()
 
         return flask.render_template(
             "edit_community.html",
@@ -275,7 +275,7 @@ def visit_singular_community():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        requested_community = Community.query.filter_by(id=data["Community_id"]).first()
+        requested_community = Community.query.filter_by(id=data["comm_id"]).first()
 
         following = False
 
@@ -288,8 +288,8 @@ def visit_singular_community():
         creator_name = (
             creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
         )
-        events = Event.query.filter_by(community_id=data["Community_id"]).all()
-        followers = Follower.query.filter_by(community_id=data["Community_id"]).all()
+        events = Event.query.filter_by(community_id=data["comm_id"]).all()
+        followers = Follower.query.filter_by(community_id=data["comm_id"]).all()
 
         follower_names = []
         for follower in followers:
@@ -297,7 +297,7 @@ def visit_singular_community():
             usr_data = get_user_data(stytch_id)[0]
             name = usr_data["name"]["first_name"] + " " + usr_data["name"]["last_name"]
             follower_names.append(name)
-            if follow.follower_id == current_user.id:
+            if follower.follower_id == current_user.id:
                 following = True
 
         num_of_attendees = {}
@@ -369,13 +369,13 @@ def edit_community_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         if data["status"] == "edit":
-            edit = Community.query.get(int(data["Community_id"]))
+            edit = Community.query.get(int(data["comm_id"]))
             edit.community_name = str(data["Community_name"])
             edit.tagline = str(data["tagline"])
             edit.description = str(data["description"])
 
         if data["status"] == "delete":
-            delete = Community.query.get(data["Community_id"])
+            delete = Community.query.get(data["comm_id"])
 
             db.session.delete(delete)
         db.session.commit()
@@ -397,7 +397,7 @@ def edit_event_handler():
             edit = Event.query.get(int(data["Event_id"]))
             edit.community_name = str(data["Event_name"])
             edit.tagline = str(data["tagline"])
-            edit.description = str(data["decription"])
+            edit.description = str(data["description"])
             edit.date = str(data["date"])
             edit.time = str(data["time"])
 
@@ -510,7 +510,7 @@ def attend():
     db.session.commit()
 
     if data["return"] == "profile":
-        flask.redirect(flask.url_for("profile_page"))
+        return flask.redirect(flask.url_for("profile_page"))
 
     return flask.redirect(flask.url_for("visit_communities"))
 
