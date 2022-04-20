@@ -37,7 +37,7 @@ def stytch_send_email(email):
     client.magic_links.email.login_or_create(
         email=email,
         login_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
-        signup_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
+        signup_magic_link_url=os.getenv("SIGNUP_MAGIC_LINK"),
     )
 
 
@@ -55,6 +55,11 @@ def stytch_email_auth(token):
         return json.loads(response._content.decode("UTF-8"))["user_id"], True
 
     return None, None
+
+
+def stytch_update_name(stytch_id, first, last):
+    """Updates first and last name on stytch"""
+    client.users.update(user_id=stytch_id, first_name=first, last_name=last)
 
 
 def get_user_data(stytch_id):
