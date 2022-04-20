@@ -37,7 +37,7 @@ def stytch_send_email(email):
     client.magic_links.email.login_or_create(
         email=email,
         login_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
-        signup_magic_link_url=os.getenv("LOGIN_MAGIC_LINK"),
+        signup_magic_link_url=os.getenv("SIGNUP_MAGIC_LINK"),
     )
 
 
