@@ -44,7 +44,6 @@ def load_user(user_id):
 def index():
     """index page: Will show 3 random communities along with a snippet about our goals"""
 
-
     all_comms = Community.query.all()
 
     if len(all_comms) < 3:
@@ -274,7 +273,7 @@ def add_event_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
-        new_event = Events(
+        new_event = Event(
             name=data["event_name"],
             creator_user_id=current_user.id,
             tagline=data["tagline"],
@@ -304,6 +303,28 @@ def edit_community_handler():
 
         for d in data[1]:
             delete = Community.query.get(d)
+
+            db.session.delete(delete)
+        db.session.commit()
+    return flask.redirect("/communities")
+
+
+@app.route("/edit_event_handler", methods=["GET", "POST"])
+@login_required
+def edit_event_handler():
+    """
+    API Enpoint for creating a new event. Takes in information from an html form.
+    """
+    if flask.request.method == "POST":
+        data = flask.request.form
+        for e in data[0]:
+            edit = Event.query.get(int(e[0]))
+            edit.community_name = str(e[1])
+            edit.tagline = str(e[2])
+            edit.description = str(e[3])
+
+        for d in data[1]:
+            delete = Event.query.get(d)
 
             db.session.delete(delete)
         db.session.commit()
