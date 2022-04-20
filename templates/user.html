@@ -48,25 +48,42 @@
             {{email}}
             <br><br>
             Following:
-            {{community_quantity}}
+            {{num_followed}}
         </h4>
     </div>
     <br>
     <div class="container">
-        <h4>Your Communities:</h4>
-        {% for i in communities %}
-        <h6>{{my_comms[i]}} </h6>
-        {% endfor %}
 
-        <h4>Joined Communities:</h4>
-        {% for i in communities %}
-        <h6>{{display_community[i]}} </h6>
-        {% endfor %}
+        <div class="my_comm">
+            <h4>Your Communities:</h4>
+            {% for i in communities %}
+            <form method="POST" action="/community">
+                <input type="hidden" name="Community_id" value={{communities[i].id}}>
+                <input type="submit">
+                <h6>{{my_comms[i].commmunity_name}} </h6>
+                </input>
 
-        <h4>Events Attending:</h4>
-        {% for i in communities %}
-        <h6>{{display_events[i]}} </h6>
-        {% endfor %}
+            </form>
+            {% endfor %}
+        </div>
+        <div class="following">
+            <h4>Following:</h4>
+            {{num_followed}}
+            Communities
+            { }
+        </div>
+
+    </div>
+
+    <h4>Joined Communities:</h4>
+    {% for i in communities %}
+    <h6>{{display_community[i]}} </h6>
+    {% endfor %}
+
+    <h4>Events Attending:</h4>
+    {% for i in communities %}
+    <h6>{{display_events[i]}} </h6>
+    {% endfor %}
     </div>
 </body>
 
