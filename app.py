@@ -365,8 +365,36 @@ def edit_event_handler():
 
 
 @app.route("/profile")
+@login_required
 def profile_page():
-    return flask.render_template("user.html")
+    """
+    Displays a profile page.
+    Contents include:
+    - Email
+    - Comms you created.
+    - Events you created.
+    - Comms you follow
+    - Events you plant to attend
+    """
+    my_comms = Community.query.filter_by(creator_user_id=current_user.id).all()
+    my_events = Event.query.filter_by(creator_user_id=current_user.id).all()
+    follower_list = Follower.query.filter_by(follower_id=current_user.id).all()
+    followed_comms = []
+    for comm in follower_list:
+        followed_comms.append(Community.query.filter_by(id=comm.community_id).first())
+
+    attending_list = Attendee.query.filter_by(follower_id=current_user.id).all()
+    attending_events = []
+    for event in attending_list:
+        followed_comms.append(Event.query.filter_by(id=event.event_id).first())
+
+    return flask.render_template(
+        "user.html",
+        my_comms=my_comms,
+        my_events=my_events,
+        followed_comms=followed_comms,
+        attending_events=attending_events,
+    )
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
