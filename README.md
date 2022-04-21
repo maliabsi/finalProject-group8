@@ -7,7 +7,7 @@ Team Name: Group 8
  * Malia Absi (mabsi2@student.gsu.edu)
  * Michael Fralish (mfralish2@student.gsu.edu)
 
-## If want to see what we've been working on, just visit the link below
+## If you want to see what we've been working on, just visit the link below
 [Heroku Link](https://omnino.herokuapp.com/)
 
 
