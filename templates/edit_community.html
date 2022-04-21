@@ -37,12 +37,12 @@
             <input type="text" name="comm_name" value={{community.community_name}} required>
             <br> Tagline: <br>
 
-            <textarea name="tagline" value={{community.tagline}} placeholder="Enter tagline" rows="2" cols="20" required></textarea>
+            <textarea name="tagline" value={{community.tagline}} rows="2" cols="20" required></textarea>
             <br> Description: <br>
-            <textarea name="description" defaultValue={{community.description}} placeholder="Enter description" rows="4" cols="30" required></textarea>
+            <textarea name="description" value={{community.description}} rows="4" cols="30" required></textarea>
             <br> Donation Link:
             <br>
-            <textarea name="donation_link" defaultValue={{community.donation_link}} placeholder="Optional" rows="1" cols="30"></textarea>
+            <textarea name="donation_link" value={{community.donation_link}} rows="1" cols="30"></textarea>
             <br><br>
             <input class="join" type="submit" value="Submit Changes">
             <br>
