@@ -313,8 +313,6 @@ def visit_singular_community():
                 if current_user.id in event_attendees:
                     attending[event.id] = True
 
-        print(attending)
-
         return flask.render_template(
             "visit_community.html",
             authenticated=authenticated,

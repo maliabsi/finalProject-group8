@@ -84,6 +84,7 @@
         <div class="scheduled_events">
             <h3 class="center">Scheduled Events:</h3>
             {% for i in range(events | length) %}
+            <p>{{attending}}</p>
             <div class="event">
                 <b> {{events[i].name}}</b><br>
                 <p>{{events[i].tagline}}
