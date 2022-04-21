@@ -73,8 +73,8 @@
     </div>
     <hr class="tagline">
 
+
     {% if following or owned %}
-    <h3 class="center">Events:</h3>
     <br>
     <h5 class="center">Create an Event:</h3>
         <p class="center">
@@ -94,15 +94,27 @@
             <input type="submit" value="Create Event">
         </form>
         </p>
-
-        {% for i in range(events.name | length) %}
-        <b> {{events.name[i]}}</b><br>
-        <b> {{events.name}}</b><br>
-        {% endfor %}
-        <br>
-        <hr class="tagline">
         {% endif %}
-        <h4 class="center">Active Members:</h4>
+        <div class="scheduled_events">
+            <h3 class="center">Scheduled Events:</h3>
+            {% for i in range(events | length) %}
+            <div class="event">
+                <b> {{events[i].name}}</b><br>
+                <p>{{events[i].tagline}}</p>
+            </div>
+            {% endfor %}
+            <br>
+        </div>
+        <hr class="tagline">
+
+        <div>
+            <h4 class="center">Active Members:</h4>
+            {% for i in range(follower_names | length)%}
+            <div class="follower">
+                <p>{{follower_names[i]}}</p>
+            </div>
+            {% endfor %}
+        </div>
         <br>
         <br>
 </body>
