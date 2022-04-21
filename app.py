@@ -1,12 +1,11 @@
 # pylint: disable=no-member
 # pylint: disable=invalid-envvar-default
+# pylint: disable=too-many-locals
 
 
 """Runs the app and sets up DB if initial run. """
-from nturl2path import url2pathname
 import os
 import random
-from unicodedata import name
 import flask
 from dotenv import find_dotenv, load_dotenv
 from flask_login import (
@@ -252,12 +251,12 @@ def edit_event():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        edit_event = Event.query.filter_by(id=data["Event_id"]).first()
+        edited_event = Event.query.filter_by(id=data["Event_id"]).first()
 
         return flask.render_template(
             "edit_event.html",
             authenticated=authenticated,
-            event=edit_event,
+            event=edited_event,
         )
 
     return flask.redirect(flask.url_for("/communities"))
@@ -304,9 +303,9 @@ def visit_singular_community():
                     following = True
 
         num_of_attendees = {}
-        for ev in events:
-            num_of_attendees[ev.id] = len(
-                Attendee.query.filter_by(event_id=ev.id).all()
+        for evnt in events:
+            num_of_attendees[evnt.id] = len(
+                Attendee.query.filter_by(event_id=evnt.id).all()
             )
         return flask.render_template(
             "visit_community.html",
