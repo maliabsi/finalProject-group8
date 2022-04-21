@@ -251,7 +251,7 @@ def edit_event():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        edited_event = Event.query.filter_by(id=data["Event_id"]).first()
+        edited_event = Event.query.filter_by(id=data["event_id"]).first()
 
         return flask.render_template(
             "edit_event.html",
@@ -335,7 +335,7 @@ def add_community_handler():
         else:
             donation_link = data["donation_link"]
         new_community = Community(
-            community_name=data["community_name"],
+            community_name=data["comm_name"],
             tagline=data["tagline"],
             donation_link=donation_link,
             description=data["description"],
@@ -361,7 +361,7 @@ def add_event_handler():
             description=data["description"],
             date=data["date"],
             time=["time"],
-            community_id=data["community_id"],
+            community_id=data["comm_id"],
         )
         db.session.add(new_event)
         db.session.commit()
@@ -378,7 +378,7 @@ def edit_community_handler():
         data = flask.request.form
         if data["status"] == "edit":
             edit = Community.query.get(int(data["comm_id"]))
-            edit.community_name = str(data["Community_name"])
+            edit.community_name = str(data["comm_name"])
             edit.tagline = str(data["tagline"])
             edit.description = str(data["description"])
 
@@ -410,8 +410,8 @@ def edit_event_handler():
     if flask.request.method == "POST":
         data = flask.request.form
         if data["status"] == "edit":
-            edit = Event.query.get(int(data["Event_id"]))
-            edit.community_name = str(data["Event_name"])
+            edit = Event.query.get(int(data["event_id"]))
+            edit.community_name = str(data["event_name"])
             edit.tagline = str(data["tagline"])
             edit.description = str(data["description"])
             edit.date = str(data["date"])
