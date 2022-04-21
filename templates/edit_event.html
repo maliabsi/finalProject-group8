@@ -42,8 +42,8 @@
                 <br> Description: <br>
                 <textarea name="description" rows="4" cols="30" required>{{event.description}}</textarea>
                 <br> Event Date <br>
-                <input type="date" value={{event.date}} name="date"><br> Event Time: <br>
-                <input type="time" value={{event.time}} name="time"><br>
+                <input type="date" value={{event.date}} name="date" required><br> Event Time: <br>
+                <input type="time" value={{event.time}} name="time" required><br>
                 <input type="hidden" name="event_id" value={{event.id}}>
                 <input type="hidden" name="status" value="edit">
                 <br>
