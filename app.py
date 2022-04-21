@@ -478,7 +478,7 @@ def profile_page():
     num_attending = len(attending_events)
 
     my_attending_comms = []
-    for event in attending_list:
+    for event in attending_events:
         comm = Community.query.filter_by(id=event.community_id).first()
         my_attending_comms.append(comm)
 
