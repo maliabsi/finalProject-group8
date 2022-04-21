@@ -71,6 +71,7 @@
         {% for i in range(my_events | length) %}
         <div class="my_event">
             <br><br>
+            <b>For: {{my_event_comms[i].community_name}}</b>
             <b> {{my_events[i].name}}</b><br>
             <em>{{my_events[i].tagline}}</em>
             <p>Date: {{my_events[i].date}}
@@ -114,6 +115,7 @@
         {% for i in range(num_attending) %}
         <div class="attending">
             <br>
+            <b>For: {{my_attending_comms[i].community_name}}</b>
             <b> {{attending_events[i].name}}</b><br>
             <em>{{attending_events[i].tagline}}</em>
             <p>
