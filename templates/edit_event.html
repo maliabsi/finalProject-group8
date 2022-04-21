@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/profile_style.css">
+    <link rel="stylesheet" href="static/edit_event_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="/static/logo.jpeg">
@@ -33,29 +33,35 @@
         </div>
     </nav>
     <br>
-    <div class=" center">
-        <h5 class="center">Edit an Event:</h3>
-            <p class="center">
-            <form method="POST" class="center" action="/new_event_handler">
+    <div class="center">
+        <h3 class="center">Edit an Event:</h3>
+        <div>
+            <form method="POST" class="event_form" action="/new_event_handler">
+                <br>
                 Event Name:<br>
-                <input type="text" name="event_name"><br>
+                <input type="text" name="event_name" placeholder="Enter event name" required>
+                <br>
                 Objective:<br>
-                <input type="text" name="tagline"><br>
+                <textarea name="tagline" placeholder="Enter objective" rows="2" cols="20" required></textarea>
+                <br>
                 Description: <br>
-                <input type="text" name="decription"><br>
+                <textarea name="description" placeholder="Enter description" rows="4" cols="30" required></textarea>
+                <br>
                 Event Date <br>
                 <input type="date" name="date"><br>
                 Event Time: <br>
                 <input type="time" name="time"><br>
-                <input type="hidden" name="community_id" value={{community.id}}>
+                <input type="hidden" name="event_id" value={{event.id}}>
                 <br>
-                <input type="submit" value="Submit Changes">
+                <input class="submit" type="submit" value="Submit Changes">
+                <br><br>
             </form>
-            </p>
             <form method="POST" action="/edit_event_handler">
-                <input type="hidden" name="status" value="edit">
-                <input type="hidden" name="Event_id" value={{event.id}}>
-                <input class="edit_event" type="submit" value="Edit">
+                <input type="hidden" name="status" value="delete">
+                <input type="hidden" name="event_id" value={{event.id}}>
+                <input class="delete_event" type="submit" value="Delete Event">
             </form>
-            <br>
+        </div>
+
+        <br>
     </div>
