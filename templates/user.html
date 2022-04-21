@@ -65,12 +65,20 @@
         {% endfor %}
         <hr>
         <br>
+    </fieldset>
+    <fieldset style="display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px">
         <legend>Your Events: {{my_events | length}}</legend>
         {% for i in range(my_events | length) %}
         <div class="my_event">
             <br><br>
             <b> {{my_events[i].name}}</b><br>
             <em>{{my_events[i].tagline}}</em>
+            <p>Date: {{my_events[i].date}}
+                <br>
+                Time: {{my_events[i].time}}
+            </p>
             <form method="POST" action="/edit_event">
                 <input type="hidden" name="event_id" value={{my_events[i].id}}>
                 <input class="visit_community" type="submit" value="Edit">
@@ -101,12 +109,14 @@
         </div>
         {% endfor %}
         <hr>
+    </fieldset>
+    <fieldset>
         <br>
         <legend>Events Attending: {{num_attending}}</legend>
-        {% for i in range(atttending_events | length) %}
+        {% for i in range(num_attending) %}
         <div class="attending">
             <br><br>
-            <b> {{attending_events[i].community_name}}</b><br>
+            <b> {{attending_events[i].name}}</b><br>
             <em>{{attending_events[i].tagline}}</em>
 
             </form>
