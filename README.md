@@ -8,7 +8,7 @@ Team Name: Group 8
  * Michael Fralish (mfralish2@student.gsu.edu)
 
 ## If want to see what we've been working on, just visit the link below
-[Heroku Link](https://morning-thicket-55721.herokuapp.com/)
+[Heroku Link](https://omnino.herokuapp.com/)
 
 
 ## Goal
