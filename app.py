@@ -331,9 +331,14 @@ def add_community_handler():
     """
     if flask.request.method == "POST":
         data = flask.request.form
+        if data["donation_link"] == "":
+            donation_link = None
+        else:
+            donation_link = data["donation_link"]
         new_community = Community(
             community_name=data["community_name"],
             tagline=data["tagline"],
+            donation_link=donation_link,
             description=data["description"],
             creator_user_id=current_user.id,
         )
