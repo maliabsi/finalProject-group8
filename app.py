@@ -15,7 +15,6 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from requests import request
 from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import (
@@ -310,8 +309,8 @@ def visit_singular_community():
             num_of_attendees[event.id] = len(event_attendees)
 
             if authenticated:
-                for attend in event_attendees:
-                    if current_user.id == attend.follower_id:
+                for attendee in event_attendees:
+                    if current_user.id == attendee.follower_id:
                         attending[event.id] = True
 
         return flask.render_template(
