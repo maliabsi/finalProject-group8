@@ -37,7 +37,7 @@
         <h2>Edit Community: </h2>
         <form method="POST" action="/new_community_handler">
             Community Name: <br>
-            <input type="text" name="community_name" placeholder="Enter community name" required>
+            <input type="text" name="comm_name" placeholder="Enter community name" required>
             <br>
             Tagline: <br>
             <textarea name="tagline" placeholder="Enter tagline" rows="2" cols="20" required></textarea>
@@ -52,10 +52,10 @@
             <input class="join" type="submit" value="Submit Changes">
             <br>
             <input type="hidden" name="status" value="edit">
-            <input type="hidden" name="community_id" value={{community.id}}>
+            <input type="hidden" name="comm_id" value={{community.id}}>
         </form>
         <form method="POST" action="/edit_community_handler">
-            <input type="hidden" name="Community_id" value={{community.id}}>
+            <input type="hidden" name="comm_id" value={{community.id}}>
             <input type="hidden" name="status" value="delete">
             <input class="join" type="submit" value="Delete this Community">
         </form>
