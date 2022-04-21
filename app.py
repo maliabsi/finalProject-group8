@@ -15,6 +15,7 @@ from flask_login import (
     login_user,
     logout_user,
 )
+from requests import request
 from models import db, Users, Community, Event, Follower, Attendee
 
 from stytch_tools import (
@@ -396,7 +397,7 @@ def edit_community_handler():
             db.session.delete(delete)
         db.session.commit()
 
-    if data["profile"]:
+    if flask.request.form.get("profile"):
         return flask.redirect("/profile")
     return flask.redirect("/communities")
 
@@ -499,7 +500,7 @@ def follow():
 
     db.session.commit()
 
-    if data["return"] == "profile":
+    if flask.request.form.get("profile"):
         return flask.redirect(flask.url_for("profile_page"))
 
     return flask.redirect(flask.url_for("visit_communities"))
@@ -526,7 +527,7 @@ def attend():
 
     db.session.commit()
 
-    if data["return"] == "profile":
+    if flask.request.form.get("profile"):
         return flask.redirect(flask.url_for("profile_page"))
 
     return flask.redirect(flask.url_for("visit_communities"))
