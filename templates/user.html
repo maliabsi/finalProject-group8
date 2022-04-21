@@ -73,7 +73,7 @@
         {% for i in range(my_events | length) %}
         <div class="my_event">
             <br><br>
-            <b> {{my_events[i].community_name}}</b><br>
+            <b> {{my_events[i].name}}</b><br>
             <em>{{my_events[i].tagline}}</em>
             <form method="POST" action="/edit_event">
                 <input type="hidden" name="Event_id" value={{my_events[i].id}}>
