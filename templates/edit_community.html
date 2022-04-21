@@ -34,7 +34,7 @@
         <h2>Edit Community: </h2>
         <form method="POST" action="/edit_community_handler">
             Community Name: <br>
-            <input type="text" name="comm_name" value={{community.community_name}} required>
+            <input type="text" name="comm_name" value={{str(community.community_name)}} required>
             <br> Tagline: <br>
 
             <textarea name="tagline" rows="2" cols="20" required>{{community.tagline}}</textarea>
