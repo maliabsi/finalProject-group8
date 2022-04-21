@@ -459,6 +459,12 @@ def profile_page():
     my_comms = Community.query.filter_by(creator_user_id=current_user.id).all()
     my_events = Event.query.filter_by(creator_user_id=current_user.id).all()
 
+    my_event_comms = []
+
+    for event in my_events:
+        comm = Community.query.filter_by(id=event.community_id).first()
+        my_event_comms.append(comm)
+
     follower_list = Follower.query.filter_by(follower_id=current_user.id).all()
     followed_comms = []
     for comm in follower_list:
@@ -471,6 +477,11 @@ def profile_page():
         attending_events.append(Event.query.filter_by(id=event.event_id).first())
     num_attending = len(attending_events)
 
+    my_attending_comms = []
+    for event in attending_list:
+        comm = Community.query.filter_by(id=event.community_id).first()
+        my_attending_comms.append(comm)
+
     return flask.render_template(
         "user.html",
         name=name,
@@ -482,6 +493,8 @@ def profile_page():
         num_attending=num_attending,
         attending_events=attending_events,
         authenticated=authenticated,
+        my_event_comms=my_event_comms,
+        my_attending_comms=my_attending_comms,
     )
 
 
