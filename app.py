@@ -385,7 +385,15 @@ def edit_community_handler():
 
         if data["status"] == "delete":
             delete = Community.query.get(data["comm_id"])
-
+            events = Event.query.filter_by(community_id=data["comm_id"]).all()
+            for event in events:
+                db.session.delete(event)
+            followers = Follower.query.filter_by(community_id=data["comm_id"]).all()
+            for follower in followers:
+                db.session.delete(follower)
+            attendees = Attendee.query.filter_by(community_id=data["comm_id"]).all()
+            for attendee in attendees:
+                db.session.delete(attendee)
             db.session.delete(delete)
         db.session.commit()
 
