@@ -64,7 +64,9 @@
         <p class="center">{{community.description}}</p>
 
     </div>
-    <p class="center">Donation link: {{community.donation_link}}</p>
+    <p class="center">
+        <a href={{community.donation_link}}>Donation link: {{community.donation_link}}</a>
+    </p>
     <hr class="tagline"> {% if following or owned %}
     <br>
     <h5 class="center">Create an Event:</h3>
