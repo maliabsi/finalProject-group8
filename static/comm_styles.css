@@ -113,17 +113,16 @@
     opacity: 80%;
 }
 
-.tagline {
+.active_comms {
     text-align: left;
     background-color: #f7f7da;
     color: teal;
     padding: 5px;
-    gap: 1px;
-    display: grid;
-    grid-template-rows: 75px;
+    gap: 2px;
+    display: block;
     margin-right: 20%;
     margin-left: 20%;
-    border-radius: 20%;
+    
 }
 
 .visit_community {
