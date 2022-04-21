@@ -310,7 +310,7 @@ def visit_singular_community():
             num_of_attendees[event.id] = len(event_attendees)
 
             if authenticated:
-                if current_user.id in event_attendees.follower_id:
+                if current_user.id in event_attendees:
                     attending[event.id] = True
 
         return flask.render_template(
