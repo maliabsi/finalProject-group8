@@ -92,7 +92,7 @@
             <input type="time" name="time"><br>
             <input type="hidden" name="comm_id" value={{community.id}}>
             <br>
-            <input type="submit" value="Create Event">
+            <input class="create_event" type="submit" value="Create Event">
         </form>
         </p>
         {% endif %}
@@ -101,8 +101,22 @@
             {% for i in range(events | length) %}
             <div class="event">
                 <b> {{events[i].name}}</b><br>
-                <p>{{events[i].tagline}}</p>
+                <p>{{events[i].tagline}}
+                    <br>
+                    {% if events[i].participants %}
+                    Number of Attendees: {{events[i].participants}}
+                    {% endif %}
+                </p>
+                {% if following or owned %}
+                <form method="POST" class="center" action="/attend">
+                    <input class="visit_community" type="hidden" name="event_id" value={{events[i].id}}>
+                    <input class="visit_community" type="hidden" name="return" value="not">
+                    <input class="visit_community" type="submit" value="Attend Event">
+                </form>
+                {% endif %}
+
             </div>
+            <br>
             {% endfor %}
             <br>
         </div>
@@ -112,7 +126,7 @@
             <h4 class="center">Active Members:</h4>
             {% for i in range(follower_names | length)%}
             <div class="follower">
-                <p>{{follower_names[i]}}</p>
+                <p class="center"> {{follower_names[i]}} </p>
             </div>
             {% endfor %}
         </div>
