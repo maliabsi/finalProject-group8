@@ -40,14 +40,14 @@ h2 {
     float: left;
 }
 
-.dropdown:after{
+.dropdown:after {
     font-family: FontAwesome;
     content: "\f107";
     padding-left: 12px;
     color: white;
 }
-  
-  /* Dropdown button */
+
+/* Dropdown button */
 .dropdown .dropbtn {
     font-size: 16px;
     border: none;
@@ -57,14 +57,15 @@ h2 {
     background-color: inherit;
     font-family: lucida;
     font-size: 17px;
-    margin: 0; 
+    margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbar a:hover,
+.dropdown:hover .dropbtn {
     background-color: rgba(245, 175, 26, 0.945);
     font-family: lucida;
 }
-  
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -73,7 +74,7 @@ h2 {
     z-index: 1;
     border: 5px solid rgb(240, 169, 15);
 }
- 
+
 .dropdown-content a {
     float: left;
     color: teal;
