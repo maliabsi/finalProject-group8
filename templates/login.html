@@ -31,17 +31,6 @@
         </div>
     </nav>
     <br><br>
-    <div class="flashes">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="flashes">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-    </div>
     <div class="login">
         <br>
         <h1>Login:</h1>
@@ -67,6 +56,16 @@
                 </form>
             </div>
         </div>
+    </div>
+    <br>
+    <div class="flashes">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <h4>{{ message }}</h4>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
     </div>
 </body>
 
