@@ -390,10 +390,10 @@ def edit_community_handler():
             for follower in followers:
                 db.session.delete(follower)
             for event in events:
-                db.session.delete(event)
                 attendees = Attendee.query.filter_by(event_id=event.id).all()
                 for attendee in attendees:
                     db.session.delete(attendee)
+                db.session.delete(event)
             db.session.delete(delete)
         db.session.commit()
 
