@@ -92,7 +92,7 @@
             <input type="time" name="time"><br>
             <input type="hidden" name="community_id" value={{community.id}}>
             <br>
-            <input type="submit" value="Create Event">
+            <input class="create_event" type="submit" value="Create Event">
         </form>
         </p>
         {% endif %}
@@ -103,6 +103,7 @@
                 <b> {{events[i].name}}</b><br>
                 <p>{{events[i].tagline}}</p>
             </div>
+            <br>
             {% endfor %}
             <br>
         </div>
@@ -112,7 +113,7 @@
             <h4 class="center">Active Members:</h4>
             {% for i in range(follower_names | length)%}
             <div class="follower">
-                <p>{{follower_names[i]}}</p>
+                <p class="center"> {{follower_names[i]}} </p>
             </div>
             {% endfor %}
         </div>
