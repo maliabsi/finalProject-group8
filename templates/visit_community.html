@@ -1,8 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/visit_style.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -76,12 +75,12 @@
             <p class="center">
             <form method="POST" class="center" action="/new_event_handler">
                 Event Name:<br>
-                <input type="text" name="event_name"><br> Objective:
+                <input type="text" name="event_name" required><br> Objective:
                 <br>
-                <input type="text" name="tagline"><br> Description: <br>
-                <input type="text" name="description"><br> Event Date <br>
-                <input type="date" name="date"><br> Event Time: <br>
-                <input type="time" name="time"><br>
+                <input type="text" name="tagline" required><br> Description: <br>
+                <input type="text" name="description" required><br> Event Date <br>
+                <input type="date" name="date" required><br> Event Time: <br>
+                <input type="time" name="time" required><br>
                 <input type="hidden" name="comm_id" value={{community.id}}>
                 <br>
                 <input class="create_event" type="submit" value="Create Event">
@@ -100,25 +99,24 @@
             <p><em>{{events[i].tagline}}</em>
                 <br>
                 <br><b>Description:</b>
-                <br> {{events[i].description}}<br>
-                <br>Date: {{events[i].date}}
-                <br>Time: {{events[i].time}}
-                <br> Number of Attendees: {{attendees[events[i].id]}}
+        <br> {{events[i].description}}<br>
+        <br>Date: {{events[i].date}}
+        <br>Time: {{events[i].time}}
+        <br> Number of Attendees: {{attendees[events[i].id]}}
 
-            </p>
-            {% if following or owned %}
-            <form method="POST" class="center" action="/attend">
-                <input class="visit_community" type="hidden" name="event_id" value={{events[i].id}}>
-                <input class="visit_community" type="hidden" name="return" value="not"> {% if
-                attending[events[i].id] %}
-                <input class="visit_community" type="submit" value="Unattend Event"> {% else %}
-                <input class="attend_event" type="submit" value="Attend Event"> {% endif %}
-            </form>
-            {% endif %}
+    </p>
+    {% if following or owned %}
+    <form method="POST" class="center" action="/attend">
+        <input class="visit_community" type="hidden" name="event_id" value={{events[i].id}}>
+        <input class="visit_community" type="hidden" name="return" value="not"> {% if attending[events[i].id] %}
+        <input class="visit_community" type="submit" value="Unattend Event"> {% else %}
+        <input class="attend_event" type="submit" value="Attend Event"> {% endif %}
+    </form>
+    {% endif %}
 
-        </div>
-        <br> {% endfor %}
-        <br>
+    </div>
+    <br> {% endfor %}
+    <br>
     </div>
     <hr class="tagline">
 

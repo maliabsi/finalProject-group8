@@ -236,7 +236,7 @@ def edit_communities():
             community=edit_community,
         )
 
-    return flask.redirect(flask.url_for("/communities"))
+    return flask.redirect("/profile")
 
 
 @app.route("/edit_event", methods=["GET", "POST"])
@@ -259,7 +259,7 @@ def edit_event():
             event=edited_event,
         )
 
-    return flask.redirect(flask.url_for("/communities"))
+    return flask.redirect("/profile")
 
 
 @app.route("/community", methods=["GET", "POST"])
@@ -350,7 +350,7 @@ def add_community_handler():
         )
         db.session.add(new_community)
         db.session.commit()
-    return flask.redirect("/communities")
+    return flask.redirect("/profile")
 
 
 @app.route("/new_event_handler", methods=["GET", "POST"])
@@ -372,7 +372,7 @@ def add_event_handler():
         )
         db.session.add(new_event)
         db.session.commit()
-    return flask.redirect("/communities")
+    return flask.redirect("/profile")
 
 
 @app.route("/edit_community_handler", methods=["GET", "POST"])
@@ -406,7 +406,7 @@ def edit_community_handler():
 
     if flask.request.form.get("profile"):
         return flask.redirect("/profile")
-    return flask.redirect("/communities")
+    return flask.redirect("/profile")
 
 
 @app.route("/edit_event_handler", methods=["GET", "POST"])
@@ -431,7 +431,7 @@ def edit_event_handler():
                 db.session.delete(attendee)
             db.session.delete(delete)
         db.session.commit()
-    return flask.redirect("/communities")
+    return flask.redirect("/profile")
 
 
 @app.route("/profile")
@@ -509,9 +509,9 @@ def follow():
     db.session.commit()
 
     if flask.request.form.get("profile"):
-        return flask.redirect(flask.url_for("profile_page"))
+        return flask.redirect(flask.url_for("user"))
 
-    return flask.redirect(flask.url_for("visit_communities"))
+    return flask.redirect("/profile")
 
 
 @app.route("/attend", methods=["POST"])
@@ -536,9 +536,9 @@ def attend():
     db.session.commit()
 
     if flask.request.form.get("profile"):
-        return flask.redirect(flask.url_for("profile_page"))
+        return flask.redirect(flask.url_for("user"))
 
-    return flask.redirect(flask.url_for("visit_communities"))
+    return flask.redirect("profile")
 
 
 app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
