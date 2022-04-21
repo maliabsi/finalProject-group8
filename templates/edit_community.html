@@ -1,8 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/visit_style.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,10 +20,8 @@
                 <div class="dropdown-content">
                     <div class="logout_button">
                         {% if authenticated %}
-                        <a href="handle_logout"> Logout </a>
-                        {% else %}
-                        <a href="login">Login </a>
-                        {% endif %}
+                        <a href="handle_logout"> Logout </a> {% else %}
+                        <a href="login">Login </a> {% endif %}
                         <a href="profile">Your Profile</a>
                     </div>
                 </div>
@@ -35,17 +32,14 @@
 
     <div class=" center">
         <h2>Edit Community: </h2>
-        <form method="POST" action="/new_community_handler">
+        <form method="POST" action="/edit_community_handler">
             Community Name: <br>
             <input type="text" name="community_name" placeholder="Enter community name" required>
-            <br>
-            Tagline: <br>
+            <br> Tagline: <br>
             <textarea name="tagline" placeholder="Enter tagline" rows="2" cols="20" required></textarea>
-            <br>
-            Description: <br>
+            <br> Description: <br>
             <textarea name="description" placeholder="Enter description" rows="4" cols="30" required></textarea>
-            <br>
-            Donation Link:
+            <br> Donation Link:
             <br>
             <textarea name="donation_link" placeholder="Optional" rows="1" cols="30"></textarea>
             <br><br>

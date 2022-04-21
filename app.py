@@ -382,7 +382,6 @@ def edit_community_handler():
             edit.community_name = str(data["Community_name"])
             edit.tagline = str(data["tagline"])
             edit.description = str(data["description"])
-            db.session.merge(edit)
 
         if data["status"] == "delete":
             delete = Community.query.get(data["comm_id"])
@@ -418,7 +417,6 @@ def edit_event_handler():
             edit.description = str(data["description"])
             edit.date = str(data["date"])
             edit.time = str(data["time"])
-            db.session.merge(edit)
         if data["status"] == "delete":
             delete = Event.query.get(data["event_id"])
             attendees = Attendee.query.filter_by(data["event_id"]).all()
