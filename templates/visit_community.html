@@ -103,9 +103,9 @@
                 <b> {{events[i].name}}</b><br>
                 <p>{{events[i].tagline}}
                     <br>
-                    {% if events[i].participants %}
-                    Number of Attendees: {{events[i].participants}}
-                    {% endif %}
+
+                    Number of Attendees: {{attendees[events[i].id]}}
+
                 </p>
                 {% if following or owned %}
                 <form method="POST" class="center" action="/attend">
