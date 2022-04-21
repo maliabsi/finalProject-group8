@@ -5,7 +5,7 @@ Unit Tests for the app.
 """
 import unittest
 from unittest.mock import MagicMock, patch
-from stytch_tools import stytch_auth, get_user_data
+from stytch_tools import stytch_oauth, get_user_data, stytch_email_auth
 
 
 class StytchTest(unittest.TestCase):
@@ -21,7 +21,7 @@ class StytchTest(unittest.TestCase):
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
             mock_get.return_value = test_value
-            actual_output = stytch_auth(test_value)[0]
+            actual_output = stytch_oauth(test_value)[0]
             self.assertEqual(expected_output, actual_output)
 
     def test_none_string_case(self):
@@ -32,7 +32,7 @@ class StytchTest(unittest.TestCase):
         expected_output = None
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
             mock_get.return_value = test_value
-            actual_output = stytch_auth(test_value)[0]
+            actual_output = stytch_oauth(test_value)[0]
             self.assertEqual(expected_output, actual_output)
 
     def test_user_return(self):
@@ -85,7 +85,33 @@ class StytchTest(unittest.TestCase):
             with patch("stytch_tools.json.loads") as mock_post:
                 mock_post = "post_value"
                 mock_get.return_value = test_value
-                actual_output = stytch_auth(test_value)[1]
+                actual_output = stytch_oauth(test_value)[1]
+                self.assertEqual(expected_output, actual_output)
+
+    def test_email_auth(self):
+        """
+        Tests if email authentication was a success
+        """
+        test_value = MagicMock(status_code=200)
+        expected_output = True
+        with patch("stytch_tools.client.magic_links.authenticate") as mock_get:
+            with patch("stytch_tools.json.loads") as mock_post:
+                mock_post = "post_value"
+                mock_get.return_value = test_value
+                actual_output = stytch_email_auth(test_value)[1]
+                self.assertEqual(expected_output, actual_output)
+
+    def test_email_auth_fail_case(self):
+        """
+        Tests if email authentication will fail
+        """
+        test_value = MagicMock(status_code=500)
+        expected_output = None
+        with patch("stytch_tools.client.magic_links.authenticate") as mock_get:
+            with patch("stytch_tools.json.loads") as mock_post:
+                mock_post = "post_value"
+                mock_get.return_value = test_value
+                actual_output = stytch_email_auth(test_value)[1]
                 self.assertEqual(expected_output, actual_output)
 
 
