@@ -368,7 +368,7 @@ def add_event_handler():
             tagline=data["tagline"],
             description=data["description"],
             date=data["date"],
-            time=["time"],
+            time=data["time"],
             community_id=data["comm_id"],
         )
         db.session.add(new_event)
