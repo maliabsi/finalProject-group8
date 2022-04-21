@@ -420,7 +420,9 @@ def edit_event_handler():
 
         if data["status"] == "delete":
             delete = Event.query.get(data["event_id"])
-
+            attendees = Attendee.query.filter_by(data["event_id"]).all()
+            for attendee in attendees:
+                db.session.delete(attendee)
             db.session.delete(delete)
         db.session.commit()
     return flask.redirect("/communities")
