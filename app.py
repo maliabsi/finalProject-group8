@@ -426,7 +426,7 @@ def edit_event_handler():
             edit.time = str(data["time"])
         if data["status"] == "delete":
             delete = Event.query.get(data["event_id"])
-            attendees = Attendee.query.filter_by(data["event_id"]).all()
+            attendees = Attendee.query.filter_by(event_id=data["event_id"]).all()
             for attendee in attendees:
                 db.session.delete(attendee)
             db.session.delete(delete)
