@@ -1,10 +1,11 @@
-.container, .container_two {
+.container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 65px;
+    grid-template-rows: auto auto auto;
+    gap: 50px;
 }
 
-.container .my_comm , .my_event {
+.container .my_comm, .my_event, .following, .attending {
     border-radius: 25px;
     font-family: lucida;
     color: #f7f7da;
@@ -12,29 +13,13 @@
     background-color: rgba(108, 180, 185, 0.932);
     border: 15px solid rgb(240, 169, 15);
     box-sizing: border-box;
+    float: center;
 }
 
 .container legend {
     color: teal;
     font-family: lucida;
     text-align: center;
-}
-
-
-.container_two legend {
-    color: teal;
-    font-family: lucida;
-    text-align: center;
-}
-
-.container_two .following, .attending {
-    border-radius: 25px;
-    font-family: lucida;
-    color: #f7f7da;
-    text-align: center;
-    background-color: rgba(108, 180, 185, 0.932);
-    border: 15px solid rgb(240, 169, 15);
-    box-sizing: border-box;
 }
 
 .input-icons i {
@@ -66,7 +51,6 @@
     min-width: 40px;
     color: white;
 }
-
 
 .input-field {
     width: 65%;
