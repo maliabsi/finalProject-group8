@@ -257,7 +257,7 @@ def edit_event():
         return flask.render_template(
             "edit_event.html",
             authenticated=authenticated,
-            community=edit_event,
+            event=edit_event,
         )
 
     return flask.redirect(flask.url_for("/communities"))
