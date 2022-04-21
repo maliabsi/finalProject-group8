@@ -93,7 +93,7 @@
     </fieldset>
     <hr>
     <fieldset class="container">
-        <legend>Following: {{num_followed}}</legend>
+        <legend>Communities You Follow: {{num_followed}}</legend>
         {% for i in range(followed_comms | length) %}
         <div class="following">
             <br>
@@ -121,6 +121,10 @@
                 Time: {{attending_events[i].time}}
             </p>
             <br><br>
+            <form method="POST" action="/community">
+                <input type="hidden" name="comm_id" value={{attending_events[i].community_id}}>
+                <input class="visit_community" type="submit" value="Visit!">
+            </form>
         </div>
         {% endfor %}
     </fieldset>
