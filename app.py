@@ -389,6 +389,7 @@ def edit_community_handler():
             edit.community_name = str(data["comm_name"])
             edit.tagline = str(data["tagline"])
             edit.description = str(data["description"])
+            edit.donation_link = str(data["donation_link"])
 
         if data["status"] == "delete":
             delete = Community.query.get(data["comm_id"])
