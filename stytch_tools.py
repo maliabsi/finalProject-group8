@@ -48,7 +48,7 @@ def stytch_email_auth(token):
     returns id if authenticated, otherwise returns None
     """
 
-    response = client.magic_links.authenticate(token=token)
+    response = client.magic_links.authenticate(token)
     # If the response is a 200, the user is verified and can be logged in
     # (Copied from Stytch API docs)
     if response.status_code == 200:

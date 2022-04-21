@@ -35,15 +35,15 @@
         <div>
             <form method="POST" class="event_form" action="/edit_event_handler">
                 <br> Event Name:<br>
-                <input type="text" name="event_name" placeholder="Enter event name" required>
+                <input type="text" name="event_name" defaultValue={{event.name}} placeholder="Enter event name" required>
                 <br> Objective:
                 <br>
-                <textarea name="tagline" placeholder="Enter objective" rows="2" cols="20" required></textarea>
+                <textarea name="tagline" defaultValue={{event.tagline}} placeholder="Enter objective" rows="2" cols="20" required></textarea>
                 <br> Description: <br>
-                <textarea name="description" placeholder="Enter description" rows="4" cols="30" required></textarea>
+                <textarea name="description" defaultValue={{event.description}} placeholder="Enter description" rows="4" cols="30" required></textarea>
                 <br> Event Date <br>
-                <input type="date" name="date"><br> Event Time: <br>
-                <input type="time" name="time"><br>
+                <input type="date" defaultValue={{event.date}} name="date"><br> Event Time: <br>
+                <input type="time" defaultValue={{event.time}} name="time"><br>
                 <input type="hidden" name="event_id" value={{event.id}}>
                 <input type="hidden" name="status" value="edit">
                 <br>
