@@ -61,15 +61,12 @@
                 <input type="hidden" name="profile" value="profile_value">
                 <input class="visit_community" type="submit" value="Delete">
             </form>
-            <br>
         </div>
         {% endfor %}
-        <hr>
-        <br>
     </fieldset>
-    <fieldset style="display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px">
+    <hr>
+    <br>
+    <fieldset class="container">
         <legend>Your Events: {{my_events | length}}</legend>
         {% for i in range(my_events | length) %}
         <div class="my_event">
@@ -95,11 +92,11 @@
         {% endfor %}
     </fieldset>
     <hr>
-    <fieldset class="container_two"><br>
+    <fieldset class="container">
         <legend>Following: {{num_followed}}</legend>
         {% for i in range(followed_comms | length) %}
         <div class="following">
-            <br><br>
+            <br>
             <b> {{followed_comms[i].community_name}}</b><br>
             <em>{{followed_comms[i].tagline}}</em>
             <form method="POST" action="/community">
@@ -109,19 +106,17 @@
             <br>
         </div>
         {% endfor %}
-        <hr>
     </fieldset>
-    <fieldset>
-        <br>
+    <br>
+    <hr>
+    <fieldset class="container">
         <legend>Events Attending: {{num_attending}}</legend>
         {% for i in range(num_attending) %}
         <div class="attending">
-            <br><br>
+            <br>
             <b> {{attending_events[i].name}}</b><br>
             <em>{{attending_events[i].tagline}}</em>
-
-            </form>
-            <br>
+            <br><br>
         </div>
         {% endfor %}
     </fieldset>
