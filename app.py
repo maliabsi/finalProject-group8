@@ -229,7 +229,7 @@ def edit_communities():
         authenticated = current_user.is_authenticated
 
         data = flask.request.form
-        edit_community = Community.query.filter_by(id=data["comm_id"]).first()
+        edit_community = Community.query.get(data["comm_id"])
 
         return flask.render_template(
             "edit_community.html",
