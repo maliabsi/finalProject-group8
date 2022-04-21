@@ -1,8 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="static/edit_event_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,10 +22,8 @@
                     <div class="logout_button">
                         {% if authenticated %}
                         <a href="handle_logout"> Logout </a>
-                        <a href="profile">Your Profile</a>
-                        {% else %}
-                        <a href="login">Login </a>
-                        {% endif %}
+                        <a href="profile">Your Profile</a> {% else %}
+                        <a href="login">Login </a> {% endif %}
                     </div>
                 </div>
             </div>
@@ -36,22 +33,19 @@
     <div class="center">
         <h3 class="center">Edit an Event:</h3>
         <div>
-            <form method="POST" class="event_form" action="/new_event_handler">
-                <br>
-                Event Name:<br>
+            <form method="POST" class="event_form" action="/edit_event_handler">
+                <br> Event Name:<br>
                 <input type="text" name="event_name" placeholder="Enter event name" required>
+                <br> Objective:
                 <br>
-                Objective:<br>
                 <textarea name="tagline" placeholder="Enter objective" rows="2" cols="20" required></textarea>
-                <br>
-                Description: <br>
+                <br> Description: <br>
                 <textarea name="description" placeholder="Enter description" rows="4" cols="30" required></textarea>
-                <br>
-                Event Date <br>
-                <input type="date" name="date"><br>
-                Event Time: <br>
+                <br> Event Date <br>
+                <input type="date" name="date"><br> Event Time: <br>
                 <input type="time" name="time"><br>
                 <input type="hidden" name="event_id" value={{event.id}}>
+                <input type="hidden" name="status" value="edit">
                 <br>
                 <input class="submit" type="submit" value="Submit Changes">
                 <br><br>
