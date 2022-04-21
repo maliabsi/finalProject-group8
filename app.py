@@ -278,15 +278,17 @@ def visit_singular_community():
         requested_community = Community.query.filter_by(id=data["comm_id"]).first()
 
         following = False
+        owned = False
+        creator = Users.query.filter_by(id=requested_community.creator_user_id).first()
+        if authenticated:
+            if current_user.id == creator.id:
+                owned = True
 
-        stytch_id = (
-            Users.query.filter_by(id=requested_community.creator_user_id)
-            .first()
-            .stytch_id
-        )
-        creator_data = get_user_data(stytch_id)[0]
+        creator_usr_data = get_user_data(creator.stytch_id)[0]
         creator_name = (
-            creator_data["name"]["first_name"] + " " + creator_data["name"]["last_name"]
+            creator_usr_data["name"]["first_name"]
+            + " "
+            + creator_usr_data["name"]["last_name"]
         )
         events = Event.query.filter_by(community_id=data["comm_id"]).all()
         followers = Follower.query.filter_by(community_id=data["comm_id"]).all()
@@ -297,8 +299,9 @@ def visit_singular_community():
             usr_data = get_user_data(stytch_id)[0]
             name = usr_data["name"]["first_name"] + " " + usr_data["name"]["last_name"]
             follower_names.append(name)
-            if follower.follower_id == current_user.id:
-                following = True
+            if authenticated:
+                if follower.follower_id == current_user.id:
+                    following = True
 
         num_of_attendees = {}
         for ev in events:
@@ -309,6 +312,7 @@ def visit_singular_community():
             "visit_community.html",
             authenticated=authenticated,
             community=requested_community,
+            owned=owned,
             following=following,
             creator=creator_name,
             events=events,
