@@ -43,11 +43,12 @@
 
         {% if authenticated %}
         {% if owned %}
-        <form method="POST" action="/edit_community_handler">
+        <form method="POST" action="/edit_community">
+            <input type="hidden" name="comm_id" value={{community.id}}>
             <input type="hidden" name="status" value="edit">
             <input class="join" type="submit" value="Edit this Community">
         </form>
-        <form method="POST" action="/edit_community_handler">
+        <form method="POST" action="/edit_community">
             <input type="hidden" name="comm_id" value={{community.id}}>
             <input type="hidden" name="status" value="delete">
             <input class="join" type="submit" value="Delete this Community">
