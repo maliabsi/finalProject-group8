@@ -38,9 +38,9 @@
                 <input type="text" name="event_name" value={{event.name}} required>
                 <br> Objective:
                 <br>
-                <textarea name="tagline" value={{event.tagline}} rows="2" cols="20" required></textarea>
+                <textarea name="tagline" rows="2" cols="20" required>{{event.tagline}}</textarea>
                 <br> Description: <br>
-                <textarea name="description" value={{event.description}} rows="4" cols="30" required></textarea>
+                <textarea name="description" rows="4" cols="30" required>{{event.description}}</textarea>
                 <br> Event Date <br>
                 <input type="date" value={{event.date}} name="date"><br> Event Time: <br>
                 <input type="time" value={{event.time}} name="time"><br>
