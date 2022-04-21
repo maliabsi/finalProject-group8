@@ -449,7 +449,7 @@ def profile_page():
     - # of events you plan to attend
     - list of events you plan to attend
     """
-
+    authenticated = current_user.is_authenticated
     usr_data = get_user_data(
         Users.query.filter_by(id=current_user.id).first().stytch_id
     )[0]
@@ -481,6 +481,7 @@ def profile_page():
         followed_comms=followed_comms,
         num_attending=num_attending,
         attending_events=attending_events,
+        authenticated=authenticated,
     )
 
 
