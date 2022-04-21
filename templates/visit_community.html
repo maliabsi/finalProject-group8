@@ -101,7 +101,20 @@
             {% for i in range(events | length) %}
             <div class="event">
                 <b> {{events[i].name}}</b><br>
-                <p>{{events[i].tagline}}</p>
+                <p>{{events[i].tagline}}
+                    <br>
+                    {% if events[i].participants %}
+                    Number of Attendees: {{events[i].participants}}
+                    {% endif %}
+                </p>
+                {% if following or owned %}
+                <form method="POST" class="center" action="/attend">
+                    <input class="visit_community" type="hidden" name="event_id" value={{events[i].id}}>
+                    <input class="visit_community" type="hidden" name="return" value="not">
+                    <input class="visit_community" type="submit" value="Attend Event">
+                </form>
+                {% endif %}
+
             </div>
             <br>
             {% endfor %}
