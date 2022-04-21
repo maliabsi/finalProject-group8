@@ -304,16 +304,22 @@ def visit_singular_community():
                     following = True
 
         num_of_attendees = {}
-        for evnt in events:
-            num_of_attendees[evnt.id] = len(
-                Attendee.query.filter_by(event_id=evnt.id).all()
-            )
+        attending = {}
+        for event in events:
+            event_attendees = Attendee.query.filter_by(event_id=event.id).all()
+            num_of_attendees[event.id] = len(event_attendees)
+
+            if authenticated:
+                if current_user.id in event_attendees.follower_id:
+                    attending[event.id] = True
+
         return flask.render_template(
             "visit_community.html",
             authenticated=authenticated,
             community=requested_community,
             owned=owned,
             following=following,
+            attending=attending,
             creator=creator_name,
             events=events,
             follower_names=follower_names,
