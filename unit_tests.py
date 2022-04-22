@@ -1,5 +1,4 @@
 # pylint: disable=unused-variable
-
 """
 Unit Tests for the app.
 """
@@ -83,7 +82,6 @@ class StytchTest(unittest.TestCase):
         expected_output = True
         with patch("stytch_tools.client.oauth.authenticate") as mock_get:
             with patch("stytch_tools.json.loads") as mock_post:
-                mock_post = "post_value"
                 mock_get.return_value = test_value
                 actual_output = stytch_oauth(test_value)[1]
                 self.assertEqual(expected_output, actual_output)
@@ -96,7 +94,6 @@ class StytchTest(unittest.TestCase):
         expected_output = True
         with patch("stytch_tools.client.magic_links.authenticate") as mock_get:
             with patch("stytch_tools.json.loads") as mock_post:
-                mock_post = "post_value"
                 mock_get.return_value = test_value
                 actual_output = stytch_email_auth(test_value)[1]
                 self.assertEqual(expected_output, actual_output)
@@ -109,7 +106,6 @@ class StytchTest(unittest.TestCase):
         expected_output = None
         with patch("stytch_tools.client.magic_links.authenticate") as mock_get:
             with patch("stytch_tools.json.loads") as mock_post:
-                mock_post = "post_value"
                 mock_get.return_value = test_value
                 actual_output = stytch_email_auth(test_value)[1]
                 self.assertEqual(expected_output, actual_output)
