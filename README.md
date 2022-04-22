@@ -1,14 +1,14 @@
 # WELCOME TO Omnino !
 
+## If you want to see what we've been working on, just visit the link below
+[Heroku Link](https://omnino.herokuapp.com/)
+
 ## Creators!
 Team Name: Group 8
  * Tayo Rufai (orufai1@student.gsu.edu)
  * Ryan Garland (rgarland2@student.gsu.edu)
  * Malia Absi (mabsi2@student.gsu.edu)
  * Michael Fralish (mfralish2@student.gsu.edu)
-
-## If you want to see what we've been working on, just visit the link below
-[Heroku Link](https://omnino.herokuapp.com/)
 
 
 ## Goal
